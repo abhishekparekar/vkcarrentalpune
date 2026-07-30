@@ -217,7 +217,7 @@ export default function HomePage() {
               ))}
             </motion.div>
 
-            {/* Hero Action Buttons (Side by Side) */}
+            {/* Hero Action Buttons (Short Compact Pills) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -227,47 +227,49 @@ export default function HomePage() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 12,
-                marginTop: 22,
+                gap: 10,
+                marginTop: 18,
               }}
             >
               <Link
                 to="/fleet"
-                className="btn btn-primary btn-lg hero-btn-main"
+                className="btn btn-primary hero-btn-main"
                 style={{
-                  padding: '12px 26px',
-                  fontSize: 14.5,
+                  padding: '9px 20px',
+                  fontSize: 13.5,
                   fontWeight: 900,
-                  letterSpacing: '0.3px',
+                  letterSpacing: '0.2px',
                   borderRadius: '9999px',
                   background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                  boxShadow: '0 6px 24px rgba(255, 69, 0, 0.40)',
+                  boxShadow: '0 4px 18px rgba(255, 69, 0, 0.40)',
                   transition: 'all 0.25s ease',
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <BsCarFront size={16} /> Explore Fleet
+                <BsCarFront size={15} /> Explore Fleet
               </Link>
               <a
                 href="https://wa.me/919764815458?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary btn-lg hero-btn-sub"
+                className="btn btn-secondary hero-btn-sub"
                 style={{
-                  padding: '12px 22px',
-                  fontSize: 14,
+                  padding: '9px 18px',
+                  fontSize: 13.5,
                   fontWeight: 800,
                   borderRadius: '9999px',
                   background: '#FFFFFF',
                   color: '#000000',
                   border: '1.5px solid #E2E8F0',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.12)',
                   transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 7,
+                  gap: 6,
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <BsWhatsapp size={16} style={{ color: '#25D366' }} /> WhatsApp
+                <BsWhatsapp size={15} style={{ color: '#25D366' }} /> WhatsApp
               </a>
             </motion.div>
           </div>
