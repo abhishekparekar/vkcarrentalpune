@@ -106,53 +106,53 @@ export default function HomePage() {
       <section
         className="hero-bg-section"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.84) 0%, rgba(15,23,42,0.76) 55%, rgba(15,23,42,0.96) 100%), url("${heroBgImg}")`,
+          backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.72) 50%, rgba(15,23,42,0.96) 100%), url("${heroBgImg}")`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center center',
+          backgroundPosition: 'center 38%',
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/* Orange Glow Ambient — top right */}
+        {/* Bhagwa Ambient Radial Glow — top right */}
         <div style={{
           position: 'absolute',
           top: '-10%',
           right: '-5%',
-          width: 480,
-          height: 480,
+          width: 520,
+          height: 520,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 69, 0,0.25) 0%, rgba(255, 69, 0,0) 70%)',
-          filter: 'blur(70px)',
+          background: 'radial-gradient(circle, rgba(255, 69, 0, 0.28) 0%, rgba(255, 69, 0, 0) 70%)',
+          filter: 'blur(75px)',
           pointerEvents: 'none',
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
 
             {/* Business Name Badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.05 }}
-              style={{ marginBottom: 14 }}
+              style={{ marginBottom: 16 }}
             >
               <span style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                padding: '6px 20px',
+                padding: '7px 22px',
                 borderRadius: '9999px',
-                background: 'rgba(255, 69, 0, 0.20)',
-                border: '1px solid rgba(255, 69, 0, 0.45)',
+                background: 'rgba(255, 69, 0, 0.22)',
+                border: '1px solid rgba(255, 69, 0, 0.50)',
                 color: '#FFFFFF',
-                fontSize: 'clamp(11px, 2vw, 13.5px)',
-                fontWeight: 800,
-                letterSpacing: '1.5px',
+                fontSize: 'clamp(11.5px, 2vw, 14px)',
+                fontWeight: 900,
+                letterSpacing: '1.8px',
                 textTransform: 'uppercase',
-                boxShadow: '0 4px 20px rgba(255, 69, 0, 0.35)',
+                boxShadow: '0 4px 22px rgba(255, 69, 0, 0.40)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
               }}>
-                <BsCarFront color="#FF4500" size={16} /> VK SELF DRIVE CAR'S PUNE
+                <BsCarFront color="#FF4500" size={17} /> VK SELF DRIVE CAR'S PUNE
               </span>
             </motion.div>
 
@@ -166,11 +166,16 @@ export default function HomePage() {
                 color: '#FFFFFF',
                 fontWeight: 900,
                 lineHeight: 1.15,
-                textShadow: '0 4px 24px rgba(0,0,0,0.9)',
+                textShadow: '0 6px 30px rgba(0,0,0,0.95)',
               }}
             >
               <span>Drive Your Freedom In Pune</span><br />
-              <span style={{ color: '#FF4500', textShadow: '0 0 35px rgba(255, 69, 0,0.85)' }}>
+              <span style={{
+                background: 'linear-gradient(135deg, #FF5500 0%, #FF4500 50%, #E63900 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 2px 25px rgba(255, 69, 0, 0.65))',
+              }}>
                 Premium Self-Drive Fleet
               </span>
             </motion.h1>
@@ -181,12 +186,13 @@ export default function HomePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.25 }}
               style={{
-                fontSize: 'clamp(13.5px, 2.4vw, 16.5px)',
-                color: '#E2E8F0',
-                fontWeight: 500,
-                maxWidth: 640,
-                margin: '10px auto 20px',
-                lineHeight: 1.5,
+                fontSize: 'clamp(14px, 2.5vw, 17.5px)',
+                color: '#F1F5F9',
+                fontWeight: 600,
+                maxWidth: 680,
+                margin: '12px auto 24px',
+                lineHeight: 1.55,
+                textShadow: '0 2px 10px rgba(0,0,0,0.8)',
               }}
             >
               Unlimited Kilometers • Doorstep Delivery • Zero Deposit Hassle
@@ -200,10 +206,10 @@ export default function HomePage() {
               className="hero-trust-badges"
             >
               {[
-                { icon: <FiCheckCircle color="#22C55E" size={14} />, text: '10,000+ Renters' },
-                { icon: <FiTruck color="#FF4500" size={14} />, text: 'Doorstep Pickup' },
-                { icon: <FiStar color="#F59E0B" size={14} />, text: '4.9★ Rated' },
-                { icon: <FiShield color="#3B82F6" size={14} />, text: '24/7 Assist' },
+                { icon: <FiCheckCircle color="#22C55E" size={15} />, text: '10,000+ Renters' },
+                { icon: <FiTruck color="#FF4500" size={15} />, text: 'Doorstep Pickup' },
+                { icon: <FiStar color="#F59E0B" size={15} />, text: '4.9★ Rated' },
+                { icon: <FiShield color="#3B82F6" size={15} />, text: '24/7 Assist' },
               ].map((item, idx) => (
                 <div key={idx} className="hero-trust-pill">
                   {item.icon} <span>{item.text}</span>
@@ -221,30 +227,42 @@ export default function HomePage() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 12,
-                marginTop: 20,
+                gap: 14,
+                marginTop: 24,
                 flexWrap: 'wrap',
               }}
             >
               <Link
                 to="/fleet"
-                className="btn btn-primary btn-lg"
-                style={{ padding: '12px 28px', fontSize: 14.5, fontWeight: 800, background: 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)' }}
+                className="btn btn-primary btn-lg hero-btn-main"
+                style={{
+                  padding: '15px 36px',
+                  fontSize: 15.5,
+                  fontWeight: 900,
+                  letterSpacing: '0.4px',
+                  borderRadius: '9999px',
+                  background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
+                  boxShadow: '0 8px 30px rgba(255, 69, 0, 0.45)',
+                  transition: 'all 0.25s ease',
+                }}
               >
-                <BsCarFront size={17} /> Explore Our Fleet
+                <BsCarFront size={18} /> Explore Our Fleet
               </Link>
               <a
                 href="https://wa.me/919764815458?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-secondary btn-lg"
+                className="btn btn-secondary btn-lg hero-btn-sub"
                 style={{
-                  padding: '12px 24px',
-                  fontSize: 14,
-                  fontWeight: 700,
+                  padding: '15px 30px',
+                  fontSize: 15,
+                  fontWeight: 800,
+                  borderRadius: '9999px',
                   background: '#FFFFFF',
-                  color: '#0F172A',
-                  border: '1px solid #E2E8F0',
+                  color: '#000000',
+                  border: '1.5px solid #E2E8F0',
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
+                  transition: 'all 0.25s ease',
                 }}
               >
                 WhatsApp Booking (+91 9764815458)

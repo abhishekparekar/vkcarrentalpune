@@ -394,30 +394,42 @@ ul, ol { list-style: none; }
   }
 }
 
-@media (max-width: 580px) {
+.hero-btn-main:hover {
+  transform: translateY(-2.5px);
+  box-shadow: 0 12px 35px rgba(255, 69, 0, 0.58) !important;
+}
+
+.hero-btn-sub:hover {
+  transform: translateY(-2.5px);
+  background: #FFFFFF !important;
+  border-color: #FF4500 !important;
+  color: #FF4500 !important;
+  box-shadow: 0 8px 25px rgba(255, 69, 0, 0.25) !important;
+}
+
+@media (max-width: 640px) {
   .hero-bg-section {
-    padding-top: 85px !important;
-    padding-bottom: 35px !important;
+    padding-top: 105px !important;
+    padding-bottom: 50px !important;
+    min-height: auto !important;
+    background-position: center 30% !important;
   }
   .hero-main-title {
-    font-size: 1.75rem !important;
+    font-size: clamp(1.75rem, 7vw, 2.2rem) !important;
     margin-bottom: 12px !important;
     line-height: 1.25 !important;
   }
-  .hero-trust-badges { gap: 6px !important; margin-bottom: 16px !important; }
-  .hero-trust-pill   { font-size: 10.5px !important; padding: 4px 10px !important; }
-  .hero-search-card  {
-    grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    padding: 14px !important;
-    border-radius: 14px !important;
-  }
+  .hero-trust-badges { gap: 6px !important; margin-bottom: 18px !important; }
+  .hero-trust-pill   { font-size: 11px !important; padding: 5px 12px !important; }
   .hero-action-btns {
     flex-direction: column !important;
     width: 100% !important;
+    gap: 12px !important;
   }
   .hero-action-btns .btn {
     width: 100% !important;
+    padding: 14px 20px !important;
+    font-size: 14.5px !important;
     justify-content: center !important;
   }
 }
