@@ -198,7 +198,8 @@ ol {
 }
 
 /* ── Container & Grids ── */
-.container {
+.container,
+.fleet-container {
   width: 100%;
   max-width: 1340px;
   margin: 0 auto;
@@ -207,14 +208,57 @@ ol {
 }
 
 @media (max-width: 768px) {
-  .container {
+  .container,
+  .fleet-container {
     padding: 0 14px;
   }
 }
 
 @media (max-width: 480px) {
-  .container {
+  .container,
+  .fleet-container {
     padding: 0 10px;
+  }
+}
+
+.grid-fleet-catalog {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 1600px) {
+  .grid-fleet-catalog {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .grid-fleet-catalog {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-fleet-catalog {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-fleet-catalog {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .grid-fleet-catalog {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
