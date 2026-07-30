@@ -267,10 +267,10 @@ export default function HomePage() {
       </section>
 
       {/* 2. TOP SELLING CARS SECTION */}
-      <section style={{ padding: '32px 0 24px', background: '#FFFFFF' }}>
+      <section style={{ padding: '18px 0 14px', background: '#FFFFFF' }}>
         <div className="container">
           {/* Section Header with Left Title + Right Carousel Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
             <div>
               <span className="section-label">Most Popular</span>
               <h2 style={{ fontSize: 'clamp(18px, 4vw, 24px)', fontWeight: 800, color: '#111318', margin: 0 }}>
@@ -313,13 +313,13 @@ export default function HomePage() {
           ) : (
             <Swiper
               modules={[Navigation, Autoplay]}
-              spaceBetween={16}
-              slidesPerView={1}
+              spaceBetween={14}
+              slidesPerView={1.3}
               breakpoints={{
-                320: { slidesPerView: 1, spaceBetween: 12 },
-                560: { slidesPerView: 2, spaceBetween: 14 },
-                860: { slidesPerView: 3, spaceBetween: 16 },
-                1150: { slidesPerView: 4, spaceBetween: 16 },
+                480: { slidesPerView: 1.6, spaceBetween: 14 },
+                640: { slidesPerView: 2.1, spaceBetween: 16 },
+                1024: { slidesPerView: 3.1, spaceBetween: 18 },
+                1280: { slidesPerView: 3.4, spaceBetween: 20 },
               }}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               onInit={(swiper) => {
