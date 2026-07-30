@@ -28,15 +28,15 @@ import AdminInquiries from './pages/admin/AdminInquiries';
 import AdminCustomers from './pages/admin/AdminCustomers';
 import AdminSettings from './pages/admin/AdminSettings';
 
-// Auto Scroll To Top Hero section on Route Change & Page Refresh
+// Auto Scroll To Top Hero section on Route Change & Query Search Params
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual';
     }
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  }, [pathname]);
+  }, [pathname, search]);
   return null;
 }
 

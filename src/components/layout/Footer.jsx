@@ -24,12 +24,6 @@ export default function Footer() {
       { label: 'SUV & 4x4 Fleet', to: '/fleet?category=suv' },
       { label: 'Luxury Cars',    to: '/fleet?category=luxury' },
     ],
-    'Rental Packages': [
-      { label: 'Daily Self Drive',      to: '/fleet' },
-      { label: 'Weekly Rentals',        to: '/fleet' },
-      { label: 'Monthly Subscription',  to: '/fleet' },
-      { label: 'Doorstep Car Pickup',   to: '/fleet' },
-    ],
   };
 
   const socials = [
@@ -142,52 +136,55 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* ── 2. Link Navigation Columns ── */}
-            {Object.entries(footerLinks).map(([group, links]) => (
-              <div key={group}>
-                <h4 style={{
-                  fontSize: 12,
-                  fontWeight: 900,
-                  color: '#FF4500',
-                  letterSpacing: '1.4px',
-                  textTransform: 'uppercase',
-                  marginBottom: 18,
-                }}>{group}</h4>
-                <ul style={{ display: 'flex', flexDirection: 'column', gap: 11, listStyle: 'none', padding: 0 }}>
-                  {links.map(link => (
-                    <li key={link.label}>
-                      <Link
-                        to={link.to}
-                        style={{
-                          fontSize: 13.5,
-                          color: '#94A3B8',
-                          textDecoration: 'none',
-                          transition: 'all 0.2s ease',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 6,
-                          fontWeight: 600,
-                        }}
-                        onMouseEnter={e => {
-                          e.currentTarget.style.color = '#FFFFFF';
-                          e.currentTarget.style.transform = 'translateX(4px)';
-                        }}
-                        onMouseLeave={e => {
-                          e.currentTarget.style.color = '#94A3B8';
-                          e.currentTarget.style.transform = 'translateX(0)';
-                        }}
-                      >
-                        <FiChevronRight size={13} color="#FF4500" />
-                        <span>{link.label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            {/* ── 2. Link Navigation Columns (2-Column Grid on Mobile) ── */}
+            <div className="footer-links-container">
+              {Object.entries(footerLinks).map(([group, links]) => (
+                <div key={group} className="footer-link-group">
+                  <h4 style={{
+                    fontSize: 12,
+                    fontWeight: 900,
+                    color: '#FF4500',
+                    letterSpacing: '1.4px',
+                    textTransform: 'uppercase',
+                    marginBottom: 18,
+                  }}>{group}</h4>
+                  <ul style={{ display: 'flex', flexDirection: 'column', gap: 11, listStyle: 'none', padding: 0 }}>
+                    {links.map(link => (
+                      <li key={link.label}>
+                        <Link
+                          to={link.to}
+                          onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
+                          style={{
+                            fontSize: 13.5,
+                            color: '#94A3B8',
+                            textDecoration: 'none',
+                            transition: 'all 0.2s ease',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: 6,
+                            fontWeight: 600,
+                          }}
+                          onMouseEnter={e => {
+                            e.currentTarget.style.color = '#FFFFFF';
+                            e.currentTarget.style.transform = 'translateX(4px)';
+                          }}
+                          onMouseLeave={e => {
+                            e.currentTarget.style.color = '#94A3B8';
+                            e.currentTarget.style.transform = 'translateX(0)';
+                          }}
+                        >
+                          <FiChevronRight size={13} color="#FF4500" />
+                          <span>{link.label}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
 
             {/* ── 3. Contact & Quick Inquiry CTAs ── */}
-            <div>
+            <div className="footer-contact-col">
               <h4 style={{
                 fontSize: 12,
                 fontWeight: 900,
@@ -215,7 +212,7 @@ export default function Footer() {
                     onMouseLeave={e => e.currentTarget.style.color = '#FFFFFF'}
                   >
                     <div style={{
-                      width: 32, height: 32, borderRadius: 8,
+                      width: 34, height: 34, borderRadius: 10,
                       background: 'rgba(255, 69, 0, 0.15)',
                       border: '1px solid rgba(255, 69, 0, 0.3)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -244,7 +241,7 @@ export default function Footer() {
                     onMouseLeave={e => e.currentTarget.style.color = '#CBD5E1'}
                   >
                     <div style={{
-                      width: 32, height: 32, borderRadius: 8,
+                      width: 34, height: 34, borderRadius: 10,
                       background: 'rgba(255, 69, 0, 0.15)',
                       border: '1px solid rgba(255, 69, 0, 0.3)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -259,7 +256,7 @@ export default function Footer() {
                 <li>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: '#CBD5E1' }}>
                     <div style={{
-                      width: 32, height: 32, borderRadius: 8,
+                      width: 34, height: 34, borderRadius: 10,
                       background: 'rgba(255, 69, 0, 0.15)',
                       border: '1px solid rgba(255, 69, 0, 0.3)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -283,11 +280,11 @@ export default function Footer() {
                   justifyContent: 'center',
                   gap: 8,
                   width: '100%',
-                  padding: '12px 18px',
-                  borderRadius: 12,
+                  padding: '13px 18px',
+                  borderRadius: 14,
                   background: 'linear-gradient(135deg, #25D366 0%, #1EAA52 100%)',
                   color: '#FFFFFF',
-                  fontSize: 13.5,
+                  fontSize: 14,
                   fontWeight: 900,
                   textDecoration: 'none',
                   boxShadow: '0 4px 16px rgba(37,211,102,0.35)',
@@ -296,16 +293,16 @@ export default function Footer() {
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                <BsWhatsapp size={17} /> Book on WhatsApp
+                <BsWhatsapp size={18} /> Book on WhatsApp
               </a>
             </div>
 
           </div>
 
           {/* ── Bottom Divider & Copyright Bar ── */}
-          <div style={{ height: 1, background: 'rgba(255, 255, 255, 0.08)', margin: '40px 0 22px' }} />
+          <div style={{ height: 1, background: 'rgba(255, 255, 255, 0.08)', margin: '36px 0 20px' }} />
 
-          <div style={{
+          <div className="footer-bottom-bar" style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -316,12 +313,12 @@ export default function Footer() {
               © {new Date().getFullYear()} <strong style={{ color: '#FFFFFF' }}>{settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}</strong>. All rights reserved.
             </p>
 
-            <div style={{ display: 'flex', gap: 16, fontSize: 12.5, color: '#64748B', fontWeight: 600 }}>
-              <Link to="/about" style={{ color: '#94A3B8', textDecoration: 'none' }}>About Us</Link>
+            <div style={{ display: 'flex', gap: 14, fontSize: 12.5, color: '#64748B', fontWeight: 600, flexWrap: 'wrap' }}>
+              <Link to="/about" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>About Us</Link>
               <span>•</span>
-              <Link to="/contact" style={{ color: '#94A3B8', textDecoration: 'none' }}>Contact Support</Link>
+              <Link to="/contact" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>Contact Support</Link>
               <span>•</span>
-              <Link to="/fleet" style={{ color: '#94A3B8', textDecoration: 'none' }}>Self Drive Fleet</Link>
+              <Link to="/fleet" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>Self Drive Fleet</Link>
             </div>
           </div>
         </div>
@@ -330,19 +327,34 @@ export default function Footer() {
       <style>{`
         .footer-grid {
           display: grid;
-          grid-template-columns: 1.6fr 1fr 1fr 1fr 1.3fr;
-          gap: 32px;
+          grid-template-columns: 1.5fr 3fr 1.3fr;
+          gap: 36px;
+        }
+        .footer-links-container {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
         }
         @media (max-width: 1024px) {
           .footer-grid {
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .footer-links-container {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
           }
         }
         @media (max-width: 640px) {
-          .footer-grid {
-            grid-template-columns: 1fr;
-            gap: 28px;
+          .footer-links-container {
+            grid-template-columns: 1fr 1fr !important;
+            gap: 22px 16px !important;
+          }
+          .footer-bottom-bar {
+            flex-direction: column !important;
+            justify-content: center !important;
+            text-align: center !important;
+            gap: 12px !important;
           }
         }
       `}</style>
