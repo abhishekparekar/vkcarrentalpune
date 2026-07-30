@@ -203,24 +203,24 @@ export default function Navbar() {
               style={{
                 display: 'none',
                 alignItems: 'center',
-                gap: 6,
-                padding: '5.5px 12px',
+                gap: 7,
+                padding: '6.5px 14px',
                 borderRadius: '9999px',
                 background: '#FFFFFF',
                 color: '#111318',
                 border: '1.5px solid #FF4500',
-                fontSize: 12,
+                fontSize: 13.5,
                 fontWeight: 900,
-                letterSpacing: '0.2px',
+                letterSpacing: '0.3px',
                 textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(255, 69, 0, 0.22)',
+                boxShadow: '0 4px 16px rgba(255, 69, 0, 0.25)',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.2s ease',
               }}
             >
               <span style={{
-                width: 20,
-                height: 20,
+                width: 22,
+                height: 22,
                 borderRadius: '50%',
                 background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
                 display: 'inline-flex',
@@ -229,7 +229,7 @@ export default function Navbar() {
                 color: '#FFFFFF',
                 flexShrink: 0,
               }}>
-                <FiPhoneCall size={11} color="#FFFFFF" />
+                <FiPhoneCall size={12} color="#FFFFFF" />
               </span>
               <span>{settings?.phone || '+91 83810 52230'}</span>
             </a>
@@ -577,12 +577,12 @@ export default function Navbar() {
         }
         @media (max-width: 400px) {
           .mobile-call-pill {
-            padding: 4.5px 8.5px !important;
-            font-size: 10.5px !important;
+            padding: 5.5px 11px !important;
+            font-size: 12px !important;
           }
           .mobile-logo-img {
-            height: 40px !important;
-            max-height: 40px !important;
+            height: 38px !important;
+            max-height: 38px !important;
           }
         }
       `}</style>
