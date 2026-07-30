@@ -49,7 +49,7 @@ export default function MyInquiriesPage() {
   const handleShareWhatsApp = (item) => {
     const text = `Hi! I submitted a rental inquiry for *${item.carName || 'Vehicle'}* (Ref: #${item.id.slice(0, 8)}).\nLocation: ${item.city || 'Pune'}\nDates: ${item.pickupDate || 'Flexible'} to ${item.returnDate || 'Flexible'}.\nPlease confirm vehicle availability!`;
     const encoded = encodeURIComponent(text);
-    window.open(`https://wa.me/919764815458?text=${encoded}`, '_blank');
+    window.open(`https://wa.me/918381052230?text=${encoded}`, '_blank');
   };
 
   const statusBadge = (status) => {

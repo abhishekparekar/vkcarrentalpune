@@ -38,7 +38,7 @@ const PROMISES = [
   {
     icon: <FiClock size={24} />,
     title: '24/7 WhatsApp & Phone Support',
-    desc: 'Our local Pune support team is available round the clock at +91 9764815458.',
+    desc: 'Our local Pune support team is available round the clock at +91 8381052230.',
   },
   {
     icon: <FiStar size={24} />,

@@ -366,10 +366,10 @@ export async function registerAdminUser(tenantId, uid, { email, name, role = 'ad
 export const DEFAULT_TENANT_SETTINGS = {
   businessName: "VK SELF DRIVE CAR'S PUNE",
   tagline: 'Premium self-drive car rentals with 300 km daily limit, doorstep delivery & verified fleet in Pune.',
-  phone: '+91 9764815458',
+  phone: '+91 8381052230',
   email: 'vishalkarke184@gmail.com',
   address: 'Pune, Maharashtra',
-  whatsapp: '919764815458',
+  whatsapp: '918381052230',
   facebook: 'https://facebook.com',
   instagram: 'https://instagram.com',
   twitter: 'https://twitter.com',

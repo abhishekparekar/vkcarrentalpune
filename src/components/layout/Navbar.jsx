@@ -161,7 +161,7 @@ export default function Navbar() {
           {/* ── Desktop Right Call & Action CTAs ── */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <a
-              href={`tel:${(settings?.phone || '+91 9764815458').replace(/\s+/g, '')}`}
+              href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -190,7 +190,7 @@ export default function Navbar() {
               }}
             >
               <FiPhone size={14} style={{ color: '#FF4500' }} />
-              <span>{settings?.phone || '+91 9764815458'}</span>
+              <span>{settings?.phone || '+91 8381052230'}</span>
             </a>
 
             <button
@@ -435,7 +435,7 @@ export default function Navbar() {
               }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
                   <a
-                    href={`tel:${(settings?.phone || '+91 9764815458').replace(/\s+/g, '')}`}
+                    href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
@@ -455,7 +455,7 @@ export default function Navbar() {
                   </a>
 
                   <a
-                    href={`https://wa.me/${(settings?.whatsapp || settings?.phone || '919764815458').replace(/\D/g, '')}?text=Hi%20${encodeURIComponent(settings?.businessName || "VK SELF DRIVE CAR'S PUNE")},%20I%20want%20to%20book%20a%20car.`}
+                    href={`https://wa.me/${(settings?.whatsapp || settings?.phone || '918381052230').replace(/\D/g, '')}?text=Hi%20${encodeURIComponent(settings?.businessName || "VK SELF DRIVE CAR'S PUNE")},%20I%20want%20to%20book%20a%20car.`}
                     target="_blank"
                     rel="noopener noreferrer"
                     style={{

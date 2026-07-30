@@ -57,10 +57,10 @@ export default function AdminSettings() {
       setForm({
         businessName: settings.businessName || "VK SELF DRIVE CAR'S PUNE",
         tagline: settings.tagline || 'Premium self-drive car rentals with 300 km daily limit, doorstep delivery & verified fleet in Pune.',
-        phone: settings.phone || '+91 9764815458',
+        phone: settings.phone || '+91 8381052230',
         email: settings.email || 'vishalkarke184@gmail.com',
         address: settings.address || 'Pimpri-Chinchwad & Pune City, Maharashtra',
-        whatsapp: settings.whatsapp || '919764815458',
+        whatsapp: settings.whatsapp || '918381052230',
         businessHours: settings.businessHours || '24 Hours • 365 Days Doorstep Delivery',
         facebook: settings.facebook || 'https://facebook.com',
         instagram: settings.instagram || 'https://instagram.com',
@@ -213,7 +213,7 @@ export default function AdminSettings() {
                     className="form-input"
                     value={form.phone}
                     onChange={e => setForm({ ...form, phone: e.target.value })}
-                    placeholder="+91 9764815458"
+                    placeholder="+91 8381052230"
                   />
                 </div>
 
@@ -225,7 +225,7 @@ export default function AdminSettings() {
                     className="form-input"
                     value={form.whatsapp}
                     onChange={e => setForm({ ...form, whatsapp: e.target.value })}
-                    placeholder="919764815458"
+                    placeholder="918381052230"
                   />
                 </div>
 

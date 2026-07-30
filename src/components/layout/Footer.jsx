@@ -33,9 +33,9 @@ export default function Footer() {
     { icon: <BsYoutube />,   href: settings?.youtube || '#', label: 'YouTube' },
   ];
 
-  const rawPhone = settings?.phone || '+91 9764815458';
+  const rawPhone = settings?.phone || '+91 8381052230';
   const cleanPhone = rawPhone.replace(/\D/g, '');
-  const rawWhatsapp = settings?.whatsapp || cleanPhone || '919764815458';
+  const rawWhatsapp = settings?.whatsapp || cleanPhone || '918381052230';
   const whatsappNumber = rawWhatsapp.startsWith('91') ? rawWhatsapp : `91${rawWhatsapp}`;
 
   return (

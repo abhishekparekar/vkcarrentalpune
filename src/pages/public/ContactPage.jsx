@@ -18,8 +18,8 @@ const DEFAULT_CONTACT_ITEMS = [
   {
     icon: <FiPhone size={18} />,
     label: 'Call / WhatsApp (24/7)',
-    value: '+91 9764815458',
-    href: 'https://wa.me/919764815458',
+    value: '+91 8381052230',
+    href: 'https://wa.me/918381052230',
     color: '#FF4500',
     bg: 'rgba(255, 69, 0,0.08)',
   },
@@ -58,10 +58,10 @@ export default function ContactPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const phone = settings?.phone || '+91 9764815458';
+  const phone = settings?.phone || '+91 8381052230';
   const email = settings?.email || 'vishalkarke184@gmail.com';
   const address = settings?.address || 'Pimpri-Chinchwad & Pune City, Maharashtra';
-  const whatsapp = settings?.whatsapp || '919764815458';
+  const whatsapp = settings?.whatsapp || '918381052230';
   const hours = settings?.businessHours || '24 Hours • 365 Days Doorstep Delivery';
 
   const contactItems = [

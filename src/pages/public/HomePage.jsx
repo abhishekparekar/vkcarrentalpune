@@ -249,7 +249,7 @@ export default function HomePage() {
                 <BsCarFront size={15} /> Explore Fleet
               </Link>
               <a
-                href="https://wa.me/919764815458?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
+                href="https://wa.me/918381052230?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary hero-btn-sub"

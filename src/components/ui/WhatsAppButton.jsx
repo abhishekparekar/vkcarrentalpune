@@ -4,7 +4,7 @@ import { useTenant } from '../../contexts/TenantContext';
 
 export default function WhatsAppButton() {
   const { settings } = useTenant();
-  const rawNum = settings?.whatsapp || settings?.phone || '919764815458';
+  const rawNum = settings?.whatsapp || settings?.phone || '918381052230';
   const phoneNumber = rawNum.replace(/\D/g, '');
   const bizName = settings?.businessName || "VK SELF DRIVE CAR'S PUNE";
   const defaultMessage = encodeURIComponent(`Hi ${bizName}, I want to inquire about renting a self-drive car.`);
@@ -37,7 +37,7 @@ export default function WhatsAppButton() {
         cursor: 'pointer',
         textDecoration: 'none',
       }}
-      title={`Chat with ${bizName} on WhatsApp (${settings?.phone || '+91 9764815458'})`}
+      title={`Chat with ${bizName} on WhatsApp (${settings?.phone || '+91 8381052230'})`}
       aria-label="Chat on WhatsApp"
     >
       <BsWhatsapp />
