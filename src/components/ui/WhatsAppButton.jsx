@@ -6,7 +6,7 @@ export default function WhatsAppButton() {
   const { settings } = useTenant();
   const rawNum = settings?.whatsapp || settings?.phone || '918381052230';
   const phoneNumber = rawNum.replace(/\D/g, '');
-  const bizName = settings?.businessName || "VK RENTAL CARS Pune";
+  const bizName = settings?.businessName || "VK RENTAL CARS PUNE";
   const defaultMessage = encodeURIComponent(`Hi ${bizName}, I want to inquire about renting a self-drive car.`);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;
 

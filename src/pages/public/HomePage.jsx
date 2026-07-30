@@ -152,7 +152,7 @@ export default function HomePage() {
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
               }}>
-                <BsCarFront color="#FF4500" size={17} /> VK RENTAL CARS Pune
+                <BsCarFront color="#FF4500" size={17} /> VK RENTAL CARS PUNE
               </span>
             </motion.div>
 
@@ -442,7 +442,7 @@ export default function HomePage() {
       <section className="section-sm" style={{ background: '#FFFFFF' }}>
         <div className="container">
           <div className="section-header text-center" style={{ marginBottom: 28 }}>
-            <span className="section-label">Why Choose VK RENTAL CARS Pune</span>
+            <span className="section-label">Why Choose VK RENTAL CARS PUNE</span>
             <h2 className="section-title">The Ultimate <span>Self-Drive</span> Experience</h2>
           </div>
         </div>

@@ -92,7 +92,7 @@ export default function Navbar() {
           >
             <img
               src={logoImg}
-              alt="VK RENTAL CARS Pune"
+              alt="VK RENTAL CARS PUNE"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -311,7 +311,7 @@ export default function Navbar() {
                   }}>
                     <img
                       src={logoImg}
-                      alt="VK RENTAL CARS Pune"
+                      alt="VK RENTAL CARS PUNE"
                       style={{ height: 38, width: 'auto', objectFit: 'contain' }}
                     />
                   </div>

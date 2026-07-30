@@ -63,7 +63,7 @@ export default function AdminLogin() {
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
           <img
             src={logoImg}
-            alt="VK RENTAL CARS Pune"
+            alt="VK RENTAL CARS PUNE"
             style={{
               height: 64,
               width: 'auto',

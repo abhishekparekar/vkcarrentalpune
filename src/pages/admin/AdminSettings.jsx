@@ -55,7 +55,7 @@ export default function AdminSettings() {
   useEffect(() => {
     if (settings) {
       setForm({
-        businessName: settings.businessName || "VK RENTAL CARS Pune",
+        businessName: settings.businessName || "VK RENTAL CARS PUNE",
         tagline: settings.tagline || 'Premium self-drive car rentals with 300 km daily limit, doorstep delivery & verified fleet in Pune.',
         phone: settings.phone || '+91 8381052230',
         email: settings.email || 'vishalkarke184@gmail.com',
@@ -201,7 +201,7 @@ export default function AdminSettings() {
                     className="form-input"
                     value={form.businessName}
                     onChange={e => setForm({ ...form, businessName: e.target.value })}
-                    placeholder="VK RENTAL CARS Pune"
+                    placeholder="VK RENTAL CARS PUNE"
                   />
                 </div>
 
