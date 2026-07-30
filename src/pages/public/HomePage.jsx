@@ -126,7 +126,7 @@ export default function HomePage() {
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ margin: '0 auto', textAlign: 'center' }}>
 
             {/* Business Name Badge */}
             <motion.div
@@ -429,7 +429,7 @@ export default function HomePage() {
 
       {/* 4.5 DIRECT HOMEPAGE INQUIRY FORM SECTION */}
       <section id="inquiry-form-section" style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0', padding: '32px 0' }}>
-        <div className="container" style={{ maxWidth: 860 }}>
+        <div className="container">
           <div className="section-header text-center" style={{ marginBottom: 16 }}>
             <span className="section-label-red">Instant Booking & Quote</span>
             <h2 className="section-title" style={{ fontSize: 'clamp(20px, 3.5vw, 26px)', margin: '4px 0' }}>Submit Your <span>Car Rental Inquiry</span></h2>
