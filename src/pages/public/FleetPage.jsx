@@ -86,59 +86,9 @@ export default function FleetPage() {
           </div>
         </div>
 
-        {/* ─── Dynamic Stats Grid (matching About page) ─── */}
-        <div className="fleet-container" style={{ marginBottom: 20 }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: 14,
-          }} className="fleet-stats-grid">
-            {[
-              { label: 'Happy Renters', value: settings?.statsRenters || '500+', icon: <FiUsers size={20} /> },
-              { label: 'Sanitized Fleet Cars', value: settings?.statsFleet || '50+', icon: <BsCarFront size={20} /> },
-              { label: 'Doorstep Delivery', value: settings?.statsDelivery || '30 Mins', icon: <FiTruck size={20} /> },
-              { label: 'Customer Rating', value: settings?.statsRating || '4.9/5', icon: <FiStar size={20} /> },
-            ].map((s, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.07, duration: 0.35 }}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: 14,
-                  padding: '16px 12px',
-                  textAlign: 'center',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: 6,
-                }}
-              >
-                <div style={{
-                  width: 38, height: 38,
-                  borderRadius: 10,
-                  background: 'rgba(255, 69, 0, 0.09)',
-                  border: '1px solid rgba(255, 69, 0, 0.22)',
-                  color: '#FF4500',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  {s.icon}
-                </div>
-                <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', color: '#FF4500', fontWeight: 900, margin: 0, lineHeight: 1 }}>
-                  {s.value}
-                </h3>
-                <p style={{ fontSize: 11, color: '#64748B', margin: 0, fontWeight: 700, lineHeight: 1.3 }}>{s.label}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
         <div className="fleet-container" style={{ width: '100%' }}>
 
-          {/* Touch-Friendly Category Filter Pills Bar */}
+          {/* Touch-Friendly Category Filter Pills Bar FIRST */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
@@ -158,17 +108,16 @@ export default function FleetPage() {
                   onClick={() => setSelectedCategory(tab.id)}
                   style={{
                     padding: '8px 18px',
-                    borderRadius: 99,
-                    background: isActive ? 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)' : '#FFFFFF',
-                    color: isActive ? '#FFFFFF' : '#475569',
-                    border: isActive ? '1px solid #FF4500' : '1px solid #E2E8F0',
+                    borderRadius: 'var(--radius-full)',
                     fontSize: 13,
                     fontWeight: 800,
                     cursor: 'pointer',
-                    whiteSpace: 'nowrap',
-                    boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0,0.35)' : '0 2px 6px rgba(0,0,0,0.02)',
-                    transition: 'all 0.18s ease',
-                    display: 'flex',
+                    transition: 'all 0.2s ease',
+                    border: isActive ? '1.5px solid #FF4500' : '1px solid #E2E8F0',
+                    background: isActive ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : '#FFFFFF',
+                    color: isActive ? '#FFFFFF' : '#334155',
+                    boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.35)' : '0 2px 6px rgba(15, 23, 42, 0.03)',
+                    display: 'inline-flex',
                     alignItems: 'center',
                     gap: 6,
                     flexShrink: 0,
@@ -216,8 +165,8 @@ export default function FleetPage() {
                 <h3 style={{ fontSize: 18, color: '#111318', fontWeight: 800, marginBottom: 6 }}>
                   No Cars Found in This Category
                 </h3>
-                <p style={{ fontSize: 13, color: '#64748B', maxWidth: 420, margin: '0 auto 16px', lineHeight: 1.5 }}>
-                  Select "All Fleet" to view all available self-drive rental cars.
+                <p style={{ fontSize: 13, color: '#64748B', margin: '0 0 16px' }}>
+                  Try selecting another category like All Fleet or Popular Choice.
                 </p>
                 <button
                   type="button"
@@ -244,8 +193,58 @@ export default function FleetPage() {
             )}
           </section>
 
+          {/* ─── Dynamic Stats Grid BELOW Fleet Catalog ─── */}
+          <div style={{ marginTop: 36, marginBottom: 20 }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 14,
+            }} className="fleet-stats-grid">
+              {[
+                { label: 'Happy Renters', value: settings?.statsRenters || '500+', icon: <FiUsers size={20} /> },
+                { label: 'Sanitized Fleet Cars', value: settings?.statsFleet || '50+', icon: <BsCarFront size={20} /> },
+                { label: 'Doorstep Delivery', value: settings?.statsDelivery || '30 Mins', icon: <FiTruck size={20} /> },
+                { label: 'Customer Rating', value: settings?.statsRating || '4.9/5', icon: <FiStar size={20} /> },
+              ].map((s, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07, duration: 0.35 }}
+                  style={{
+                    background: '#FFFFFF',
+                    borderRadius: 14,
+                    padding: '16px 12px',
+                    textAlign: 'center',
+                    border: '1px solid #E2E8F0',
+                    boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 6,
+                  }}
+                >
+                  <div style={{
+                    width: 38, height: 38,
+                    borderRadius: 10,
+                    background: 'rgba(255, 69, 0, 0.09)',
+                    border: '1px solid rgba(255, 69, 0, 0.22)',
+                    color: '#FF4500',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    {s.icon}
+                  </div>
+                  <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', color: '#FF4500', fontWeight: 900, margin: 0, lineHeight: 1 }}>
+                    {s.value}
+                  </h3>
+                  <p style={{ fontSize: 11, color: '#64748B', margin: 0, fontWeight: 700, lineHeight: 1.3 }}>{s.label}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           {/* ─── RENTAL POLICY & MANDATORY DOCUMENTS ─── */}
-          <div style={{ marginTop: 36, marginBottom: 24 }}>
+          <div style={{ marginTop: 24, marginBottom: 24 }}>
             <TermsAndConditions expandable={true} defaultOpen={true} />
           </div>
 
