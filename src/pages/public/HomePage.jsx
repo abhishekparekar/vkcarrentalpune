@@ -225,18 +225,23 @@ export default function HomePage() {
                 to="/fleet"
                 className="btn btn-primary hero-btn-main"
                 style={{
-                  padding: '9px 20px',
-                  fontSize: 13.5,
+                  padding: '12px 34px',
+                  minWidth: 170,
+                  fontSize: 14.5,
                   fontWeight: 900,
-                  letterSpacing: '0.2px',
+                  letterSpacing: '0.3px',
                   borderRadius: '9999px',
                   background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                  boxShadow: '0 4px 18px rgba(255, 69, 0, 0.40)',
+                  boxShadow: '0 6px 24px rgba(255, 69, 0, 0.45)',
                   transition: 'all 0.25s ease',
                   whiteSpace: 'nowrap',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 8,
                 }}
               >
-                <BsCarFront size={15} /> Explore Fleet
+                <BsCarFront size={16} /> Explore Fleet
               </Link>
               <a
                 href="https://wa.me/918381052230?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
@@ -244,22 +249,24 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary hero-btn-sub"
                 style={{
-                  padding: '9px 18px',
-                  fontSize: 13.5,
-                  fontWeight: 800,
+                  padding: '12px 30px',
+                  minWidth: 160,
+                  fontSize: 14.5,
+                  fontWeight: 900,
                   borderRadius: '9999px',
                   background: '#FFFFFF',
                   color: '#000000',
                   border: '1.5px solid #E2E8F0',
-                  boxShadow: '0 4px 14px rgba(0,0,0,0.12)',
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
                   transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 6,
+                  justifyContent: 'center',
+                  gap: 8,
                   whiteSpace: 'nowrap',
                 }}
               >
-                <BsWhatsapp size={15} style={{ color: '#25D366' }} /> WhatsApp
+                <BsWhatsapp size={16} style={{ color: '#25D366' }} /> WhatsApp
               </a>
             </motion.div>
           </div>
