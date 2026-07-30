@@ -106,7 +106,7 @@ export default function HomePage() {
       <section
         className="hero-bg-section"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.72) 50%, rgba(15,23,42,0.96) 100%), url("${heroBgImg}")`,
+          backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.15) 50%, rgba(15, 23, 42, 0.70) 100%), url("${heroBgImg}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 38%',
           backgroundRepeat: 'no-repeat',
@@ -120,7 +120,7 @@ export default function HomePage() {
           width: 520,
           height: 520,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 69, 0, 0.28) 0%, rgba(255, 69, 0, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(255, 69, 0, 0.22) 0%, rgba(255, 69, 0, 0) 70%)',
           filter: 'blur(75px)',
           pointerEvents: 'none',
         }} />
@@ -141,14 +141,14 @@ export default function HomePage() {
                 gap: 8,
                 padding: '7px 22px',
                 borderRadius: '9999px',
-                background: 'rgba(255, 69, 0, 0.22)',
-                border: '1px solid rgba(255, 69, 0, 0.50)',
+                background: 'rgba(15, 23, 42, 0.65)',
+                border: '1px solid rgba(255, 69, 0, 0.60)',
                 color: '#FFFFFF',
                 fontSize: 'clamp(11.5px, 2vw, 14px)',
                 fontWeight: 900,
                 letterSpacing: '1.8px',
                 textTransform: 'uppercase',
-                boxShadow: '0 4px 22px rgba(255, 69, 0, 0.40)',
+                boxShadow: '0 4px 22px rgba(0, 0, 0, 0.50)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
               }}>
@@ -166,15 +166,14 @@ export default function HomePage() {
                 color: '#FFFFFF',
                 fontWeight: 900,
                 lineHeight: 1.15,
-                textShadow: '0 6px 30px rgba(0,0,0,0.95)',
+                textShadow: '0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.9)',
               }}
             >
               <span>Drive Your Freedom In Pune</span><br />
               <span style={{
-                background: 'linear-gradient(135deg, #FF5500 0%, #FF4500 50%, #E63900 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 2px 25px rgba(255, 69, 0, 0.65))',
+                color: '#FF4500',
+                textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 69, 0, 0.9)',
+                fontWeight: 900,
               }}>
                 Premium Self-Drive Fleet
               </span>
