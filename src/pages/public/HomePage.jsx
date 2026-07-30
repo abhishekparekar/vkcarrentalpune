@@ -263,9 +263,12 @@ export default function HomePage() {
                   border: '1.5px solid #E2E8F0',
                   boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
                   transition: 'all 0.25s ease',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 8,
                 }}
               >
-                WhatsApp Booking (+91 9764815458)
+                <BsWhatsapp size={18} style={{ color: '#25D366' }} /> WhatsApp Booking (+91 9764815458)
               </a>
             </motion.div>
           </div>

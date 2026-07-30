@@ -410,28 +410,45 @@ ul, ol { list-style: none; }
 
 @media (max-width: 640px) {
   .hero-bg-section {
-    padding-top: 105px !important;
-    padding-bottom: 50px !important;
+    padding-top: 96px !important;
+    padding-bottom: 36px !important;
     min-height: auto !important;
-    background-position: center 30% !important;
+    background-position: center 25% !important;
   }
   .hero-main-title {
-    font-size: clamp(1.75rem, 7vw, 2.2rem) !important;
-    margin-bottom: 12px !important;
+    font-size: clamp(1.55rem, 6.2vw, 2.1rem) !important;
+    margin-bottom: 10px !important;
     line-height: 1.25 !important;
   }
-  .hero-trust-badges { gap: 6px !important; margin-bottom: 18px !important; }
-  .hero-trust-pill   { font-size: 11px !important; padding: 5px 12px !important; }
+  .hero-trust-badges {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    max-width: 320px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .hero-trust-pill {
+    font-size: 11px !important;
+    padding: 6.5px 10px !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+  }
   .hero-action-btns {
     flex-direction: column !important;
     width: 100% !important;
-    gap: 12px !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
   }
   .hero-action-btns .btn {
     width: 100% !important;
-    padding: 14px 20px !important;
-    font-size: 14.5px !important;
+    padding: 13px 18px !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    border-radius: 9999px !important;
     justify-content: center !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2) !important;
   }
 }
 
