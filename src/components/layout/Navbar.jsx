@@ -97,6 +97,7 @@ export default function Navbar() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
+              className="mobile-logo-img"
               style={{
                 height: 52,
                 maxHeight: 52,
@@ -192,31 +193,45 @@ export default function Navbar() {
               }}
             >
               <FiPhone size={14} style={{ color: '#FF4500' }} />
-              <span>{settings?.phone || '+91 8381052230'}</span>
+              <span>{settings?.phone || '+91 83810 52230'}</span>
             </a>
 
-            {/* 📱 ATTRACTIVE MOBILE CALL PILL BUTTON */}
+            {/* 📱 ULTRA HIGH-END CENTERED MOBILE CALL PILL */}
             <a
               href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
               className="mobile-call-pill"
               style={{
                 display: 'none',
                 alignItems: 'center',
-                gap: 5,
-                padding: '6.5px 13px',
+                gap: 6,
+                padding: '5.5px 12px',
                 borderRadius: '9999px',
-                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                color: '#FFFFFF',
+                background: '#FFFFFF',
+                color: '#111318',
+                border: '1.5px solid #FF4500',
                 fontSize: 12,
                 fontWeight: 900,
+                letterSpacing: '0.2px',
                 textDecoration: 'none',
-                boxShadow: '0 3px 12px rgba(255, 69, 0, 0.38)',
+                boxShadow: '0 4px 14px rgba(255, 69, 0, 0.22)',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.2s ease',
               }}
             >
-              <FiPhone size={12} color="#FFFFFF" style={{ flexShrink: 0 }} />
-              <span>{settings?.phone || '+91 8381052230'}</span>
+              <span style={{
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#FFFFFF',
+                flexShrink: 0,
+              }}>
+                <FiPhoneCall size={11} color="#FFFFFF" />
+              </span>
+              <span>{settings?.phone || '+91 83810 52230'}</span>
             </a>
 
             <button
@@ -555,11 +570,19 @@ export default function Navbar() {
             transform: translateX(-50%) !important;
             z-index: 5 !important;
           }
+          .mobile-logo-img {
+            height: 44px !important;
+            max-height: 44px !important;
+          }
         }
         @media (max-width: 400px) {
           .mobile-call-pill {
-            padding: 5px 9px !important;
-            font-size: 11px !important;
+            padding: 4.5px 8.5px !important;
+            font-size: 10.5px !important;
+          }
+          .mobile-logo-img {
+            height: 40px !important;
+            max-height: 40px !important;
           }
         }
       `}</style>
