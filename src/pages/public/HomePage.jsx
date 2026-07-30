@@ -126,7 +126,7 @@ export default function HomePage() {
         }} />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: 920, margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
 
             {/* Business Name Badge */}
             <motion.div
@@ -317,9 +317,9 @@ export default function HomePage() {
               slidesPerView={1.3}
               breakpoints={{
                 480: { slidesPerView: 1.6, spaceBetween: 14 },
-                640: { slidesPerView: 2.1, spaceBetween: 16 },
-                1024: { slidesPerView: 3.1, spaceBetween: 18 },
-                1280: { slidesPerView: 3.4, spaceBetween: 20 },
+                640: { slidesPerView: 2.2, spaceBetween: 16 },
+                1024: { slidesPerView: 3.2, spaceBetween: 18 },
+                1280: { slidesPerView: 4, spaceBetween: 20 },
               }}
               autoplay={{ delay: 5000, disableOnInteraction: false }}
               onInit={(swiper) => {
@@ -354,15 +354,16 @@ export default function HomePage() {
           </div>
 
           {loading ? (
-            <div className="grid-3">
+            <div className="grid-fleet-catalog">
+              <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
             </div>
           ) : (
             <>
-              <div className="grid-3">
-                {cars.slice(0, 6).map((car) => (
+              <div className="grid-fleet-catalog">
+                {cars.slice(0, 8).map((car) => (
                   <RevvCarCard key={car.id} car={car} onEnquire={openEnquiry} />
                 ))}
               </div>
@@ -429,7 +430,7 @@ export default function HomePage() {
 
       {/* 4.5 DIRECT HOMEPAGE INQUIRY FORM SECTION */}
       <section id="inquiry-form-section" style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0', padding: '32px 0' }}>
-        <div className="container" style={{ maxWidth: 860 }}>
+        <div className="container" style={{ maxWidth: 1080 }}>
           <div className="section-header text-center" style={{ marginBottom: 16 }}>
             <span className="section-label-red">Instant Booking & Quote</span>
             <h2 className="section-title" style={{ fontSize: 'clamp(20px, 3.5vw, 26px)', margin: '4px 0' }}>Submit Your <span>Car Rental Inquiry</span></h2>

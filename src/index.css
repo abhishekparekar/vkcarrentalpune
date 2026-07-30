@@ -164,7 +164,7 @@ ul, ol { list-style: none; }
 /* ── Container & Grids ── */
 .container {
   width: 100%;
-  max-width: 1240px;
+  max-width: 1340px;
   margin: 0 auto;
   padding: 0 20px;
   box-sizing: border-box;
