@@ -537,7 +537,7 @@ export default function HomePage() {
                         Verified Customer
                       </span>
                     </div>
-                    <p style={{ fontSize: 13, fontStyle: 'italic', color: '#5A5F6E', margin: 0, lineHeight: 1.6 }}>
+                    <p style={{ fontSize: 13, fontStyle: 'italic', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.6 }}>
                       "{rev.comment}"
                     </p>
                   </div>
@@ -554,8 +554,8 @@ export default function HomePage() {
                       {rev.name?.charAt(0) || 'R'}
                     </div>
                     <div>
-                      <strong style={{ display: 'block', fontSize: 14, color: '#111318', lineHeight: 1.2 }}>{rev.name}</strong>
-                      <span style={{ fontSize: 11, color: '#8C909A' }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
+                      <strong style={{ display: 'block', fontSize: 14, color: '#000000', lineHeight: 1.2 }}>{rev.name}</strong>
+                      <span style={{ fontSize: 11, color: '#334155', fontWeight: 600 }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
                     </div>
                   </div>
                 </div>

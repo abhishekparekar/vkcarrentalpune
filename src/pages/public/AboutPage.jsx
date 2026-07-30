@@ -327,7 +327,7 @@ export default function AboutPage() {
                         <span style={{ fontSize: 11, color: '#94A3B8', fontWeight: 600 }}>{rev.date || 'Verified'}</span>
                       </div>
 
-                      <p style={{ fontSize: 13, color: '#334155', lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
+                      <p style={{ fontSize: 13, color: '#000000', lineHeight: 1.6, margin: 0, fontStyle: 'italic', fontWeight: 600 }}>
                         "{rev.comment}"
                       </p>
                     </div>
@@ -345,8 +345,8 @@ export default function AboutPage() {
                         {rev.name?.charAt(0) || 'R'}
                       </div>
                       <div>
-                        <strong style={{ fontSize: 13, color: '#111318', display: 'block', lineHeight: 1.2 }}>{rev.name}</strong>
-                        <span style={{ fontSize: 11, color: '#64748B' }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
+                        <strong style={{ fontSize: 13, color: '#000000', display: 'block', lineHeight: 1.2 }}>{rev.name}</strong>
+                        <span style={{ fontSize: 11, color: '#334155', fontWeight: 600 }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
                       </div>
                     </div>
                   </div>
