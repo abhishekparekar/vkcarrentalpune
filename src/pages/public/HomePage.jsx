@@ -169,13 +169,30 @@ export default function HomePage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.9)',
               }}
             >
-              <span>Drive Your Freedom In Pune</span><br />
-              <span style={{
-                color: '#FF4500',
-                textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 69, 0, 0.9)',
-                fontWeight: 900,
-              }}>
-                Premium Self-Drive Fleet
+              <span>Drive Your Car In Pune</span><br />
+              <span style={{ fontWeight: 900 }}>
+                {/* "Premium" — Luxury Gold Shimmer Style */}
+                <span style={{
+                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FFD700 55%, #FFFACD 75%, #FFA500 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  fontStyle: 'italic',
+                  fontWeight: 900,
+                  letterSpacing: '-0.5px',
+                  filter: 'drop-shadow(0 2px 12px rgba(255, 200, 0, 0.80))',
+                  textShadow: 'none',
+                }}>
+                  Premium
+                </span>{' '}
+                {/* "VK Car Rental" — Bhagwa Accent */}
+                <span style={{
+                  color: '#FF4500',
+                  textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 69, 0, 0.9)',
+                  fontWeight: 900,
+                }}>
+                  VK Car Rental
+                </span>
               </span>
             </motion.h1>
 
