@@ -101,48 +101,14 @@ export default function AboutPage() {
                 </span>
               ) : (
                 <>
-                  {/* "Reinventing" — Clean Dark */}
                   <span style={{ color: '#111318' }}>Reinventing</span>{' '}
-
-                  {/* "VK" — Bhagwa Flame Orange */}
                   <span style={{
-                    background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                    background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
                     fontWeight: 900,
-                    filter: 'drop-shadow(0 1px 10px rgba(255, 69, 0, 0.80))',
-                  }}>VK</span>{' '}
-
-                  {/* "RENTAL" — Purple Violet Luxury, Italic */}
-                  <span style={{
-                    background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    fontStyle: 'italic',
-                    fontWeight: 900,
-                    filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.70))',
-                  }}>RENTAL</span>{' '}
-
-                  {/* "CARS" — Gold Luxury Shimmer */}
-                  <span style={{
-                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    fontWeight: 900,
-                    filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
-                  }}>CARS</span>{' '}
-
-                  {/* "PUNE" — Crystal White/Blue Shimmer */}
-                  <span style={{
-                    background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 40%, #0F172A 70%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    fontWeight: 900,
-                  }}>PUNE</span>
+                  }}>VK RENTAL CARS PUNE</span>
                 </>
               )}
             </h1>

@@ -70,37 +70,14 @@ export default function FleetPage() {
               VK RENTAL CARS PUNE Fleet
             </span>
             <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
-              Explore{' '}
-              {/* "Available" — Clean dark */}
-              <span style={{ color: '#111318' }}>Available</span>{' '}
-              {/* "Premium" — Purple Violet Luxury, Italic */}
+              Explore Available{' '}
               <span style={{
-                background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontStyle: 'italic',
-                fontWeight: 900,
-                filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.70))',
-              }}>Premium</span>{' '}
-              {/* "Rental" — Bhagwa Flame Orange */}
-              <span style={{
-                background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
-                filter: 'drop-shadow(0 1px 10px rgba(255, 69, 0, 0.80))',
-              }}>Rental</span>{' '}
-              {/* "Cars" — Gold Luxury Shimmer */}
-              <span style={{
-                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                fontWeight: 900,
-                filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
-              }}>Cars</span>
+              }}>Premium Rental Cars</span>
             </h1>
             <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
               All vehicles include 300 km daily limit, doorstep delivery, full insurance &amp; zero hidden charges.
