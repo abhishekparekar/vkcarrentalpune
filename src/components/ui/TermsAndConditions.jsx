@@ -55,18 +55,18 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
     <div style={{
       background: '#FFFFFF',
       borderRadius: 16,
-      border: '1px solid rgba(255, 69, 0, 0.25)',
-      boxShadow: '0 4px 20px rgba(17, 19, 24, 0.05)',
+      border: '1.5px solid rgba(255, 69, 0, 0.25)',
+      boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
       overflow: 'hidden',
       width: '100%',
     }}>
-      {/* Top Banner Header */}
+      {/* ─── Top Banner Header ─── */}
       <div
         onClick={() => expandable && setIsOpen(prev => !prev)}
         style={{
-          padding: compact ? '12px 16px' : '14px 20px',
-          background: 'linear-gradient(135deg, rgba(255, 69, 0,0.09) 0%, rgba(255,255,255,1) 100%)',
-          borderBottom: (isOpen || !expandable) ? '1px solid rgba(255, 69, 0,0.20)' : 'none',
+          padding: compact ? '14px 16px' : '16px 20px',
+          background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.08) 0%, #FFFFFF 100%)',
+          borderBottom: (isOpen || !expandable) ? '1px solid rgba(255, 69, 0, 0.18)' : 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -74,53 +74,60 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
           userSelect: 'none',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <div style={{
-            width: 32, height: 32,
+            width: 36, height: 36,
             borderRadius: 10,
-            background: 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)',
+            background: 'linear-gradient(135deg, #FF4500 0%, #FF6B00 100%)',
             color: '#FFFFFF',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 16,
-            boxShadow: '0 2px 8px rgba(255, 69, 0,0.4)',
+            fontSize: 18,
+            boxShadow: '0 3px 10px rgba(255, 69, 0, 0.35)',
+            flexShrink: 0,
           }}>
             <FiShield />
           </div>
           <div>
-            <span style={{ fontSize: 10, color: '#FF4500', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>
-              VK RENTAL CARS PUNE
+            <span style={{ fontSize: 10, color: '#FF4500', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: 2 }}>
+              VK RENTAL CARS PUNE • OFFICIAL POLICY
             </span>
-            <h4 style={{ fontSize: compact ? 13 : 15, fontWeight: 800, color: '#111318', margin: 0 }}>
-              Rental Policy & Mandatory Documents
+            <h4 style={{ fontSize: compact ? 14 : 16, fontWeight: 900, color: '#111318', margin: 0, lineHeight: 1.25 }}>
+              Rental Policy &amp; Mandatory Documents
             </h4>
           </div>
         </div>
 
         {expandable && (
           <div style={{
-            width: 26, height: 26,
-            borderRadius: '50%',
-            background: 'rgba(255, 69, 0,0.10)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            fontSize: 12,
+            fontWeight: 800,
             color: '#FF4500',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 14,
+            background: 'rgba(255, 69, 0, 0.09)',
+            padding: '6px 12px',
+            borderRadius: 99,
+            border: '1px solid rgba(255, 69, 0, 0.2)',
           }}>
-            {isOpen ? <FiChevronUp /> : <FiChevronDown />}
+            <span>{isOpen ? 'Collapse' : 'View Policy'}</span>
+            {isOpen ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}
           </div>
         )}
       </div>
 
       {(!expandable || isOpen) && (
-        <div style={{ padding: compact ? '12px 14px' : '16px 20px', display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <div style={{ padding: compact ? '14px' : '18px 20px', display: 'flex', flexDirection: 'column', gap: 16 }}>
 
-          {/* Quick Highlight Pills Bar */}
+          {/* ─── Quick Highlight Pills Bar ─── */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 6,
+            gap: 8,
             overflowX: 'auto',
             paddingBottom: 4,
             scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
           }}>
             {HIGHLIGHT_CHIPS.map((chip, idx) => (
               <div
@@ -128,13 +135,13 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 5,
-                  padding: '4px 10px',
+                  gap: 6,
+                  padding: '5px 12px',
                   borderRadius: 99,
-                  background: 'rgba(255, 69, 0,0.06)',
-                  border: '1px solid rgba(255, 69, 0,0.18)',
-                  fontSize: 11,
-                  fontWeight: 700,
+                  background: 'rgba(255, 69, 0, 0.06)',
+                  border: '1px solid rgba(255, 69, 0, 0.20)',
+                  fontSize: 11.5,
+                  fontWeight: 800,
                   color: '#FF4500',
                   whiteSpace: 'nowrap',
                   flexShrink: 0,
@@ -146,97 +153,104 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
             ))}
           </div>
 
-          {/* Notice Alert Box */}
+          {/* ─── Notice Alert Box ─── */}
           <div style={{
-            padding: '8px 12px',
+            padding: '10px 14px',
             borderRadius: 10,
             background: '#FEF2F2',
             border: '1px solid #FCA5A5',
-            fontSize: 11.5,
+            fontSize: 12,
             color: '#991B1B',
-            fontWeight: 700,
+            fontWeight: 800,
             display: 'flex',
             alignItems: 'center',
             gap: 8,
+            boxShadow: '0 1px 4px rgba(239, 68, 68, 0.06)',
           }}>
-            <FiAlertTriangle size={15} style={{ flexShrink: 0, color: '#FF4500' }} />
-            <span>⭕ PLEASE READ ALL TERMS AND CONDITIONS CAREFULLY BEFORE BOOKING ⭕</span>
+            <FiAlertTriangle size={16} style={{ flexShrink: 0, color: '#FF4500' }} />
+            <span>⭕ PLEASE READ ALL TERMS &amp; MANDATORY DOCUMENTATION REQUIREMENTS CAREFULLY BEFORE BOOKING ⭕</span>
           </div>
 
-          {/* 📄 MANDATORY DOCUMENTS REQUIRED CARD */}
+          {/* ─── 📄 MANDATORY DOCUMENTS REQUIRED CARD ─── */}
           <div style={{
-            background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.05) 0%, rgba(255, 255, 255, 1) 100%)',
-            border: '1px solid rgba(255, 69, 0, 0.22)',
-            borderRadius: 12,
-            padding: '12px 14px',
+            background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.04) 0%, #FFFFFF 100%)',
+            border: '1.5px solid rgba(255, 69, 0, 0.20)',
+            borderRadius: 14,
+            padding: '14px 16px',
           }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 10 }}>
-              <span style={{ fontSize: 16 }}>📄</span>
-              <strong style={{ fontSize: 13, color: '#FF4500', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                5 Documents Required for Pickup:
-              </strong>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 6 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span style={{ fontSize: 18 }}>📄</span>
+                <strong style={{ fontSize: 13.5, color: '#FF4500', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  5 Mandatory Documents Required at Pickup:
+                </strong>
+              </div>
+              <span style={{ fontSize: 11, background: 'rgba(255, 69, 0, 0.1)', color: '#FF4500', padding: '3px 8px', borderRadius: 6, fontWeight: 800 }}>
+                Original Verified
+              </span>
             </div>
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-              gap: 8,
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: 10,
             }}>
               {REQUIRED_DOCUMENTS.map(doc => (
                 <div
                   key={doc.id}
                   style={{
                     background: '#FFFFFF',
-                    border: '1px solid #E5E7EB',
+                    border: '1px solid #E2E8F0',
                     borderRadius: 10,
-                    padding: '8px 10px',
+                    padding: '10px 12px',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 8,
-                    boxShadow: '0 1px 4px rgba(0,0,0,0.03)',
+                    gap: 10,
+                    boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)',
                   }}
                 >
-                  <span style={{ fontSize: 16 }}>{doc.icon}</span>
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>{doc.icon}</span>
                   <div>
-                    <strong style={{ display: 'block', fontSize: 12, color: '#111318', lineHeight: 1.2 }}>
-                      {doc.id}) {doc.name}
+                    <strong style={{ display: 'block', fontSize: 12.5, color: '#111318', fontWeight: 800, lineHeight: 1.25 }}>
+                      {doc.id}. {doc.name}
                     </strong>
-                    <span style={{ fontSize: 10, color: '#6B7080' }}>{doc.req}</span>
+                    <span style={{ fontSize: 10.5, color: '#FF4500', fontWeight: 700 }}>{doc.req}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* 3-Column Policy Grid */}
+          {/* ─── 3-COLUMN POLICY GRID ─── */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: 10,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: 12,
           }}>
             {CATEGORIZED_TERMS.map((cat, idx) => (
               <div
                 key={idx}
                 style={{
-                  background: '#F9FAFB',
-                  borderRadius: 12,
-                  padding: '12px 14px',
-                  border: '1px solid #E5E7EB',
+                  background: '#FFFFFF',
+                  borderRadius: 14,
+                  padding: '14px 16px',
+                  border: '1px solid #E2E8F0',
+                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 8,
+                  gap: 10,
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, paddingBottom: 6, borderBottom: '1px solid #E5E7EB' }}>
-                  <span style={{ fontSize: 15 }}>{cat.icon}</span>
-                  <strong style={{ fontSize: 12.5, color: '#111318', fontWeight: 800 }}>{cat.category}</strong>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingBottom: 8, borderBottom: '1.5px solid #F1F5F9' }}>
+                  <span style={{ fontSize: 18 }}>{cat.icon}</span>
+                  <strong style={{ fontSize: 13.5, color: '#111318', fontWeight: 900 }}>{cat.category}</strong>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   {cat.items.map((item, itemIdx) => (
-                    <div key={itemIdx} style={{ fontSize: 11.5, lineHeight: 1.45, color: '#4B5563' }}>
-                      <strong style={{ color: '#FF4500', fontWeight: 700 }}>• {item.highlight}: </strong>
-                      <span>{item.text}</span>
+                    <div key={itemIdx} style={{ fontSize: 12.5, lineHeight: 1.5, color: '#111318' }}>
+                      <strong style={{ color: '#FF4500', fontWeight: 800 }}>• {item.highlight}: </strong>
+                      <span style={{ fontWeight: 600, color: '#1E293B' }}>{item.text}</span>
                     </div>
                   ))}
                 </div>
@@ -244,18 +258,25 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
             ))}
           </div>
 
-          {/* Bottom Security Note */}
+          {/* ─── Bottom Security Note ─── */}
           <div style={{
-            padding: '8px 12px',
+            padding: '10px 14px',
             borderRadius: 10,
-            background: 'linear-gradient(135deg, rgba(255, 69, 0,0.05) 0%, rgba(255,255,255,1) 100%)',
-            border: '1px dashed rgba(255, 69, 0,0.25)',
-            fontSize: 11.5,
+            background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.06) 0%, #FFFFFF 100%)',
+            border: '1px dashed rgba(255, 69, 0, 0.35)',
+            fontSize: 12.5,
             color: '#111318',
             textAlign: 'center',
-            fontWeight: 600,
+            fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 6,
           }}>
-            🛻 <strong>Full rent + deposit (bike or ₹10,000)</strong> collected at car pickup.
+            <span>🛻</span>
+            <span>
+              <strong>Full Rent + Deposit (Customer Bike OR ₹10,000 Cash)</strong> collected at car pickup.
+            </span>
           </div>
         </div>
       )}

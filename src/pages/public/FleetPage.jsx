@@ -10,6 +10,7 @@ import RevvCarCard from '../../components/ui/RevvCarCard';
 import CarSkeleton from '../../components/ui/CarSkeleton';
 import Modal from '../../components/ui/Modal';
 import BookingForm from '../../components/ui/BookingForm';
+import TermsAndConditions from '../../components/ui/TermsAndConditions';
 
 import { useTenant } from '../../contexts/TenantContext';
 import { subscribeToCars } from '../../firebase/firestore';
@@ -242,6 +243,11 @@ export default function FleetPage() {
               </div>
             )}
           </section>
+
+          {/* ─── RENTAL POLICY & MANDATORY DOCUMENTS ─── */}
+          <div style={{ marginTop: 36, marginBottom: 24 }}>
+            <TermsAndConditions expandable={true} defaultOpen={true} />
+          </div>
 
           <style>{`
             .fleet-container {
