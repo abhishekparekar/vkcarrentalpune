@@ -568,33 +568,34 @@ ol {
 
 @media (max-width: 640px) {
   .hero-bg-section {
-    padding-top: 96px !important;
-    padding-bottom: 36px !important;
-    min-height: auto !important;
-    background-position: center 25% !important;
+    padding-top: 105px !important;
+    padding-bottom: 44px !important;
+    min-height: 480px !important;
+    background-position: center 30% !important;
   }
 
   .hero-main-title {
-    font-size: clamp(1.55rem, 6.2vw, 2.1rem) !important;
-    margin-bottom: 10px !important;
-    line-height: 1.25 !important;
+    font-size: clamp(1.6rem, 5.8vw, 2.2rem) !important;
+    margin-bottom: 12px !important;
+    line-height: 1.22 !important;
   }
 
   .hero-trust-badges {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-    max-width: 320px !important;
+    gap: 8px 10px !important;
+    margin-bottom: 20px !important;
+    max-width: 340px !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
 
   .hero-trust-pill {
-    font-size: 11px !important;
-    padding: 6.5px 10px !important;
+    font-size: 11.5px !important;
+    padding: 7px 12px !important;
     justify-content: center !important;
     white-space: nowrap !important;
+    font-weight: 800 !important;
   }
 
   .hero-action-btns {
@@ -602,22 +603,20 @@ ol {
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    gap: 8px !important;
-    margin-top: 16px !important;
+    gap: 10px !important;
+    margin-top: 18px !important;
   }
 
   .hero-action-btns .btn {
     flex: 0 0 auto !important;
     width: auto !important;
-    min-width: auto !important;
-    max-width: none !important;
-    padding: 8.5px 14px !important;
-    font-size: 12px !important;
-    font-weight: 800 !important;
+    padding: 9px 18px !important;
+    font-size: 12.5px !important;
+    font-weight: 900 !important;
     border-radius: 9999px !important;
     justify-content: center !important;
     white-space: nowrap !important;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.18) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
   }
 }
 
@@ -975,8 +974,8 @@ ol {
   }
 
   .hero-bg-section {
-    padding-top: 86px !important;
-    padding-bottom: 32px !important;
+    padding-top: 100px !important;
+    padding-bottom: 40px !important;
   }
 
   .section {
@@ -999,8 +998,8 @@ ol {
   }
 
   .hero-bg-section {
-    padding-top: 76px !important;
-    padding-bottom: 24px !important;
+    padding-top: 100px !important;
+    padding-bottom: 36px !important;
   }
 
   .section {
