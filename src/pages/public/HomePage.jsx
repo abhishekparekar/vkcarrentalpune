@@ -236,17 +236,17 @@ export default function HomePage() {
                 to="/fleet"
                 className="btn btn-primary btn-lg hero-btn-main"
                 style={{
-                  padding: '15px 36px',
-                  fontSize: 15.5,
+                  padding: '12px 28px',
+                  fontSize: 14.5,
                   fontWeight: 900,
-                  letterSpacing: '0.4px',
+                  letterSpacing: '0.3px',
                   borderRadius: '9999px',
                   background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                  boxShadow: '0 8px 30px rgba(255, 69, 0, 0.45)',
+                  boxShadow: '0 6px 24px rgba(255, 69, 0, 0.40)',
                   transition: 'all 0.25s ease',
                 }}
               >
-                <BsCarFront size={18} /> Explore Our Fleet
+                <BsCarFront size={17} /> Explore Fleet
               </Link>
               <a
                 href="https://wa.me/919764815458?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
@@ -254,21 +254,21 @@ export default function HomePage() {
                 rel="noopener noreferrer"
                 className="btn btn-secondary btn-lg hero-btn-sub"
                 style={{
-                  padding: '15px 30px',
-                  fontSize: 15,
+                  padding: '12px 24px',
+                  fontSize: 14,
                   fontWeight: 800,
                   borderRadius: '9999px',
                   background: '#FFFFFF',
                   color: '#000000',
                   border: '1.5px solid #E2E8F0',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
                   transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: 8,
                 }}
               >
-                <BsWhatsapp size={18} style={{ color: '#25D366' }} /> WhatsApp Booking (+91 9764815458)
+                <BsWhatsapp size={17} style={{ color: '#25D366' }} /> WhatsApp Booking
               </a>
             </motion.div>
           </div>

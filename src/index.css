@@ -437,14 +437,17 @@ ul, ol { list-style: none; }
   }
   .hero-action-btns {
     flex-direction: column !important;
+    align-items: center !important;
     width: 100% !important;
     gap: 10px !important;
     margin-top: 18px !important;
   }
   .hero-action-btns .btn {
-    width: 100% !important;
-    padding: 13px 18px !important;
-    font-size: 14px !important;
+    width: auto !important;
+    min-width: 220px !important;
+    max-width: 260px !important;
+    padding: 11px 22px !important;
+    font-size: 13.5px !important;
     font-weight: 800 !important;
     border-radius: 9999px !important;
     justify-content: center !important;
