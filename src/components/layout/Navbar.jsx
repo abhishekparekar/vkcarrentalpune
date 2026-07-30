@@ -302,7 +302,7 @@ export default function Navbar() {
               className="mobile-only"
             />
 
-            {/* Slide-Over Executive Sheet Drawer */}
+            {/* Slide-Over Executive Compact Sheet Drawer */}
             <motion.aside
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -313,22 +313,22 @@ export default function Navbar() {
                 top: 0,
                 right: 0,
                 bottom: 0,
-                width: '88%',
-                maxWidth: 360,
+                width: '82%',
+                maxWidth: 300,
                 zIndex: 10001,
                 background: '#FFFFFF',
                 boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.35)',
                 display: 'flex',
                 flexDirection: 'column',
                 overflowY: 'auto',
-                borderTopLeftRadius: 24,
-                borderBottomLeftRadius: 24,
+                borderTopLeftRadius: 20,
+                borderBottomLeftRadius: 20,
               }}
               className="mobile-only"
             >
               {/* Drawer Top Header */}
               <div style={{
-                padding: '12px 18px',
+                padding: '12px 14px',
                 borderBottom: '1px solid #F1F5F9',
                 display: 'flex',
                 alignItems: 'center',
@@ -338,14 +338,14 @@ export default function Navbar() {
                 <Link
                   to="/"
                   onClick={() => setMenuOpen(false)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
                 >
                   <div style={{
                     background: '#FFFFFF',
-                    padding: '4px 8px',
-                    borderRadius: 10,
+                    padding: '3px 6px',
+                    borderRadius: 8,
                     border: '1px solid #E2E8F0',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                    boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -353,15 +353,15 @@ export default function Navbar() {
                     <img
                       src={logoImg}
                       alt="VK RENTAL CARS PUNE"
-                      style={{ height: 38, width: 'auto', objectFit: 'contain' }}
+                      style={{ height: 34, width: 'auto', objectFit: 'contain' }}
                     />
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: 13, fontWeight: 900, color: '#000000', letterSpacing: '-0.2px', lineHeight: 1.25 }}>
+                    <span style={{ fontSize: 12.5, fontWeight: 900, color: '#000000', letterSpacing: '-0.2px', lineHeight: 1.2 }}>
                       VK RENTAL CARS
                     </span>
-                    <span style={{ fontSize: 10.5, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
+                    <span style={{ fontSize: 10, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
                       PUNE • SELF DRIVE
                     </span>
                   </div>
@@ -371,8 +371,8 @@ export default function Navbar() {
                   type="button"
                   onClick={() => setMenuOpen(false)}
                   style={{
-                    width: 36,
-                    height: 36,
+                    width: 32,
+                    height: 32,
                     borderRadius: '50%',
                     background: '#F1F5F9',
                     border: '1px solid #E2E8F0',
@@ -384,33 +384,33 @@ export default function Navbar() {
                     transition: 'all 0.18s ease',
                   }}
                 >
-                  <FiX size={18} />
+                  <FiX size={16} />
                 </button>
               </div>
 
               {/* Quick Trust Badges Strip inside Mobile Drawer */}
               <div style={{
-                padding: '10px 20px',
+                padding: '8px 14px',
                 background: '#F8FAFC',
                 borderBottom: '1px solid #F1F5F9',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                fontSize: 11,
+                fontSize: 10.5,
                 fontWeight: 800,
                 color: '#475569',
               }}>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <FiShield color="#FF4500" size={13} /> Zero Deposit
+                  <FiShield color="#FF4500" size={12} /> Zero Deposit
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <FiClock color="#FF4500" size={13} /> 24/7 Delivery
+                  <FiClock color="#FF4500" size={12} /> 24/7 Delivery
                 </span>
               </div>
 
               {/* Drawer Main Navigation Links */}
-              <div style={{ flex: 1, padding: '20px 16px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <span style={{ fontSize: 11, fontWeight: 900, color: '#64748B', letterSpacing: '1.2px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
+              <div style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 5 }}>
+                <span style={{ fontSize: 10.5, fontWeight: 900, color: '#64748B', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
                   Explore Menu
                 </span>
 
@@ -421,14 +421,14 @@ export default function Navbar() {
                     end={link.to === '/'}
                     onClick={() => setMenuOpen(false)}
                     style={({ isActive }) => ({
-                      padding: '14px 16px',
-                      borderRadius: 16,
-                      fontSize: 15.5,
+                      padding: '10px 12px',
+                      borderRadius: 12,
+                      fontSize: 14,
                       fontWeight: isActive ? 900 : 700,
                       color: isActive ? '#FF4500' : '#000000',
                       background: isActive ? 'linear-gradient(135deg, rgba(255, 69, 0, 0.12) 0%, rgba(255, 69, 0, 0.05) 100%)' : '#FFFFFF',
-                      border: isActive ? '1.5px solid rgba(255, 69, 0, 0.35)' : '1.5px solid #F1F5F9',
-                      boxShadow: isActive ? '0 6px 18px rgba(255, 69, 0, 0.12)' : '0 2px 6px rgba(0,0,0,0.02)',
+                      border: isActive ? '1.5px solid rgba(255, 69, 0, 0.35)' : '1px solid #F1F5F9',
+                      boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.10)' : 'none',
                       textDecoration: 'none',
                       display: 'flex',
                       alignItems: 'center',
@@ -438,26 +438,27 @@ export default function Navbar() {
                   >
                     {({ isActive }) => (
                       <>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           <div style={{
-                            width: 34,
-                            height: 34,
-                            borderRadius: 10,
+                            width: 30,
+                            height: 30,
+                            borderRadius: 8,
                             background: isActive ? '#FF4500' : '#F8FAFC',
                             color: isActive ? '#FFFFFF' : '#FF4500',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             border: isActive ? 'none' : '1px solid #E2E8F0',
+                            flexShrink: 0,
                           }}>
                             {link.icon}
                           </div>
                           <span>{link.label}</span>
                         </div>
                         {isActive ? (
-                          <FiCheckCircle size={18} color="#FF4500" />
+                          <FiCheckCircle size={16} color="#FF4500" />
                         ) : (
-                          <FiChevronRight size={18} style={{ color: '#94A3B8' }} />
+                          <FiChevronRight size={16} style={{ color: '#94A3B8' }} />
                         )}
                       </>
                     )}
@@ -467,32 +468,32 @@ export default function Navbar() {
 
               {/* Drawer Bottom CTAs (Direct Call + WhatsApp + Book Now) */}
               <div style={{
-                padding: '18px 16px 24px',
+                padding: '12px 10px 16px',
                 borderTop: '1px solid #F1F5F9',
                 background: '#FFFFFF',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 12,
+                gap: 8,
               }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
                   <a
                     href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
                     style={{
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: 6,
-                      padding: '12px',
-                      borderRadius: 14,
+                      gap: 5,
+                      padding: '10px 8px',
+                      borderRadius: 12,
                       background: '#F8FAFC',
                       border: '1.5px solid #E2E8F0',
                       color: '#000000',
                       fontWeight: 800,
-                      fontSize: 13,
+                      fontSize: 12.5,
                       textDecoration: 'none',
                     }}
                   >
-                    <FiPhone size={15} color="#FF4500" /> Call Direct
+                    <FiPhone size={14} color="#FF4500" /> Call
                   </a>
 
                   <a
@@ -503,18 +504,18 @@ export default function Navbar() {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: 6,
-                      padding: '12px',
-                      borderRadius: 14,
+                      gap: 5,
+                      padding: '10px 8px',
+                      borderRadius: 12,
                       background: '#25D366',
                       color: '#FFFFFF',
                       fontWeight: 900,
-                      fontSize: 13,
+                      fontSize: 12.5,
                       textDecoration: 'none',
-                      boxShadow: '0 4px 14px rgba(37,211,102,0.3)',
+                      boxShadow: '0 3px 10px rgba(37,211,102,0.3)',
                     }}
                   >
-                    <BsWhatsapp size={15} /> WhatsApp
+                    <BsWhatsapp size={14} /> WhatsApp
                   </a>
                 </div>
 
@@ -524,19 +525,19 @@ export default function Navbar() {
                   className="btn btn-primary"
                   style={{
                     width: '100%',
-                    padding: '14px',
-                    fontSize: 14.5,
+                    padding: '11px',
+                    fontSize: 13.5,
                     fontWeight: 900,
-                    borderRadius: 14,
+                    borderRadius: 12,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: 8,
+                    gap: 6,
                     background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                    boxShadow: '0 6px 20px rgba(255, 69, 0, 0.35)',
+                    boxShadow: '0 4px 16px rgba(255, 69, 0, 0.35)',
                   }}
                 >
-                  <FiCalendar size={17} /> Explore & Book Fleet
+                  <FiCalendar size={15} /> Book Self-Drive Cars
                 </button>
               </div>
             </motion.aside>
