@@ -93,6 +93,9 @@ export default function Navbar() {
             <img
               src={logoImg}
               alt="VK SELF DRIVE CAR'S PUNE"
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               style={{
                 height: 52,
                 maxHeight: 52,
