@@ -267,41 +267,25 @@ export default function HomePage() {
       </section>
 
       {/* 2. TOP SELLING CARS SECTION */}
-      <section style={{ padding: '18px 0 14px', background: '#FFFFFF' }}>
+      <section style={{ padding: '24px 0 20px', background: '#FFFFFF' }}>
         <div className="container">
-          {/* Section Header with Left Title + Right Carousel Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 10 }}>
+          {/* Section Header with Left Title + Right Link */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
             <div>
               <span className="section-label">Most Popular</span>
               <h2 style={{ fontSize: 'clamp(18px, 4vw, 24px)', fontWeight: 800, color: '#111318', margin: 0 }}>
                 Top Cars in <span style={{ color: '#FF4500' }}>{city}</span>
               </h2>
             </div>
-
-            {/* Custom Carousel Arrows */}
-            <div style={{ display: 'flex', gap: 8 }}>
-              <button
-                ref={prevRef}
-                className="btn-icon"
-                style={{ width: 36, height: 36, borderRadius: '50%' }}
-                aria-label="Previous cars"
-              >
-                <FiChevronLeft size={18} />
-              </button>
-              <button
-                ref={nextRef}
-                className="btn-icon"
-                style={{ width: 36, height: 36, borderRadius: '50%' }}
-                aria-label="Next cars"
-              >
-                <FiChevronRight size={18} />
-              </button>
-            </div>
+            <Link to="/fleet" className="btn btn-secondary btn-sm">
+              View Popular Fleet <FiArrowRight />
+            </Link>
           </div>
 
-          {/* Swiper Carousel */}
+          {/* Clean 4-Column Fleet Grid (matching Fleet page) */}
           {loading ? (
-            <div className="grid-3">
+            <div className="grid-fleet-catalog">
+              <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
@@ -311,31 +295,11 @@ export default function HomePage() {
               No cars currently marked as popular. Admin can toggle Popular Choice in Admin Panel.
             </div>
           ) : (
-            <Swiper
-              modules={[Navigation, Autoplay]}
-              spaceBetween={14}
-              slidesPerView={1.3}
-              breakpoints={{
-                480: { slidesPerView: 1.6, spaceBetween: 14 },
-                640: { slidesPerView: 2.1, spaceBetween: 16 },
-                1024: { slidesPerView: 3.1, spaceBetween: 18 },
-                1280: { slidesPerView: 3.4, spaceBetween: 20 },
-              }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              onInit={(swiper) => {
-                swiper.params.navigation.prevEl = prevRef.current;
-                swiper.params.navigation.nextEl = nextRef.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }}
-              style={{ paddingBottom: 8 }}
-            >
-              {cars.filter(c => c.isPopular !== false).map((car) => (
-                <SwiperSlide key={car.id} style={{ height: 'auto' }}>
-                  <RevvCarCard car={car} onEnquire={openEnquiry} />
-                </SwiperSlide>
+            <div className="grid-fleet-catalog">
+              {cars.filter(c => c.isPopular !== false).slice(0, 4).map((car) => (
+                <RevvCarCard key={car.id} car={car} onEnquire={openEnquiry} />
               ))}
-            </Swiper>
+            </div>
           )}
         </div>
       </section>
