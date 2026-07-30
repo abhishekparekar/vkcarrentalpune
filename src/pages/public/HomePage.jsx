@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { FiSearch, FiMapPin, FiCalendar, FiChevronLeft, FiChevronRight, FiShield, FiClock, FiKey, FiTruck, FiArrowRight, FiZap, FiCheckCircle, FiStar } from 'react-icons/fi';
-import { BsCarFront, BsStarFill, BsAward, BsCarFrontFill } from 'react-icons/bs';
+import { BsCarFront, BsStarFill, BsAward, BsCarFrontFill, BsWhatsapp } from 'react-icons/bs';
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
