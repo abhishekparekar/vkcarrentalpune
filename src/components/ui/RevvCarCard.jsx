@@ -29,11 +29,12 @@ export default function RevvCarCard({ car, onEnquire }) {
     <>
       <motion.div
         whileHover={{ y: -4 }}
+        whileTap={{ scale: 0.98 }}
         transition={{ duration: 0.2 }}
         className="vk-car-card"
         onClick={handleCardClick}
       >
-        {/* Uniform Car Image Box (Fixed Height & Aspect Ratio across all admin uploads) */}
+        {/* Uniform Car Image Box (Fixed Aspect Ratio across all uploaded car images) */}
         <div className="vk-card-img-box">
           {car.isPopular && (
             <div className="vk-card-badge-popular">
@@ -57,7 +58,7 @@ export default function RevvCarCard({ car, onEnquire }) {
           </div>
         </div>
 
-        {/* Card Body with High Contrast Proper Black Typography */}
+        {/* Card Body */}
         <div className="vk-card-body">
           <div className="vk-card-header">
             <span className="vk-card-modelyear">
@@ -68,7 +69,7 @@ export default function RevvCarCard({ car, onEnquire }) {
             </span>
           </div>
 
-          <h3 className="vk-card-title">
+          <h3 className="vk-card-title" title={car.name}>
             {car.name}
           </h3>
 
@@ -76,25 +77,25 @@ export default function RevvCarCard({ car, onEnquire }) {
             {car.brand || car.name.split(' ')[0]} • {car.fuelType ? car.fuelType.toUpperCase() : 'PETROL'}
           </p>
 
-          {/* Specs Bar in Proper Dark Color */}
+          {/* Compact Specs Bar */}
           <div className="vk-card-specs">
             <div className="vk-spec-item">
-              <BsCarFront size={12} color="#FF4500" />
+              <BsCarFront size={12} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>{categoryName}</span>
             </div>
 
             <div className="vk-spec-item">
-              <FiSettings size={12} color="#FF4500" />
+              <FiSettings size={12} color="#FF4500" style={{ flexShrink: 0 }} />
               <span style={{ textTransform: 'capitalize' }}>{car.transmission || 'Manual'}</span>
             </div>
 
             <div className="vk-spec-item">
-              <FiUsers size={12} color="#FF4500" />
+              <FiUsers size={12} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>{seatsNum} seats</span>
             </div>
 
             <div className="vk-spec-item vk-spec-right">
-              <FiClock size={11} color="#FF4500" />
+              <FiClock size={11} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>₹{extraTime}/hr</span>
             </div>
           </div>
@@ -102,7 +103,7 @@ export default function RevvCarCard({ car, onEnquire }) {
 
         {/* Card Footer */}
         <div className="vk-card-footer">
-          <div>
+          <div style={{ minWidth: 0 }}>
             <span className="vk-card-price">
               {formatCurrency(car.pricePerDay || 2300)}
             </span>
@@ -113,7 +114,7 @@ export default function RevvCarCard({ car, onEnquire }) {
             onClick={handleInquireClick}
             className="btn btn-primary vk-inquire-btn"
           >
-            <span>Inquire</span> <FiArrowRight size={13} />
+            <span>Inquire</span> <FiArrowRight size={13} style={{ flexShrink: 0 }} />
           </button>
         </div>
       </motion.div>
@@ -121,25 +122,28 @@ export default function RevvCarCard({ car, onEnquire }) {
       <style>{`
         .vk-car-card {
           background: #FFFFFF;
-          border-radius: 18px;
+          border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 6px 24px rgba(15, 23, 42, 0.07);
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
           border: 1.5px solid #E2E8F0;
           display: flex;
-          flex-direction: column;
+          flexDirection: column;
           cursor: pointer;
           transition: all 0.22s ease;
           height: 100%;
+          width: 100%;
+          box-sizing: border-box;
         }
         .vk-car-card:hover {
-          box-shadow: 0 12px 36px rgba(255, 69, 0, 0.15);
-          border-color: rgba(255, 69, 0, 0.35);
+          box-shadow: 0 10px 32px rgba(255, 69, 0, 0.16);
+          border-color: rgba(255, 69, 0, 0.40);
         }
         .vk-card-img-box {
           position: relative;
           width: 100%;
-          height: 180px;
-          background: #F8FAFC;
+          aspect-ratio: 16 / 10;
+          height: 170px;
+          background: #F1F5F9;
           overflow: hidden;
           flex-shrink: 0;
         }
@@ -155,62 +159,66 @@ export default function RevvCarCard({ car, onEnquire }) {
         }
         .vk-card-badge-popular {
           position: absolute;
-          top: 10px;
-          left: 10px;
+          top: 8px;
+          left: 8px;
           z-index: 2;
           background: linear-gradient(135deg, #FF4500 0%, #E63900 100%);
           color: #FFFFFF;
           font-size: 10px;
           font-weight: 900;
-          padding: 4px 10px;
+          padding: 3px 9px;
           border-radius: 999px;
-          box-shadow: 0 4px 12px rgba(255, 69, 0, 0.45);
+          box-shadow: 0 3px 10px rgba(255, 69, 0, 0.40);
           letter-spacing: 0.5px;
         }
         .vk-card-badge-km {
           position: absolute;
-          top: 10px;
-          right: 10px;
-          background: rgba(15, 23, 42, 0.80);
+          top: 8px;
+          right: 8px;
+          z-index: 2;
+          background: rgba(15, 23, 42, 0.82);
           backdrop-filter: blur(4px);
+          WebkitBackdropFilter: blur(4px);
           color: #FFFFFF;
-          font-size: 10.5px;
+          font-size: 10px;
           font-weight: 800;
-          padding: 4px 10px;
+          padding: 3px 8px;
           border-radius: 999px;
         }
         .vk-card-body {
-          padding: 14px 16px 0;
+          padding: 12px 14px 0;
           flex: 1;
           display: flex;
           flex-direction: column;
+          min-width: 0;
         }
         .vk-card-header {
           display: flex;
           align-items: center;
           justify-content: space-between;
           margin-bottom: 4px;
+          gap: 4px;
         }
         .vk-card-modelyear {
           font-size: 11px;
-          color: #000000;
+          color: #475569;
           font-weight: 700;
-          opacity: 0.7;
         }
         .vk-card-category-tag {
-          font-size: 10px;
+          font-size: 9.5px;
           color: #FF4500;
           font-weight: 900;
-          letter-spacing: 0.8px;
+          letter-spacing: 0.6px;
           background: rgba(255, 69, 0, 0.08);
-          padding: 2px 8px;
+          padding: 2px 7px;
           border-radius: 6px;
           border: 1px solid rgba(255, 69, 0, 0.2);
+          white-space: nowrap;
         }
         .vk-card-title {
-          font-size: 16.5px;
+          font-size: 15.5px;
           font-weight: 900;
-          color: #000000;
+          color: #111318;
           margin: 0 0 2px;
           line-height: 1.25;
           overflow: hidden;
@@ -218,11 +226,10 @@ export default function RevvCarCard({ car, onEnquire }) {
           white-space: nowrap;
         }
         .vk-card-subtitle {
-          font-size: 12px;
-          color: #000000;
+          font-size: 11.5px;
+          color: #64748B;
           margin: 0 0 8px;
           font-weight: 700;
-          opacity: 0.8;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -230,49 +237,51 @@ export default function RevvCarCard({ car, onEnquire }) {
         .vk-card-specs {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           font-size: 11px;
-          color: #000000;
+          color: #334155;
           font-weight: 700;
           padding-top: 8px;
-          padding-bottom: 10px;
+          padding-bottom: 8px;
           border-top: 1px solid #F1F5F9;
           flex-wrap: wrap;
         }
         .vk-spec-item {
           display: flex;
           align-items: center;
-          gap: 4px;
-          color: #000000;
+          gap: 3px;
+          white-space: nowrap;
         }
         .vk-spec-right {
           margin-left: auto;
           color: #475569;
         }
         .vk-card-footer {
-          padding: 10px 16px 14px;
+          padding: 10px 14px 12px;
           display: flex;
           align-items: center;
           justify-content: space-between;
           border-top: 1px dashed #E2E8F0;
           background: #FAFAFA;
+          gap: 6px;
         }
         .vk-card-price {
-          font-size: 19px;
+          font-size: 18px;
           font-weight: 900;
           color: #FF4500;
           display: block;
           line-height: 1;
         }
         .vk-card-perday {
-          font-size: 10.5px;
-          color: #000000;
+          font-size: 10px;
+          color: #64748B;
           font-weight: 700;
-          opacity: 0.7;
+          display: block;
+          margin-top: 2px;
         }
         .vk-inquire-btn {
-          padding: 8px 18px;
-          font-size: 12.5px;
+          padding: 8px 16px;
+          font-size: 12px;
           font-weight: 900;
           border-radius: 999px;
           background: linear-gradient(135deg, #FF4500 0%, #E63900 100%);
@@ -282,6 +291,8 @@ export default function RevvCarCard({ car, onEnquire }) {
           align-items: center;
           gap: 5px;
           transition: all 0.2s ease;
+          white-space: nowrap;
+          flex-shrink: 0;
         }
         .vk-inquire-btn:hover {
           transform: translateX(2px);
@@ -289,14 +300,15 @@ export default function RevvCarCard({ car, onEnquire }) {
         }
 
         @media (max-width: 640px) {
-          .vk-card-img-box { height: 135px; }
-          .vk-card-body { padding: 10px 12px 0; }
-          .vk-card-footer { padding: 8px 12px 12px; }
-          .vk-card-title { font-size: 14.5px !important; }
-          .vk-card-subtitle { font-size: 11px !important; }
-          .vk-card-price { font-size: 16px !important; }
-          .vk-inquire-btn { padding: 6.5px 14px !important; font-size: 11.5px !important; }
-          .vk-card-specs { gap: 6px !important; font-size: 10.5px !important; }
+          .vk-car-card { border-radius: 14px; }
+          .vk-card-img-box { height: 130px; }
+          .vk-card-body { padding: 8px 10px 0; }
+          .vk-card-footer { padding: 8px 10px 10px; }
+          .vk-card-title { font-size: 14px !important; }
+          .vk-card-subtitle { font-size: 10.5px !important; margin-bottom: 6px !important; }
+          .vk-card-price { font-size: 15.5px !important; }
+          .vk-inquire-btn { padding: 6px 12px !important; font-size: 11px !important; }
+          .vk-card-specs { gap: 5px !important; font-size: 10px !important; padding-top: 6px !important; padding-bottom: 6px !important; }
         }
       `}</style>
     </>
