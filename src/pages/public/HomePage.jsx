@@ -165,34 +165,79 @@ export default function HomePage() {
               style={{
                 color: '#FFFFFF',
                 fontWeight: 900,
-                lineHeight: 1.15,
-                textShadow: '0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.9)',
+                lineHeight: 1.2,
+                textShadow: 'none',
               }}
             >
-              <span>Drive Your Car In Pune</span><br />
-              <span style={{ fontWeight: 900 }}>
-                {/* "Premium" — Luxury Gold Shimmer Style */}
+              {/* Line 1 — White clean title */}
+              <span style={{
+                display: 'block',
+                textShadow: '0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.9)',
+              }}>
+                Drive your car your way
+              </span>
+
+              {/* Line 2 — Premium multi-color styled line */}
+              <span style={{ display: 'block', lineHeight: 1.2, letterSpacing: '-0.5px' }}>
+
+                {/* "Premium" — Deep Purple-to-Violet Luxury Shimmer, Italic */}
                 <span style={{
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FFD700 55%, #FFFACD 75%, #FFA500 100%)',
+                  background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
                   fontStyle: 'italic',
                   fontWeight: 900,
-                  letterSpacing: '-0.5px',
-                  filter: 'drop-shadow(0 2px 12px rgba(255, 200, 0, 0.80))',
-                  textShadow: 'none',
+                  filter: 'drop-shadow(0 2px 16px rgba(168, 85, 247, 0.85))',
                 }}>
                   Premium
-                </span>{' '}
-                {/* "VK Car Rental" — Bhagwa Accent */}
-                <span style={{
-                  color: '#FF4500',
-                  textShadow: '0 4px 20px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 69, 0, 0.9)',
-                  fontWeight: 900,
-                }}>
-                  VK Car Rental
                 </span>
+
+                {/* Spacer */}
+                <span style={{ WebkitTextFillColor: '#FFFFFF', color: '#FFFFFF' }}> </span>
+
+                {/* "Vk" — Bhagwa Flame Orange with glow */}
+                <span style={{
+                  background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  fontWeight: 900,
+                  filter: 'drop-shadow(0 2px 16px rgba(255, 69, 0, 0.95))',
+                }}>
+                  Vk
+                </span>
+
+                {/* Spacer */}
+                <span style={{ WebkitTextFillColor: '#FFFFFF', color: '#FFFFFF' }}> </span>
+
+                {/* "Rental" — Crisp White with electric blue-white shimmer */}
+                <span style={{
+                  background: 'linear-gradient(135deg, #FFFFFF 0%, #BAE6FD 40%, #FFFFFF 70%, #E0F2FE 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  fontWeight: 900,
+                  filter: 'drop-shadow(0 2px 12px rgba(255, 255, 255, 0.75))',
+                }}>
+                  Rental
+                </span>
+
+                {/* Spacer */}
+                <span style={{ WebkitTextFillColor: '#FFFFFF', color: '#FFFFFF' }}> </span>
+
+                {/* "Cars" — Gold Luxury Shimmer */}
+                <span style={{
+                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  fontWeight: 900,
+                  filter: 'drop-shadow(0 2px 16px rgba(255, 200, 0, 0.90))',
+                }}>
+                  Cars
+                </span>
+
               </span>
             </motion.h1>
 
