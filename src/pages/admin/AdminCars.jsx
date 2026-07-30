@@ -21,9 +21,9 @@ import {
 import { formatCurrency } from '../../utils/formatCurrency';
 
 // Preset templates tailored to client's exact business catalog
-export const CLIENT_PRESETS = [
+const CLIENT_PRESETS = [
   {
-    name: 'Maruti Suzuki Ertiga VXI Petrol+CNG',
+    name: 'Ertiga VXI Petrol+CNG',
     brand: 'Maruti',
     category: 'muv',
     pricePerDay: 3200,
@@ -35,55 +35,10 @@ export const CLIENT_PRESETS = [
     securityDeposit: 3000,
     isPopular: true,
     imagesText: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki Ertiga VXI Petrol+CNG 7-Seater MUV with high fuel economy.',
+    description: 'Spacious 7-seater Maruti Ertiga VXI with Dual Fuel Petrol+CNG efficiency.',
   },
   {
-    name: 'Maruti Suzuki Baleno Delta Petrol',
-    brand: 'Maruti',
-    category: 'hatchback',
-    pricePerDay: 2300,
-    extraKmRate: 6,
-    extraTimeRate: 200,
-    seats: 5,
-    transmission: 'manual',
-    fuelType: 'petrol',
-    securityDeposit: 2000,
-    isPopular: true,
-    imagesText: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki Baleno Delta Petrol premium hatchback.',
-  },
-  {
-    name: 'Maruti Suzuki Baleno Zeta CNG',
-    brand: 'Maruti',
-    category: 'hatchback',
-    pricePerDay: 2500,
-    extraKmRate: 6,
-    extraTimeRate: 200,
-    seats: 5,
-    transmission: 'manual',
-    fuelType: 'cng',
-    securityDeposit: 2000,
-    isPopular: true,
-    imagesText: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki Baleno Zeta CNG factory-fitted CNG hatchback.',
-  },
-  {
-    name: 'Mahindra Thar 4x2 RWD Diesel',
-    brand: 'Mahindra',
-    category: 'suv',
-    pricePerDay: 5000,
-    extraKmRate: 7,
-    extraTimeRate: 300,
-    seats: 4,
-    transmission: 'manual',
-    fuelType: 'diesel',
-    securityDeposit: 5000,
-    isPopular: true,
-    imagesText: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80',
-    description: 'Mahindra Thar 4x2 Diesel SUV with iconic road presence and rugged power.',
-  },
-  {
-    name: 'Maruti Suzuki Swift VXI (O) Petrol',
+    name: 'Baleno Delta Petrol',
     brand: 'Maruti',
     category: 'hatchback',
     pricePerDay: 2300,
@@ -95,10 +50,55 @@ export const CLIENT_PRESETS = [
     securityDeposit: 2000,
     isPopular: true,
     imagesText: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki Swift VXI (O) Petrol sporty hatchback.',
+    description: 'Smooth Maruti Baleno Delta Petrol hatchback for comfortable city & highway drives.',
   },
   {
-    name: 'Tata Nexon iCNG',
+    name: 'Baleno Zeta CNG',
+    brand: 'Maruti',
+    category: 'hatchback',
+    pricePerDay: 2500,
+    extraKmRate: 6,
+    extraTimeRate: 200,
+    seats: 5,
+    transmission: 'manual',
+    fuelType: 'cng',
+    securityDeposit: 2000,
+    isPopular: true,
+    imagesText: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80',
+    description: 'Top-spec Maruti Baleno Zeta Factory CNG with maximum fuel saving.',
+  },
+  {
+    name: 'Thar 4x2 Diesel',
+    brand: 'Mahindra',
+    category: 'suv',
+    pricePerDay: 5000,
+    extraKmRate: 7,
+    extraTimeRate: 300,
+    seats: 4,
+    transmission: 'manual',
+    fuelType: 'diesel',
+    securityDeposit: 5000,
+    isPopular: true,
+    imagesText: 'https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=800&q=80',
+    description: 'Iconic Mahindra Thar 4x2 RWD Diesel with massive road presence.',
+  },
+  {
+    name: 'Swift VXI (O) Petrol',
+    brand: 'Maruti',
+    category: 'hatchback',
+    pricePerDay: 2300,
+    extraKmRate: 6,
+    extraTimeRate: 200,
+    seats: 5,
+    transmission: 'manual',
+    fuelType: 'petrol',
+    securityDeposit: 2000,
+    isPopular: true,
+    imagesText: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80',
+    description: 'Popular Maruti Swift VXI Option Petrol with peppy engine and agility.',
+  },
+  {
+    name: 'Tata Nexon CNG',
     brand: 'Tata',
     category: 'suv',
     pricePerDay: 2800,
@@ -110,10 +110,10 @@ export const CLIENT_PRESETS = [
     securityDeposit: 2500,
     isPopular: true,
     imagesText: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80',
-    description: 'Tata Nexon Twin-Cylinder iCNG SUV with 5-star GNCAP safety rating.',
+    description: '5-Star Safety Tata Nexon iCNG Compact SUV with twin cylinder technology.',
   },
   {
-    name: 'Maruti Suzuki WagonR VXI CNG',
+    name: 'WagonR VXI CNG',
     brand: 'Maruti',
     category: 'hatchback',
     pricePerDay: 2000,
@@ -124,11 +124,11 @@ export const CLIENT_PRESETS = [
     fuelType: 'cng',
     securityDeposit: 2000,
     isPopular: false,
-    imagesText: 'https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki WagonR VXI CNG tallboy hatchback offering high mileage.',
+    imagesText: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80',
+    description: 'Economical Maruti WagonR VXI CNG with tall-boy stance and high mileage.',
   },
   {
-    name: 'Maruti Suzuki Fronx Sigma Petrol',
+    name: 'Fronx Sigma Petrol',
     brand: 'Maruti',
     category: 'hatchback',
     pricePerDay: 2600,
@@ -139,11 +139,11 @@ export const CLIENT_PRESETS = [
     fuelType: 'petrol',
     securityDeposit: 2500,
     isPopular: true,
-    imagesText: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-    description: 'Maruti Suzuki Fronx Sigma Petrol modern coupe crossover.',
+    imagesText: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80',
+    description: 'Stylish Maruti Suzuki Fronx Sigma Crossover Petrol SUV.',
   },
   {
-    name: 'Hyundai Venue S+ Sunroof Petrol',
+    name: 'Venue S+ with Sunroof Petrol',
     brand: 'Hyundai',
     category: 'suv',
     pricePerDay: 2800,
@@ -154,8 +154,8 @@ export const CLIENT_PRESETS = [
     fuelType: 'petrol',
     securityDeposit: 2500,
     isPopular: true,
-    imagesText: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80',
-    description: 'Hyundai Venue S+ Petrol compact SUV featuring electric sunroof.',
+    imagesText: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80',
+    description: 'Hyundai Venue S+ Petrol with Electric Sunroof and luxury features.',
   },
 ];
 
@@ -434,45 +434,6 @@ export default function AdminCars() {
     }
   };
 
-  const handleSeedAllPresets = async () => {
-    if (!window.confirm(`Are you sure you want to quick-add all ${CLIENT_PRESETS.length} client fleet vehicles to your live database?`)) return;
-    try {
-      setLoading(true);
-      let added = 0;
-      for (const preset of CLIENT_PRESETS) {
-        const imageUrls = [preset.imagesText];
-        const payload = {
-          name: preset.name,
-          brand: preset.brand,
-          category: preset.category,
-          images: imageUrls,
-          transmission: preset.transmission,
-          fuelType: preset.fuelType,
-          seats: preset.seats,
-          pricePerHour: Math.round(preset.pricePerDay / 24),
-          pricePerDay: preset.pricePerDay,
-          extraKmRate: preset.extraKmRate,
-          extraTimeRate: preset.extraTimeRate,
-          securityDeposit: preset.securityDeposit,
-          features: ['Air Conditioning', 'Power Steering', 'Bluetooth', 'Touchscreen', 'Doorstep Delivery Available'],
-          citiesAvailable: ['Pune', 'Mumbai', 'Pimpri-Chinchwad'],
-          isActive: true,
-          isPopular: preset.isPopular,
-          rating: 4.9,
-          description: preset.description,
-        };
-        await addCar(tenantId, payload, user?.uid);
-        added++;
-      }
-      toast.success(`Successfully added all ${added} vehicles to your live fleet!`);
-    } catch (err) {
-      console.error(err);
-      toast.error('Failed to seed vehicles');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleClearAllCars = async () => {
     if (!window.confirm('Are you sure you want to delete ALL fleet cars from Firestore? This cannot be undone.')) return;
     try {
@@ -513,14 +474,6 @@ export default function AdminCars() {
           </div>
 
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <button
-              onClick={handleSeedAllPresets}
-              className="btn btn-secondary btn-sm"
-              style={{ gap: 6, color: '#FF4500', borderColor: 'rgba(255, 69, 0, 0.35)', background: 'rgba(255, 69, 0, 0.06)', fontSize: 12, fontWeight: 800 }}
-              title="Click to automatically add all 9 client preset vehicles to live fleet"
-            >
-              <FiZap /> Quick Add All 9 Preset Cars
-            </button>
             {cars.length > 0 && (
               <button onClick={handleClearAllCars} className="btn btn-secondary btn-sm" style={{ color: 'var(--color-error)', gap: 6, fontSize: 12 }}>
                 <FiTrash2 /> Clear Fleet
@@ -889,7 +842,7 @@ export default function AdminCars() {
                       gap: 4,
                     }}
                   >
-                    <span>{preset.name.split(' ')[0]} ({formatCurrency(preset.pricePerDay)})</span>
+                    <span>{preset.name} ({formatCurrency(preset.pricePerDay)})</span>
                   </button>
                 ))}
               </div>
