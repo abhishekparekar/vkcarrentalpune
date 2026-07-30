@@ -293,16 +293,22 @@ export default function RevvCarCard({ car, onEnquire }) {
         }
 
         @media (max-width: 640px) {
-          .vk-card-img-box { height: 135px; }
-          .vk-card-body { padding: 10px 12px 0; }
-          .vk-card-footer { padding: 8px 12px 12px; }
-          .vk-card-title { font-size: 14.5px !important; }
-          .vk-card-subtitle { font-size: 11px !important; }
-          .vk-card-price { font-size: 16px !important; }
-          .vk-inquire-btn { padding: 6.5px 14px !important; font-size: 11.5px !important; }
-          .vk-card-specs { gap: 6px !important; font-size: 10.5px !important; }
-        }
-      `}</style>
+          .vk-car-card { border-radius: 14px; }
+          .vk-card-img-box { height: 125px; }
+          .vk-card-badge-popular { top: 6px; left: 6px; font-size: 9px; padding: 2px 7px; }
+          .vk-card-badge-km { top: 6px; right: 6px; font-size: 9.5px; padding: 2px 7px; }
+          .vk-card-body { padding: 8px 9px 0; }
+          .vk-card-header { margin-bottom: 2px; }
+          .vk-card-modelyear { font-size: 10px; }
+          .vk-card-category-tag { font-size: 9px; padding: 1px 5px; }
+          .vk-card-title { font-size: 13.5px !important; margin-bottom: 1px !important; }
+          .vk-card-subtitle { font-size: 10.5px !important; margin-bottom: 5px !important; }
+          .vk-card-specs { gap: 4px 5px !important; font-size: 9.5px !important; padding-top: 5px !important; padding-bottom: 5px !important; }
+          .vk-card-footer { padding: 7px 9px 9px; gap: 4px; }
+          .vk-card-price { font-size: 15px !important; }
+          .vk-card-perday { font-size: 9.5px !important; }
+          .vk-inquire-btn { padding: 5.5px 11px !important; font-size: 10.5px !important; border-radius: 999px; }
+        }</style>
     </>
   );
 }
