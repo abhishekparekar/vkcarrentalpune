@@ -158,8 +158,9 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* ── Desktop Right Call & Action CTAs ── */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {/* ── Desktop Right Call & Action CTAs + Mobile Call Pill ── */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            {/* Desktop Call Pill */}
             <a
               href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
               style={{
@@ -190,6 +191,30 @@ export default function Navbar() {
               }}
             >
               <FiPhone size={14} style={{ color: '#FF4500' }} />
+              <span>{settings?.phone || '+91 8381052230'}</span>
+            </a>
+
+            {/* 📱 ATTRACTIVE MOBILE CALL PILL BUTTON */}
+            <a
+              href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
+              className="mobile-call-pill"
+              style={{
+                display: 'none',
+                alignItems: 'center',
+                gap: 5,
+                padding: '6.5px 13px',
+                borderRadius: '9999px',
+                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
+                color: '#FFFFFF',
+                fontSize: 12,
+                fontWeight: 900,
+                textDecoration: 'none',
+                boxShadow: '0 3px 12px rgba(255, 69, 0, 0.38)',
+                whiteSpace: 'nowrap',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <FiPhone size={12} color="#FFFFFF" style={{ flexShrink: 0 }} />
               <span>{settings?.phone || '+91 8381052230'}</span>
             </a>
 
@@ -521,6 +546,15 @@ export default function Navbar() {
           }
           .mobile-only {
             display: inline-flex !important;
+          }
+          .mobile-call-pill {
+            display: inline-flex !important;
+          }
+        }
+        @media (max-width: 400px) {
+          .mobile-call-pill {
+            padding: 5px 9.5px !important;
+            font-size: 11px !important;
           }
         }
       `}</style>
