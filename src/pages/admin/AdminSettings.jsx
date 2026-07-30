@@ -67,7 +67,7 @@ export default function AdminSettings() {
         twitter: settings.twitter || 'https://twitter.com',
         youtube: settings.youtube || 'https://youtube.com',
         // About Page Defaults
-        aboutTitle: settings.aboutTitle || 'Reinventing Self-Drive Rental in Pune',
+        aboutTitle: settings.aboutTitle || 'Reinventing VK RENTAL CARS PUNE',
         aboutSubtitle: settings.aboutSubtitle || 'Driven by 100% transparency, verified cars, 300 km daily limit, and 30-minute doorstep delivery in Pune.',
         aboutMissionHeading: settings.aboutMissionHeading || 'Empowering Renters with Complete Self-Drive Freedom',
         aboutMissionText: settings.aboutMissionText || 'We believe having a car for weekend family trips, business meetings, or hill-station drives should be simple — accessible on demand without ownership hassle.',
@@ -150,7 +150,7 @@ export default function AdminSettings() {
   return (
     <AdminLayout>
       <div style={{ padding: '24px 20px', maxWidth: 980, margin: '0 auto' }}>
-        
+
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
           <div>
@@ -177,9 +177,9 @@ export default function AdminSettings() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
-          
+
           <form onSubmit={handleSubmitSettings} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            
+
             {/* 🏢 1. BUSINESS BRANDING & CONTACT DETAILS */}
             <div style={{
               background: '#FFFFFF',
@@ -288,7 +288,7 @@ export default function AdminSettings() {
                     className="form-input"
                     value={form.aboutTitle}
                     onChange={e => setForm({ ...form, aboutTitle: e.target.value })}
-                    placeholder="Reinventing Self-Drive Rental in Pune"
+                    placeholder="Reinventing VK RENTAL CARS PUNE"
                   />
                 </div>
 

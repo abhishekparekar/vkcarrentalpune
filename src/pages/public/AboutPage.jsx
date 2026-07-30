@@ -72,7 +72,7 @@ export default function AboutPage() {
 
   const dynamicStats = [
     { label: 'Happy Renters', value: settings?.statsRenters || '500+', icon: <FiUsers size={22} /> },
-    { label: 'Sanitized Self-Drive Cars', value: settings?.statsFleet || '50+', icon: <BsCarFront size={22} /> },
+    { label: 'Sanitized Rental Cars', value: settings?.statsFleet || '50+', icon: <BsCarFront size={22} /> },
     { label: 'Doorstep Delivery Time', value: settings?.statsDelivery || '30 Mins', icon: <FiTruck size={22} /> },
     { label: 'Customer Rating', value: settings?.statsRating || '4.9/5', icon: <FiStar size={22} /> },
   ];
@@ -89,8 +89,62 @@ export default function AboutPage() {
             <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
               About {settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
             </span>
-            <h1 style={{ fontSize: 'clamp(24px, 4.5vw, 38px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.2 }}>
-              {settings?.aboutTitle || 'Reinventing Self-Drive Rental in Pune'}
+            <h1 style={{ fontSize: 'clamp(24px, 4.5vw, 38px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
+              {settings?.aboutTitle ? (
+                <span style={{
+                  background: 'linear-gradient(135deg, #111318 0%, #FF4500 50%, #FFD700 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
+                  {settings.aboutTitle}
+                </span>
+              ) : (
+                <>
+                  {/* "Reinventing" — Clean Dark */}
+                  <span style={{ color: '#111318' }}>Reinventing</span>{' '}
+
+                  {/* "VK" — Bhagwa Flame Orange */}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 900,
+                    filter: 'drop-shadow(0 1px 10px rgba(255, 69, 0, 0.80))',
+                  }}>VK</span>{' '}
+
+                  {/* "RENTAL" — Purple Violet Luxury, Italic */}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontStyle: 'italic',
+                    fontWeight: 900,
+                    filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.70))',
+                  }}>RENTAL</span>{' '}
+
+                  {/* "CARS" — Gold Luxury Shimmer */}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 900,
+                    filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
+                  }}>CARS</span>{' '}
+
+                  {/* "PUNE" — Crystal White/Blue Shimmer */}
+                  <span style={{
+                    background: 'linear-gradient(135deg, #0F172A 0%, #1E40AF 40%, #0F172A 70%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 900,
+                  }}>PUNE</span>
+                </>
+              )}
             </h1>
             <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#64748B', margin: 0, maxWidth: 640, lineHeight: 1.6 }}>
               {settings?.aboutSubtitle || 'Driven by 100% transparency, verified cars, 300 km daily limit, and 30-minute doorstep delivery in Pune.'}
@@ -155,7 +209,7 @@ export default function AboutPage() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
               <span className="section-label-red" style={{ margin: 0 }}>Our Core Mission</span>
             </div>
-            
+
             <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 28px)', fontWeight: 900, color: '#111318', marginBottom: 12, lineHeight: 1.25 }}>
               {settings?.aboutMissionHeading || 'Empowering Renters with Complete Self-Drive Freedom'}
             </h2>

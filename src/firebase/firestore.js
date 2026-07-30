@@ -376,7 +376,7 @@ export const DEFAULT_TENANT_SETTINGS = {
   youtube: 'https://youtube.com',
   accentColor: '#FF4500',
   // About Page Dynamic Settings
-  aboutTitle: 'Reinventing Self-Drive Rental in Pune',
+  aboutTitle: 'Reinventing VK RENTAL CARS PUNE',
   aboutSubtitle: 'Driven by 100% transparency, verified cars, 300 km daily limit, and 30-minute doorstep delivery in Pune.',
   aboutMissionHeading: 'Empowering Renters with Complete Self-Drive Freedom',
   aboutMissionText: 'We believe having a car for weekend family trips, business meetings, or hill-station drives should be simple — accessible on demand without ownership hassle.',
