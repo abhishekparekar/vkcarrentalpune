@@ -106,7 +106,7 @@ export default function HomePage() {
       <section
         className="hero-bg-section"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.20) 0%, rgba(15, 23, 42, 0.05) 50%, rgba(15, 23, 42, 0.45) 100%), url("${heroBgImg}")`,
+          backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.00) 50%, rgba(15, 23, 42, 0.25) 100%), url("${heroBgImg}")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center 38%',
           backgroundRepeat: 'no-repeat',
