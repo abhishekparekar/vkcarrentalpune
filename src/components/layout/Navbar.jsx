@@ -287,42 +287,63 @@ export default function Navbar() {
             >
               {/* Drawer Top Header */}
               <div style={{
-                padding: '20px 20px 16px',
+                padding: '12px 18px',
                 borderBottom: '1px solid #F1F5F9',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                background: 'linear-gradient(180deg, rgba(255, 69, 0, 0.06) 0%, #FFFFFF 100%)',
+                background: '#FFFFFF',
               }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <img
-                    src={logoImg}
-                    alt="VK SELF DRIVE CAR'S PUNE"
-                    style={{ height: 46, width: 'auto', objectFit: 'contain' }}
-                  />
-                  <span style={{ fontSize: 10, fontWeight: 900, color: '#FF4500', letterSpacing: '1px', textTransform: 'uppercase', marginTop: 4 }}>
-                    VK SELF DRIVE CAR'S PUNE
-                  </span>
-                </div>
+                <Link
+                  to="/"
+                  onClick={() => setMenuOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+                >
+                  <div style={{
+                    background: '#FFFFFF',
+                    padding: '4px 8px',
+                    borderRadius: 10,
+                    border: '1px solid #E2E8F0',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                    <img
+                      src={logoImg}
+                      alt="VK SELF DRIVE CAR'S PUNE"
+                      style={{ height: 38, width: 'auto', objectFit: 'contain' }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <span style={{ fontSize: 13, fontWeight: 900, color: '#000000', letterSpacing: '-0.2px', lineHeight: 1.25 }}>
+                      VK SELF DRIVE CAR'S
+                    </span>
+                    <span style={{ fontSize: 10.5, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
+                      PUNE • RENTAL FLEET
+                    </span>
+                  </div>
+                </Link>
 
                 <button
                   type="button"
                   onClick={() => setMenuOpen(false)}
                   style={{
-                    width: 38,
-                    height: 38,
+                    width: 36,
+                    height: 36,
                     borderRadius: '50%',
-                    background: '#F8FAFC',
+                    background: '#F1F5F9',
                     border: '1px solid #E2E8F0',
                     color: '#000000',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.06)',
+                    transition: 'all 0.18s ease',
                   }}
                 >
-                  <FiX size={20} />
+                  <FiX size={18} />
                 </button>
               </div>
 
