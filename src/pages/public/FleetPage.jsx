@@ -70,14 +70,14 @@ export default function FleetPage() {
               VK RENTAL CARS PUNE Fleet
             </span>
             <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
-              Explore Available{' '}
+              EXPLORE{' '}
               <span style={{
                 background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
-              }}>Premium Rental Cars</span>
+              }}>AVAILABLE PREMIUM RENTAL CARS</span>
             </h1>
             <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
               All vehicles include 300 km daily limit, doorstep delivery, full insurance &amp; zero hidden charges.

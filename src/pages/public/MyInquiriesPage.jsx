@@ -85,7 +85,7 @@ export default function MyInquiriesPage() {
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
-              }}>Rental Inquiries</span>
+              }}>RENTAL INQUIRIES</span>
             </h1>
             <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 500, lineHeight: 1.6 }}>
               Enter your email or phone number to track all your submitted rental inquiries.

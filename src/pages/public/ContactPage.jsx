@@ -147,14 +147,14 @@ export default function ContactPage() {
           <div className="container" style={{ padding: '36px 16px 30px', maxWidth: 1100 }}>
             <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Contact &amp; Instant Quote</span>
             <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
-              Get in Touch with{' '}
+              GET IN{' '}
               <span style={{
                 background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
-              }}>Car Rental Support</span>
+              }}>TOUCH WITH CAR RENTAL SUPPORT</span>
             </h1>
             <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 580, lineHeight: 1.6 }}>
               Have questions about daily rates, doorstep delivery, or extra km charges? Fill out the quick form below or message us instantly on WhatsApp.
