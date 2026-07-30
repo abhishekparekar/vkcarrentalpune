@@ -164,61 +164,8 @@ export default function ContactPage() {
 
         <div className="container" style={{ maxWidth: 1100, padding: '0 16px' }}>
 
-          {/* ─── Contact Info Cards ─── */}
-          <div className="grid-4" style={{ gap: 12, marginBottom: 24 }}>
-            {contactItems.map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: 14,
-                  padding: '14px 14px',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 12,
-                }}
-              >
-                <div style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: 10,
-                  background: item.bg,
-                  border: `1px solid ${item.color}25`,
-                  color: item.color,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  {item.icon}
-                </div>
-                <div style={{ minWidth: 0 }}>
-                  <span style={{ fontSize: 10.5, fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>
-                    {item.label}
-                  </span>
-                  {item.href ? (
-                    <a
-                      href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : undefined}
-                      rel="noopener noreferrer"
-                      style={{ fontSize: 13, fontWeight: 800, color: item.color, textDecoration: 'none', display: 'block', marginTop: 1, wordBreak: 'break-all' }}
-                    >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <span style={{ fontSize: 12.5, fontWeight: 700, color: '#0F172A', display: 'block', marginTop: 1, lineHeight: 1.3 }}>
-                      {item.value}
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ─── Main Grid: Compact Form + Direct WhatsApp Banner ─── */}
-          <div className="contact-main-grid">
+          {/* ─── Main Section FIRST: Compact Form + Direct WhatsApp Banner ─── */}
+          <div className="contact-main-grid" style={{ marginBottom: 24 }}>
             
             {/* Form Box */}
             <div style={{
@@ -404,6 +351,59 @@ export default function ContactPage() {
               </a>
             </div>
 
+          </div>
+
+          {/* ─── Contact Info Cards SECOND ─── */}
+          <div className="grid-4" style={{ gap: 12, marginBottom: 12 }}>
+            {contactItems.map((item, i) => (
+              <div
+                key={i}
+                style={{
+                  background: '#FFFFFF',
+                  borderRadius: 14,
+                  padding: '14px 14px',
+                  border: '1px solid #E2E8F0',
+                  boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 12,
+                }}
+              >
+                <div style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 10,
+                  background: item.bg,
+                  border: `1px solid ${item.color}25`,
+                  color: item.color,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  {item.icon}
+                </div>
+                <div style={{ minWidth: 0 }}>
+                  <span style={{ fontSize: 10.5, fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>
+                    {item.label}
+                  </span>
+                  {item.href ? (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith('http') ? '_blank' : undefined}
+                      rel="noopener noreferrer"
+                      style={{ fontSize: 13, fontWeight: 800, color: item.color, textDecoration: 'none', display: 'block', marginTop: 1, wordBreak: 'break-all' }}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <span style={{ fontSize: 12.5, fontWeight: 700, color: '#0F172A', display: 'block', marginTop: 1, lineHeight: 1.3 }}>
+                      {item.value}
+                    </span>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
 
         </div>
