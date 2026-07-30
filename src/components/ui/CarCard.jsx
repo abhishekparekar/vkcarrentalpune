@@ -1,166 +1,130 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FiUsers, FiSettings } from 'react-icons/fi';
-import { BsFuelPump, BsStarFill } from 'react-icons/bs';
+import { FiUsers, FiSettings, FiArrowRight } from 'react-icons/fi';
+import { BsCarFront, BsStarFill } from 'react-icons/bs';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function CarCard({ car, onEnquire }) {
+  const navigate = useNavigate();
+
   if (!car) return null;
 
   const primaryImage = car.images && car.images.length > 0 
     ? car.images[0] 
     : 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80';
 
-  const categoryBadgeMap = {
-    hatchback: 'badge-accent',
-    sedan: 'badge-blue',
-    suv: 'badge-warning',
-    premium: 'badge-success',
+  const categoryName = (car.category || 'Fleet').toUpperCase();
+  const seatsNum = car.seats || 5;
+
+  const handleCardClick = () => navigate(`/cars/${car.id}`);
+
+  const handleInquireClick = (e) => {
+    e.stopPropagation();
+    if (onEnquire) onEnquire(car);
   };
 
   return (
     <motion.div
       whileHover={{ y: -4 }}
       transition={{ duration: 0.2 }}
-      className="glass-card"
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100%',
-        overflow: 'hidden',
-      }}
+      className="vk-car-card"
+      onClick={handleCardClick}
     >
-      {/* Vehicle Image Container */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        paddingTop: '58%',
-        overflow: 'hidden',
-        background: '#F1F5F9',
-      }}>
+      {/* Uniform Car Image Box (Fixed Aspect Ratio across all admin uploads) */}
+      <div className="vk-card-img-box">
+        {car.isPopular && (
+          <div className="vk-card-badge-popular">
+            🔥 POPULAR
+          </div>
+        )}
+
+        {car.rating && (
+          <div style={{
+            position: 'absolute',
+            top: 10,
+            right: 10,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 4,
+            padding: '4px 10px',
+            borderRadius: 999,
+            background: 'rgba(15, 23, 42, 0.80)',
+            backdropFilter: 'blur(4px)',
+            color: '#F59E0B',
+            fontSize: 11,
+            fontWeight: 800,
+            zIndex: 2,
+          }}>
+            <BsStarFill size={11} />
+            <span style={{ color: '#FFFFFF' }}>{car.rating}</span>
+          </div>
+        )}
+
         <img
           src={primaryImage}
           alt={car.name}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-          }}
+          loading="lazy"
+          decoding="async"
+          className="vk-card-img"
           onError={(e) => {
             e.target.src = 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=800&q=80';
           }}
         />
-
-        {/* Top Badges */}
-        <div style={{
-          position: 'absolute',
-          top: 10,
-          left: 10,
-          right: 10,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          zIndex: 2,
-        }}>
-          <span className={`badge ${categoryBadgeMap[car.category] || 'badge-accent'}`}>
-            {car.category ? car.category.toUpperCase() : 'CAR'}
-          </span>
-          {car.rating && (
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 4,
-              padding: '3px 8px',
-              borderRadius: 'var(--radius-full)',
-              background: '#FFFFFF',
-              boxShadow: 'var(--shadow-sm)',
-              fontSize: 11,
-              fontWeight: 700,
-              color: '#D97706',
-            }}>
-              <BsStarFill size={10} />
-              <span>{car.rating}</span>
-            </div>
-          )}
-        </div>
       </div>
 
       {/* Card Content */}
-      <div style={{ padding: '16px 18px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-        <div>
-          <span style={{ fontSize: 11, color: 'var(--color-accent)', fontWeight: 700, letterSpacing: 0.5, textTransform: 'uppercase' }}>
-            {car.brand || 'PERFORMANCE'}
+      <div className="vk-card-body">
+        <div className="vk-card-header">
+          <span className="vk-card-modelyear">
+            {car.brand || 'VK FLEET'}
           </span>
-          <h3 style={{ fontSize: 17, color: 'var(--color-text)', fontWeight: 700, margin: '2px 0 10px', textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden' }}>
-            {car.name}
-          </h3>
-
-          {/* Quick Specs */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: 6,
-            padding: '8px 0',
-            borderTop: '1px solid var(--color-border)',
-            borderBottom: '1px solid var(--color-border)',
-            marginBottom: 12,
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--color-text-2)' }}>
-              <FiSettings style={{ color: 'var(--color-accent)' }} />
-              <span style={{ textTransform: 'capitalize' }}>{car.transmission || 'Manual'}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--color-text-2)' }}>
-              <BsFuelPump style={{ color: 'var(--color-accent)' }} />
-              <span style={{ textTransform: 'capitalize' }}>{car.fuelType || 'Petrol'}</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, color: 'var(--color-text-2)' }}>
-              <FiUsers style={{ color: 'var(--color-accent)' }} />
-              <span>{car.seats || 5} Seats</span>
-            </div>
-          </div>
+          <span className="vk-card-category-tag">
+            {categoryName}
+          </span>
         </div>
 
-        {/* Pricing & CTA */}
+        <h3 className="vk-card-title">
+          {car.name}
+        </h3>
+
+        <p className="vk-card-subtitle">
+          {car.fuelType ? car.fuelType.toUpperCase() : 'PETROL'} • {car.transmission || 'Manual'}
+        </p>
+
+        {/* Specs Bar in Proper Dark Color */}
+        <div className="vk-card-specs">
+          <div className="vk-spec-item">
+            <BsCarFront size={12} color="#FF4500" />
+            <span>{categoryName}</span>
+          </div>
+
+          <div className="vk-spec-item">
+            <FiSettings size={12} color="#FF4500" />
+            <span style={{ textTransform: 'capitalize' }}>{car.transmission || 'Manual'}</span>
+          </div>
+
+          <div className="vk-spec-item">
+            <FiUsers size={12} color="#FF4500" />
+            <span>{seatsNum} seats</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Card Footer */}
+      <div className="vk-card-footer">
         <div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 12 }}>
-            <div>
-              <span style={{ fontSize: 10, color: 'var(--color-text-3)', display: 'block', textTransform: 'uppercase', fontWeight: 600 }}>
-                Hourly
-              </span>
-              <span style={{ fontSize: 14, fontWeight: 700, color: 'var(--color-text)' }}>
-                {formatCurrency(car.pricePerHour || 99)}/hr
-              </span>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <span style={{ fontSize: 10, color: 'var(--color-text-3)', display: 'block', textTransform: 'uppercase', fontWeight: 600 }}>
-                Daily Rate
-              </span>
-              <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--color-accent)' }}>
-                {formatCurrency(car.pricePerDay || 1499)}/day
-              </span>
-            </div>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-            <Link
-              to={`/cars/${car.id}`}
-              className="btn btn-secondary btn-sm"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              Details
-            </Link>
-            <button
-              onClick={() => onEnquire && onEnquire(car)}
-              className="btn btn-primary btn-sm"
-              style={{ width: '100%', justifyContent: 'center' }}
-            >
-              Book Now
-            </button>
-          </div>
+          <span className="vk-card-price">
+            {formatCurrency(car.pricePerDay || 2300)}
+          </span>
+          <span className="vk-card-perday">per 24 hrs</span>
         </div>
+
+        <button
+          onClick={handleInquireClick}
+          className="btn btn-primary vk-inquire-btn"
+        >
+          <span>Book Now</span> <FiArrowRight size={13} />
+        </button>
       </div>
     </motion.div>
   );

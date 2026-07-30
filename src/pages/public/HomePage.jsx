@@ -179,24 +179,6 @@ export default function HomePage() {
               </span>
             </motion.h1>
 
-            {/* Sub-headline */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              style={{
-                fontSize: 'clamp(14px, 2.5vw, 17.5px)',
-                color: '#F1F5F9',
-                fontWeight: 600,
-                maxWidth: 680,
-                margin: '12px auto 24px',
-                lineHeight: 1.55,
-                textShadow: '0 2px 10px rgba(0,0,0,0.8)',
-              }}
-            >
-              Unlimited Kilometers • Doorstep Delivery • Zero Deposit Hassle
-            </motion.p>
-
             {/* Floating Trust Metrics Badges */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
