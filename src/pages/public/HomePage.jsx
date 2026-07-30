@@ -354,15 +354,16 @@ export default function HomePage() {
           </div>
 
           {loading ? (
-            <div className="grid-3">
+            <div className="grid-fleet-catalog">
+              <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
               <CarSkeleton />
             </div>
           ) : (
             <>
-              <div className="grid-3">
-                {cars.slice(0, 6).map((car) => (
+              <div className="grid-fleet-catalog">
+                {cars.slice(0, 8).map((car) => (
                   <RevvCarCard key={car.id} car={car} onEnquire={openEnquiry} />
                 ))}
               </div>

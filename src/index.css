@@ -227,14 +227,7 @@ ol {
   gap: 16px;
 }
 
-@media (min-width: 1600px) {
-  .grid-fleet-catalog {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .grid-fleet-catalog {
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
