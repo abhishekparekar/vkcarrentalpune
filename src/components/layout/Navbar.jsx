@@ -82,6 +82,7 @@ export default function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
           height: 72,
+          position: 'relative',
         }}>
 
           {/* ── Logo Branding ── */}
@@ -549,11 +550,15 @@ export default function Navbar() {
           }
           .mobile-call-pill {
             display: inline-flex !important;
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 5 !important;
           }
         }
         @media (max-width: 400px) {
           .mobile-call-pill {
-            padding: 5px 9.5px !important;
+            padding: 5px 9px !important;
             font-size: 11px !important;
           }
         }
