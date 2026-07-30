@@ -75,13 +75,36 @@ export default function MyInquiriesPage() {
         <div className="container" style={{ maxWidth: 820 }}>
           
           {/* Header */}
-          <div className="section-header text-center" style={{ marginBottom: 24 }}>
-            <span className="section-label-red">Track Your Request</span>
-            <h1 className="section-title">My Rental <span>Inquiries</span></h1>
-            <p className="section-desc" style={{ maxWidth: 540, margin: '0 auto' }}>
-              Enter your mobile number, email, or inquiry reference ID to track live updates and share directly with us on WhatsApp.
+          <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24, margin: '0 -16px 24px', padding: '28px 16px 22px' }}>
+            <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Track Your Request</span>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 8px', lineHeight: 1.25 }}>
+              {/* "My" — Clean dark */}
+              <span style={{ color: '#111318' }}>My</span>{' '}
+              {/* "Rental" — Purple Violet Luxury, Italic */}
+              <span style={{
+                background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontStyle: 'italic',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.65))',
+              }}>Rental</span>{' '}
+              {/* "Inquiries" — Gold Luxury Shimmer */}
+              <span style={{
+                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
+              }}>Inquiries</span>
+            </h1>
+            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 500, lineHeight: 1.6 }}>
+              Enter your email or phone number to track all your submitted rental inquiries.
             </p>
           </div>
+
 
           {/* Search Box */}
           <form

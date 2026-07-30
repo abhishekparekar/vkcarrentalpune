@@ -144,12 +144,41 @@ export default function ContactPage() {
 
         {/* ─── Hero Header ─── */}
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
-          <div className="container" style={{ padding: '24px 16px 20px', maxWidth: 1100 }}>
-            <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 6 }}>Contact & Instant Quote</span>
-            <h1 style={{ fontSize: 'clamp(22px, 4vw, 32px)', fontWeight: 900, color: '#0F172A', margin: '0 0 6px', lineHeight: 1.2 }}>
-              Get in Touch with <span style={{ color: '#FF4500' }}>Car Rental Support</span>
+          <div className="container" style={{ padding: '36px 16px 30px', maxWidth: 1100 }}>
+            <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Contact &amp; Instant Quote</span>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#0F172A', margin: '0 0 10px', lineHeight: 1.25 }}>
+              {/* "Get in Touch with" — Clean dark */}
+              <span style={{ color: '#111318' }}>Get in Touch with</span>{' '}
+              {/* "Car" — Bhagwa Flame Orange */}
+              <span style={{
+                background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 10px rgba(255, 69, 0, 0.70))',
+              }}>Car</span>{' '}
+              {/* "Rental" — Purple Violet Luxury, Italic */}
+              <span style={{
+                background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontStyle: 'italic',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.65))',
+              }}>Rental</span>{' '}
+              {/* "Support" — Gold Luxury Shimmer */}
+              <span style={{
+                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
+              }}>Support</span>
             </h1>
-            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 580, lineHeight: 1.55 }}>
+            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 580, lineHeight: 1.6 }}>
               Have questions about daily rates, doorstep delivery, or extra km charges? Fill out the quick form below or message us instantly on WhatsApp.
             </p>
           </div>
