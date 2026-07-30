@@ -56,7 +56,7 @@ export default function AdminLayout({ children }) {
       }}>
         <img
           src={logoImg}
-          alt="VK SELF DRIVE CAR'S PUNE"
+          alt="VK RENTAL CARS Pune"
           style={{
             height: sidebarOpen ? 50 : 34,
             maxWidth: '100%',

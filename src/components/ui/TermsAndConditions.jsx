@@ -88,7 +88,7 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
           </div>
           <div>
             <span style={{ fontSize: 10, color: '#FF4500', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block' }}>
-              VK SELF DRIVE CAR'S PUNE
+              VK RENTAL CARS Pune
             </span>
             <h4 style={{ fontSize: compact ? 13 : 15, fontWeight: 800, color: '#111318', margin: 0 }}>
               Rental Policy & Mandatory Documents

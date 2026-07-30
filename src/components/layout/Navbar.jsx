@@ -92,7 +92,7 @@ export default function Navbar() {
           >
             <img
               src={logoImg}
-              alt="VK SELF DRIVE CAR'S PUNE"
+              alt="VK RENTAL CARS Pune"
               loading="eager"
               decoding="async"
               fetchPriority="high"
@@ -311,17 +311,17 @@ export default function Navbar() {
                   }}>
                     <img
                       src={logoImg}
-                      alt="VK SELF DRIVE CAR'S PUNE"
+                      alt="VK RENTAL CARS Pune"
                       style={{ height: 38, width: 'auto', objectFit: 'contain' }}
                     />
                   </div>
 
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <span style={{ fontSize: 13, fontWeight: 900, color: '#000000', letterSpacing: '-0.2px', lineHeight: 1.25 }}>
-                      VK SELF DRIVE CAR'S
+                      VK RENTAL CARS
                     </span>
                     <span style={{ fontSize: 10.5, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
-                      PUNE • RENTAL FLEET
+                      PUNE • SELF DRIVE
                     </span>
                   </div>
                 </Link>

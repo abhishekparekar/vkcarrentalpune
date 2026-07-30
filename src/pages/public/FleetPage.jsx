@@ -67,7 +67,7 @@ export default function FleetPage() {
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 20, padding: '24px 0 18px' }}>
           <div className="fleet-container">
             <span className="section-label-red" style={{ marginBottom: 6 }}>
-              VK SELF DRIVE CAR'S PUNE Fleet
+              VK RENTAL CARS Pune Fleet
             </span>
             <h1 style={{ fontSize: 'clamp(20px, 4vw, 32px)', fontWeight: 900, color: '#111318', margin: '0 0 6px' }}>
               Explore Available <span>Self-Drive Cars</span>

@@ -364,7 +364,7 @@ export async function registerAdminUser(tenantId, uid, { email, name, role = 'ad
 
 // ─── Tenant Settings & Dynamic Footer Configuration ───────────────────────────
 export const DEFAULT_TENANT_SETTINGS = {
-  businessName: "VK SELF DRIVE CAR'S PUNE",
+  businessName: "VK RENTAL CARS Pune",
   tagline: 'Premium self-drive car rentals with 300 km daily limit, doorstep delivery & verified fleet in Pune.',
   phone: '+91 8381052230',
   email: 'vishalkarke184@gmail.com',
