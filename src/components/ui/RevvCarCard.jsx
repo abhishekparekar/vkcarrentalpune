@@ -76,25 +76,25 @@ export default function RevvCarCard({ car, onEnquire }) {
             {car.brand || car.name.split(' ')[0]} • {car.fuelType ? car.fuelType.toUpperCase() : 'PETROL'}
           </p>
 
-          {/* Specs Bar in Proper Dark Color */}
+          {/* Compact 2x2 Specs Bar for Perfect Equal Card Heights */}
           <div className="vk-card-specs">
             <div className="vk-spec-item">
-              <BsCarFront size={12} color="#FF4500" />
+              <BsCarFront size={11} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>{categoryName}</span>
             </div>
 
             <div className="vk-spec-item">
-              <FiSettings size={12} color="#FF4500" />
+              <FiSettings size={11} color="#FF4500" style={{ flexShrink: 0 }} />
               <span style={{ textTransform: 'capitalize' }}>{car.transmission || 'Manual'}</span>
             </div>
 
             <div className="vk-spec-item">
-              <FiUsers size={12} color="#FF4500" />
+              <FiUsers size={11} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>{seatsNum} seats</span>
             </div>
 
-            <div className="vk-spec-item vk-spec-right">
-              <FiClock size={11} color="#FF4500" />
+            <div className="vk-spec-item">
+              <FiClock size={11} color="#FF4500" style={{ flexShrink: 0 }} />
               <span>₹{extraTime}/hr</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function RevvCarCard({ car, onEnquire }) {
 
         {/* Card Footer */}
         <div className="vk-card-footer">
-          <div>
+          <div style={{ minWidth: 0 }}>
             <span className="vk-card-price">
               {formatCurrency(car.pricePerDay || 2300)}
             </span>
@@ -113,7 +113,7 @@ export default function RevvCarCard({ car, onEnquire }) {
             onClick={handleInquireClick}
             className="btn btn-primary vk-inquire-btn"
           >
-            <span>Inquire</span> <FiArrowRight size={13} />
+            <span>Inquire</span> <FiArrowRight size={13} style={{ flexShrink: 0 }} />
           </button>
         </div>
       </motion.div>
@@ -121,25 +121,29 @@ export default function RevvCarCard({ car, onEnquire }) {
       <style>{`
         .vk-car-card {
           background: #FFFFFF;
-          border-radius: 18px;
+          border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 6px 24px rgba(15, 23, 42, 0.07);
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
           border: 1.5px solid #E2E8F0;
           display: flex;
           flex-direction: column;
+          justify-content: space-between;
           cursor: pointer;
           transition: all 0.22s ease;
           height: 100%;
+          width: 100%;
+          box-sizing: border-box;
         }
         .vk-car-card:hover {
-          box-shadow: 0 12px 36px rgba(255, 69, 0, 0.15);
-          border-color: rgba(255, 69, 0, 0.35);
+          box-shadow: 0 10px 32px rgba(255, 69, 0, 0.16);
+          border-color: rgba(255, 69, 0, 0.40);
         }
         .vk-card-img-box {
           position: relative;
           width: 100%;
-          height: 180px;
-          background: #F8FAFC;
+          aspect-ratio: 16 / 10;
+          height: 160px;
+          background: #F1F5F9;
           overflow: hidden;
           flex-shrink: 0;
         }
