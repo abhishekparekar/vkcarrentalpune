@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiFilter, FiX, FiRefreshCw, FiSearch, FiSliders, FiCheck, FiZap, FiTruck } from 'react-icons/fi';
+import { FiFilter, FiX, FiRefreshCw, FiSearch, FiSliders, FiCheck, FiZap, FiTruck, FiUsers, FiStar, FiCheckCircle } from 'react-icons/fi';
 import { BsCarFront, BsCarFrontFill } from 'react-icons/bs';
 
 import Navbar from '../../components/layout/Navbar';
@@ -24,7 +24,7 @@ const CATEGORY_TABS = [
 ];
 
 export default function FleetPage() {
-  const { tenantId } = useTenant();
+  const { tenantId, settings } = useTenant();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [cars, setCars] = useState([]);
@@ -63,18 +63,98 @@ export default function FleetPage() {
 
       <main style={{ paddingTop: 72, paddingBottom: 36, flex: 1 }}>
 
-        {/* Sleek Header */}
-        <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 20, padding: '24px 0 18px' }}>
-          <div className="fleet-container">
-            <span className="section-label-red" style={{ marginBottom: 6 }}>
-              VK RENTAL CARS PUNE
+        {/* ─── Hero Header (About-style) ─── */}
+        <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
+          <div className="fleet-container" style={{ padding: '36px 20px 30px' }}>
+            <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
+              VK RENTAL CARS PUNE Fleet
             </span>
-            <h1 style={{ fontSize: 'clamp(20px, 4vw, 32px)', fontWeight: 900, color: '#111318', margin: '0 0 6px' }}>
-              Explore Available <span>Premium Rental Cars</span>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
+              Explore{' '}
+              {/* "Available" — Clean dark */}
+              <span style={{ color: '#111318' }}>Available</span>{' '}
+              {/* "Premium" — Purple Violet Luxury, Italic */}
+              <span style={{
+                background: 'linear-gradient(135deg, #C084FC 0%, #A855F7 25%, #7C3AED 55%, #C084FC 80%, #DDD6FE 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontStyle: 'italic',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 8px rgba(168, 85, 247, 0.70))',
+              }}>Premium</span>{' '}
+              {/* "Rental" — Bhagwa Flame Orange */}
+              <span style={{
+                background: 'linear-gradient(135deg, #FF6B00 0%, #FF4500 40%, #FF7E00 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 10px rgba(255, 69, 0, 0.80))',
+              }}>Rental</span>{' '}
+              {/* "Cars" — Gold Luxury Shimmer */}
+              <span style={{
+                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 35%, #FFD700 60%, #FFFACD 80%, #FFA500 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                fontWeight: 900,
+                filter: 'drop-shadow(0 1px 10px rgba(255, 200, 0, 0.80))',
+              }}>Cars</span>
             </h1>
-            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 540, lineHeight: 1.5 }}>
-              All vehicles include 300 km daily limit, doorstep delivery, full insurance & zero hidden charges.
+            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
+              All vehicles include 300 km daily limit, doorstep delivery, full insurance &amp; zero hidden charges.
             </p>
+          </div>
+        </div>
+
+        {/* ─── Dynamic Stats Grid (matching About page) ─── */}
+        <div className="fleet-container" style={{ marginBottom: 20 }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 14,
+          }} className="fleet-stats-grid">
+            {[
+              { label: 'Happy Renters', value: settings?.statsRenters || '500+', icon: <FiUsers size={20} /> },
+              { label: 'Sanitized Fleet Cars', value: settings?.statsFleet || '50+', icon: <BsCarFront size={20} /> },
+              { label: 'Doorstep Delivery', value: settings?.statsDelivery || '30 Mins', icon: <FiTruck size={20} /> },
+              { label: 'Customer Rating', value: settings?.statsRating || '4.9/5', icon: <FiStar size={20} /> },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.07, duration: 0.35 }}
+                style={{
+                  background: '#FFFFFF',
+                  borderRadius: 14,
+                  padding: '16px 12px',
+                  textAlign: 'center',
+                  border: '1px solid #E2E8F0',
+                  boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: 6,
+                }}
+              >
+                <div style={{
+                  width: 38, height: 38,
+                  borderRadius: 10,
+                  background: 'rgba(255, 69, 0, 0.09)',
+                  border: '1px solid rgba(255, 69, 0, 0.22)',
+                  color: '#FF4500',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                }}>
+                  {s.icon}
+                </div>
+                <h3 style={{ fontSize: 'clamp(18px, 2.5vw, 24px)', color: '#FF4500', fontWeight: 900, margin: 0, lineHeight: 1 }}>
+                  {s.value}
+                </h3>
+                <p style={{ fontSize: 11, color: '#64748B', margin: 0, fontWeight: 700, lineHeight: 1.3 }}>{s.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
 
@@ -198,6 +278,15 @@ export default function FleetPage() {
               display: grid;
               grid-template-columns: repeat(4, 1fr);
               gap: 16px;
+            }
+            .fleet-stats-grid {
+              grid-template-columns: repeat(4, 1fr) !important;
+            }
+            @media (max-width: 768px) {
+              .fleet-stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+            }
+            @media (max-width: 400px) {
+              .fleet-stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
             }
             @media (min-width: 1600px) {
               .grid-fleet-catalog {
