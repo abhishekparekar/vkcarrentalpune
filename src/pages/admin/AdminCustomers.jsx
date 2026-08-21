@@ -410,7 +410,7 @@ export default function AdminCustomers() {
                 type="text"
                 required
                 className="form-input"
-                placeholder="e.g. Rahul Deshmukh"
+                placeholder="Enter customer full name"
                 value={form.name}
                 onChange={e => setForm({ ...form, name: e.target.value })}
                 style={{ height: 36, fontSize: 12.5 }}
@@ -423,7 +423,7 @@ export default function AdminCustomers() {
                 type="tel"
                 required
                 className="form-input"
-                placeholder="+91 98765 43210"
+                placeholder="Enter 10-digit mobile number"
                 value={form.phone}
                 onChange={e => setForm({ ...form, phone: e.target.value })}
                 style={{ height: 36, fontSize: 12.5 }}
@@ -437,7 +437,7 @@ export default function AdminCustomers() {
               <input
                 type="email"
                 className="form-input"
-                placeholder="rahul@example.com"
+                placeholder="Enter email address"
                 value={form.email}
                 onChange={e => setForm({ ...form, email: e.target.value })}
                 style={{ height: 36, fontSize: 12.5 }}
@@ -449,7 +449,7 @@ export default function AdminCustomers() {
               <input
                 type="text"
                 className="form-input"
-                placeholder="Pune (Kothrud)"
+                placeholder="Enter city / location"
                 value={form.city}
                 onChange={e => setForm({ ...form, city: e.target.value })}
                 style={{ height: 36, fontSize: 12.5 }}

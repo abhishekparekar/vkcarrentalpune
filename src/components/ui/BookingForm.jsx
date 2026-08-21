@@ -255,7 +255,7 @@ export default function BookingForm({ car, onSuccess }) {
             type="text"
             required
             className="form-input"
-            placeholder="e.g. Amit Patil"
+            placeholder="Enter your full name"
             value={formData.customerName}
             onChange={e => setFormData({ ...formData, customerName: e.target.value })}
             style={{ height: 42, fontSize: 13.5, borderRadius: 10, padding: '0 12px', width: '100%', boxSizing: 'border-box' }}
@@ -268,7 +268,7 @@ export default function BookingForm({ car, onSuccess }) {
             type="tel"
             required
             className="form-input"
-            placeholder="+91 98765 43210"
+            placeholder="Enter 10-digit mobile number"
             value={formData.phone}
             onChange={e => setFormData({ ...formData, phone: e.target.value })}
             style={{ height: 42, fontSize: 13.5, borderRadius: 10, padding: '0 12px', width: '100%', boxSizing: 'border-box' }}

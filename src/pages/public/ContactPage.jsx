@@ -226,7 +226,7 @@ export default function ContactPage() {
                         type="text"
                         required
                         className="form-input"
-                        placeholder="e.g. Amit Patil"
+                        placeholder="Enter your full name"
                         value={form.customerName}
                         onChange={e => setForm({ ...form, customerName: e.target.value })}
                         style={{ height: 38, fontSize: 13 }}
@@ -239,7 +239,7 @@ export default function ContactPage() {
                         type="tel"
                         required
                         className="form-input"
-                        placeholder="+91 98765 43210"
+                        placeholder="Enter 10-digit mobile number"
                         value={form.phone}
                         onChange={e => setForm({ ...form, phone: e.target.value })}
                         style={{ height: 38, fontSize: 13 }}
@@ -253,7 +253,7 @@ export default function ContactPage() {
                       <input
                         type="email"
                         className="form-input"
-                        placeholder="you@example.com"
+                        placeholder="Enter your email address"
                         value={form.email}
                         onChange={e => setForm({ ...form, email: e.target.value })}
                         style={{ height: 38, fontSize: 13 }}
@@ -279,7 +279,7 @@ export default function ContactPage() {
                       required
                       rows={3}
                       className="form-textarea"
-                      placeholder="Specify your preferred car, dates, or doorstep delivery requirements..."
+                      placeholder="Enter your rental requirements, preferred car, dates, or doorstep address..."
                       value={form.message}
                       onChange={e => setForm({ ...form, message: e.target.value })}
                       style={{ fontSize: 13 }}
