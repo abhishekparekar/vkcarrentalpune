@@ -57,6 +57,15 @@ export default function WhatsAppButton() {
           0% { transform: scale(1); opacity: 0.8; }
           100% { transform: scale(1.5); opacity: 0; }
         }
+        @media (max-width: 640px) {
+          a[aria-label="Chat on WhatsApp"] {
+            bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+            right: max(16px, env(safe-area-inset-right, 16px)) !important;
+            width: 50px !important;
+            height: 50px !important;
+            font-size: 26px !important;
+          }
+        }
       `}</style>
     </motion.a>
   );

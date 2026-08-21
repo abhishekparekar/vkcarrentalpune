@@ -192,8 +192,8 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
-              gap: 10,
+              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+              gap: 12,
             }}>
               {REQUIRED_DOCUMENTS.map(doc => (
                 <div
@@ -201,20 +201,20 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
                   style={{
                     background: '#FFFFFF',
                     border: '1px solid #E2E8F0',
-                    borderRadius: 10,
-                    padding: '10px 12px',
+                    borderRadius: 12,
+                    padding: '12px 14px',
                     display: 'flex',
                     alignItems: 'center',
                     gap: 10,
                     boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)',
                   }}
                 >
-                  <span style={{ fontSize: 20, flexShrink: 0 }}>{doc.icon}</span>
+                  <span style={{ fontSize: 22, flexShrink: 0 }}>{doc.icon}</span>
                   <div>
-                    <strong style={{ display: 'block', fontSize: 12.5, color: '#111318', fontWeight: 800, lineHeight: 1.25 }}>
+                    <strong style={{ display: 'block', fontSize: 13, color: '#111318', fontWeight: 800, lineHeight: 1.25 }}>
                       {doc.id}. {doc.name}
                     </strong>
-                    <span style={{ fontSize: 10.5, color: '#FF4500', fontWeight: 700 }}>{doc.req}</span>
+                    <span style={{ fontSize: 11, color: '#FF4500', fontWeight: 700 }}>{doc.req}</span>
                   </div>
                 </div>
               ))}
@@ -224,8 +224,8 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
           {/* ─── 3-COLUMN POLICY GRID ─── */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: 12,
+            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
+            gap: 16,
           }}>
             {CATEGORIZED_TERMS.map((cat, idx) => (
               <div

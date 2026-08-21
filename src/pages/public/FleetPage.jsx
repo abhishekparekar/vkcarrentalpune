@@ -66,7 +66,7 @@ export default function FleetPage() {
 
         {/* ─── Hero Header (About-style) ─── */}
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
-          <div className="fleet-container" style={{ padding: '36px 20px 30px' }}>
+          <div className="fleet-container" style={{ padding: '32px 0 24px' }}>
             <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
               VK RENTAL CARS PUNE Fleet
             </span>
@@ -80,7 +80,7 @@ export default function FleetPage() {
                 fontWeight: 900,
               }}>AVAILABLE PREMIUM RENTAL CARS</span>
             </h1>
-            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 560, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#64748B', margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
               All vehicles include 300 km daily limit, doorstep delivery, full insurance &amp; zero hidden charges.
             </p>
           </div>

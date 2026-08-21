@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiMenu, FiX, FiPhone, FiCalendar, FiChevronRight, 
+import {
+  FiMenu, FiX, FiPhone, FiCalendar, FiChevronRight,
   FiHome, FiTruck, FiInfo, FiPhoneCall, FiFileText, FiCheckCircle, FiClock, FiShield
 } from 'react-icons/fi';
 import { BsWhatsapp } from 'react-icons/bs';
@@ -11,18 +11,18 @@ import logoImg from '../../assets/vklogo1.png';
 import { useTenant } from '../../contexts/TenantContext';
 
 const navLinks = [
-  { label: 'Home',         to: '/',             icon: <FiHome size={18} /> },
-  { label: 'Fleet',        to: '/fleet',        icon: <FiTruck size={18} /> },
-  { label: 'About Us',     to: '/about',        icon: <FiInfo size={18} /> },
-  { label: 'Contact',      to: '/contact',      icon: <FiPhoneCall size={18} /> },
+  { label: 'Home', to: '/', icon: <FiHome size={18} /> },
+  { label: 'Fleet', to: '/fleet', icon: <FiTruck size={18} /> },
+  { label: 'About Us', to: '/about', icon: <FiInfo size={18} /> },
+  { label: 'Contact', to: '/contact', icon: <FiPhoneCall size={18} /> },
   { label: 'My Inquiries', to: '/my-inquiries', icon: <FiFileText size={18} /> },
 ];
 
 export default function Navbar() {
   const { settings } = useTenant();
-  const [scrolled,  setScrolled]  = useState(false);
-  const [hidden,    setHidden]    = useState(false);
-  const [menuOpen,  setMenuOpen]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -68,8 +68,8 @@ export default function Navbar() {
           zIndex: 9999,
           transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
           transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.25s ease, box-shadow 0.25s ease',
-          background: scrolled || menuOpen 
-            ? 'rgba(255, 255, 255, 0.96)' 
+          background: scrolled || menuOpen
+            ? 'rgba(255, 255, 255, 0.96)'
             : 'rgba(255, 255, 255, 0.92)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
@@ -566,24 +566,23 @@ export default function Navbar() {
           }
           .mobile-call-pill {
             display: inline-flex !important;
-            position: absolute !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            z-index: 5 !important;
           }
           .mobile-logo-img {
             height: 44px !important;
             max-height: 44px !important;
           }
         }
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
           .mobile-call-pill {
-            padding: 5.5px 11px !important;
+            padding: 5px 10px !important;
             font-size: 12px !important;
           }
+          .mobile-call-pill span:last-child {
+            display: none;
+          }
           .mobile-logo-img {
-            height: 38px !important;
-            max-height: 38px !important;
+            height: 40px !important;
+            max-height: 40px !important;
           }
         }
       `}</style>

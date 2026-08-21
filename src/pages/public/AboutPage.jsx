@@ -85,7 +85,7 @@ export default function AboutPage() {
 
         {/* ─── Hero Header ─── */}
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 32 }}>
-          <div className="container" style={{ padding: '36px 16px 30px' }}>
+          <div className="container" style={{ padding: '32px 0 24px' }}>
             <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
               About {settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
             </span>
@@ -118,7 +118,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="container" style={{ padding: '0 16px' }}>
+        <div className="container">
 
           {/* ─── Dynamic Stats Grid ─── */}
           <div className="about-stats-grid" style={{ marginBottom: 32 }}>
@@ -180,11 +180,11 @@ export default function AboutPage() {
               {settings?.aboutMissionHeading || 'Empowering Renters with Complete Self-Drive Freedom'}
             </h2>
 
-            <p style={{ fontSize: 'clamp(13.5px, 1.8vw, 15px)', color: '#475569', lineHeight: 1.7, marginBottom: 14, maxWidth: 850 }}>
+            <p style={{ fontSize: 'clamp(13.5px, 1.8vw, 15.5px)', color: '#334155', lineHeight: 1.75, marginBottom: 14 }}>
               {settings?.aboutMissionText || 'We believe having a car for weekend family trips, business meetings, or hill-station drives should be simple — accessible on demand without ownership hassle.'}
             </p>
 
-            <p style={{ fontSize: 'clamp(13px, 1.6vw, 14.5px)', color: '#64748B', lineHeight: 1.7, marginBottom: 24, maxWidth: 850 }}>
+            <p style={{ fontSize: 'clamp(13px, 1.6vw, 15px)', color: '#475569', lineHeight: 1.75, marginBottom: 24 }}>
               {settings?.aboutStoryText || 'Every vehicle in our fleet is deep-sanitized, digitally verified, and handed over with complete document verification.'}
             </p>
 
@@ -363,23 +363,24 @@ export default function AboutPage() {
       <style>{`
         .about-stats-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(4, minmax(0, 1fr));
           gap: 16px;
+          width: 100%;
         }
         .about-cards-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 16px;
+          width: 100%;
         }
         @media (max-width: 1024px) {
-          .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
-          .about-cards-grid { grid-template-columns: repeat(2, 1fr); }
+          .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 520px) {
-          .about-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+          .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
           .about-cards-grid { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 380px) {
+        @media (max-width: 340px) {
           .about-stats-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>

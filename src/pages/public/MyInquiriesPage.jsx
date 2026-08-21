@@ -72,10 +72,10 @@ export default function MyInquiriesPage() {
       <Navbar />
 
       <main style={{ paddingTop: 'clamp(68px, 9vw, 84px)', paddingBottom: 40, flex: 1 }}>
-        <div className="container" style={{ maxWidth: 820 }}>
+        <div className="container" style={{ maxWidth: 1000 }}>
           
           {/* Header */}
-          <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24, margin: '0 -16px 24px', padding: '28px 16px 22px' }}>
+          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 16, marginBottom: 24, padding: 'clamp(20px, 3vw, 28px)', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.04)' }}>
             <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Track Your Request</span>
             <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 8px', lineHeight: 1.25 }}>
               My{' '}
@@ -135,19 +135,28 @@ export default function MyInquiriesPage() {
           </form>
 
           {/* Results Area */}
-          {searched && (
+          {searched ? (
             <div>
               {loading ? (
-                <p style={{ textAlign: 'center', color: '#64748B', fontSize: 13 }}>Searching records...</p>
+                <p style={{ textAlign: 'center', color: '#64748B', fontSize: 13, padding: '24px 0' }}>Searching records...</p>
               ) : inquiries.length === 0 ? (
                 <div className="glass-card empty-state" style={{ background: '#FFFFFF', padding: '36px 20px', textAlign: 'center', borderRadius: 16, border: '1px solid #E2E8F0' }}>
                   <div className="empty-state-icon" style={{ margin: '0 auto 12px' }}>
                     <FiFileText size={42} color="#FF4500" />
                   </div>
                   <strong style={{ fontSize: 16, color: '#0F172A', display: 'block' }}>No inquiries found</strong>
-                  <p style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>
+                  <p style={{ fontSize: 13, color: '#64748B', marginTop: 4, maxWidth: 440, margin: '4px auto 16px' }}>
                     We couldn't find any rental inquiries matching "{emailOrPhone}". Make sure the phone or email matches what you entered during booking.
                   </p>
+                  <a
+                    href="https://wa.me/918381052230?text=Hi%20VK%20Rental%20Cars,%20I%20want%20to%20check%20my%20inquiry%20status."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary btn-sm"
+                    style={{ background: '#25D366', borderColor: '#25D366', color: '#FFFFFF', fontWeight: 800, padding: '8px 18px', display: 'inline-flex', alignItems: 'center', gap: 6 }}
+                  >
+                    <BsWhatsapp size={14} /> Ask on WhatsApp Support
+                  </a>
                 </div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
@@ -157,7 +166,7 @@ export default function MyInquiriesPage() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       style={{
-                        padding: 18,
+                        padding: 20,
                         background: '#FFFFFF',
                         borderRadius: 16,
                         border: '1px solid #E2E8F0',
@@ -183,7 +192,7 @@ export default function MyInquiriesPage() {
                               <FiCopy size={12} />
                             </button>
                           </div>
-                          <h3 style={{ fontSize: 17, margin: '2px 0 0', color: '#0F172A', fontWeight: 900 }}>
+                          <h3 style={{ fontSize: 18, margin: '2px 0 0', color: '#0F172A', fontWeight: 900 }}>
                             {item.carName || 'General Inquiry'}
                           </h3>
                         </div>
@@ -193,9 +202,9 @@ export default function MyInquiriesPage() {
                       {/* Details Grid */}
                       <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-                        gap: 10,
-                        padding: 12,
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+                        gap: 12,
+                        padding: 14,
                         background: '#F8FAFC',
                         borderRadius: 12,
                         border: '1px solid #F1F5F9',
@@ -234,7 +243,7 @@ export default function MyInquiriesPage() {
 
                       {/* Customer Contact Summary */}
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, paddingTop: 4 }}>
-                        <div style={{ fontSize: 12, color: '#475569' }}>
+                        <div style={{ fontSize: 12.5, color: '#475569' }}>
                           Customer: <strong>{item.customerName || 'Guest'}</strong> • {item.phone || item.email}
                         </div>
 
@@ -248,9 +257,9 @@ export default function MyInquiriesPage() {
                               background: '#25D366',
                               borderColor: '#25D366',
                               color: '#FFFFFF',
-                              fontSize: 12,
+                              fontSize: 12.5,
                               fontWeight: 800,
-                              padding: '6px 12px',
+                              padding: '7px 14px',
                               display: 'flex',
                               alignItems: 'center',
                               gap: 6,
@@ -265,6 +274,44 @@ export default function MyInquiriesPage() {
                   ))}
                 </div>
               )}
+            </div>
+          ) : (
+            /* Helpful Quick Guide Cards when not yet searched */
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: 14,
+              marginTop: 8,
+            }}>
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255, 69, 0, 0.09)', color: '#FF4500', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+                  <FiClock size={18} />
+                </div>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>15-Min Response</h4>
+                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                  Our team confirms car availability and coordinates doorstep pickup within 15 minutes.
+                </p>
+              </div>
+
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(37, 99, 235, 0.09)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+                  <FiCheckCircle size={18} />
+                </div>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>Real-time Status</h4>
+                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                  Track live status updates from New Inquiry → Agent Contacted → Confirmed Booking.
+                </p>
+              </div>
+
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(37, 211, 102, 0.12)', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+                  <BsWhatsapp size={18} />
+                </div>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>WhatsApp Direct</h4>
+                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                  Need faster assistance? Send your inquiry reference directly to our 24/7 WhatsApp manager.
+                </p>
+              </div>
             </div>
           )}
         </div>

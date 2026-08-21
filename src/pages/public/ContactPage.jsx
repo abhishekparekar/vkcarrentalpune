@@ -144,7 +144,7 @@ export default function ContactPage() {
 
         {/* ─── Hero Header ─── */}
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
-          <div className="container" style={{ padding: '36px 16px 30px', maxWidth: 1100 }}>
+          <div className="container" style={{ padding: '32px 0 24px' }}>
             <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Contact &amp; Instant Quote</span>
             <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
               GET IN{' '}
@@ -156,13 +156,13 @@ export default function ContactPage() {
                 fontWeight: 900,
               }}>TOUCH WITH CAR RENTAL SUPPORT</span>
             </h1>
-            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 580, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
               Have questions about daily rates, doorstep delivery, or extra km charges? Fill out the quick form below or message us instantly on WhatsApp.
             </p>
           </div>
         </div>
 
-        <div className="container" style={{ maxWidth: 1100, padding: '0 16px' }}>
+        <div className="container">
 
           {/* ─── Main Section FIRST: Compact Form + Direct WhatsApp Banner ─── */}
           <div className="contact-main-grid" style={{ marginBottom: 24 }}>
@@ -414,10 +414,11 @@ export default function ContactPage() {
       <style>{`
         .contact-main-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) 340px;
+          grid-template-columns: minmax(0, 1.4fr) minmax(340px, 1fr);
           gap: 20px;
+          width: 100%;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
           .contact-main-grid {
             grid-template-columns: 1fr !important;
             gap: 16px;

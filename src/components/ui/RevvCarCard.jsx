@@ -301,7 +301,7 @@ export default function RevvCarCard({ car, onEnquire }) {
 
         @media (max-width: 640px) {
           .vk-car-card { border-radius: 14px; }
-          .vk-card-img-box { height: 125px; }
+          .vk-card-img-box { height: auto; aspect-ratio: 16 / 10; min-height: 110px; max-height: 155px; }
           .vk-card-badge-popular { top: 6px; left: 6px; font-size: 9px; padding: 2px 7px; }
           .vk-card-badge-km { top: 6px; right: 6px; font-size: 9.5px; padding: 2px 7px; }
           .vk-card-body { padding: 8px 9px 0; }

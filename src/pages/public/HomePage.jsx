@@ -22,6 +22,7 @@ import TermsAndConditions from '../../components/ui/TermsAndConditions';
 
 import { useTenant } from '../../contexts/TenantContext';
 import { subscribeToCars, subscribeToReviews } from '../../firebase/firestore';
+import toast from 'react-hot-toast';
 
 import heroBgImg from '../../assets/vkherobg1.jpg';
 import logoImg from '../../assets/vklogo1.png';
@@ -274,22 +275,22 @@ export default function HomePage() {
       </section>
 
       {/* 2. TOP SELLING CARS SECTION */}
-      <section style={{ padding: '24px 0 20px', background: '#FFFFFF' }}>
-        <div className="container">
+      <section style={{ padding: '28px 0 20px', background: '#FFFFFF', width: '100%' }}>
+        <div className="fleet-container">
           {/* Section Header with Left Title + Right Link */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, flexWrap: 'wrap', gap: 10 }}>
             <div>
               <span className="section-label">Most Popular</span>
-              <h2 style={{ fontSize: 'clamp(18px, 4vw, 24px)', fontWeight: 800, color: '#111318', margin: 0 }}>
+              <h2 style={{ fontSize: 'clamp(18px, 3.5vw, 24px)', fontWeight: 900, color: '#111318', margin: 0 }}>
                 Top Cars in <span style={{ color: '#FF4500' }}>{city}</span>
               </h2>
             </div>
-            <Link to="/fleet" className="btn btn-secondary btn-sm">
+            <Link to="/fleet" className="btn btn-secondary btn-sm" style={{ fontWeight: 800 }}>
               View Popular Fleet <FiArrowRight />
             </Link>
           </div>
 
-          {/* Clean 4-Column Fleet Grid (matching Fleet page) */}
+          {/* Clean Fleet Grid */}
           {loading ? (
             <div className="grid-fleet-catalog">
               <CarSkeleton />
@@ -303,7 +304,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="grid-fleet-catalog">
-              {cars.filter(c => c.isPopular !== false).slice(0, 4).map((car) => (
+              {cars.filter(c => c.isPopular !== false).slice(0, 8).map((car) => (
                 <RevvCarCard key={car.id} car={car} onEnquire={openEnquiry} />
               ))}
             </div>
@@ -312,14 +313,14 @@ export default function HomePage() {
       </section>
 
       {/* 3. FULL FLEET SECTION */}
-      <section className="section-sm" style={{ background: '#F7F7F8', borderTop: '1px solid #E4E6EA', borderBottom: '1px solid #E4E6EA' }}>
-        <div className="container">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
+      <section className="section-sm" style={{ background: '#F7F7F8', borderTop: '1px solid #E4E6EA', borderBottom: '1px solid #E4E6EA', width: '100%' }}>
+        <div className="fleet-container">
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
             <div>
               <span className="section-label">Full Fleet</span>
               <h2 className="section-title" style={{ margin: 0 }}>All Available <span>Self-Drive Cars</span></h2>
             </div>
-            <Link to="/fleet" className="btn btn-secondary btn-sm">
+            <Link to="/fleet" className="btn btn-secondary btn-sm" style={{ fontWeight: 800 }}>
               View All Fleet <FiArrowRight />
             </Link>
           </div>
@@ -334,12 +335,12 @@ export default function HomePage() {
           ) : (
             <>
               <div className="grid-fleet-catalog">
-                {cars.slice(0, 8).map((car) => (
+                {cars.slice(0, 12).map((car) => (
                   <RevvCarCard key={car.id} car={car} onEnquire={openEnquiry} />
                 ))}
               </div>
               <div style={{ textAlign: 'center', marginTop: 28 }}>
-                <Link to="/fleet" className="btn btn-primary btn-md" style={{ padding: '10px 24px', fontSize: 14 }}>
+                <Link to="/fleet" className="btn btn-primary btn-md" style={{ padding: '10px 28px', fontSize: 14, fontWeight: 900, borderRadius: 999 }}>
                   Explore All Fleet ({cars.length}+ Cars) <FiArrowRight />
                 </Link>
               </div>
@@ -400,19 +401,19 @@ export default function HomePage() {
       </section>
 
       {/* 4.5 DIRECT HOMEPAGE INQUIRY FORM SECTION */}
-      <section id="inquiry-form-section" style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0', padding: '32px 0' }}>
-        <div className="container">
-          <div className="section-header text-center" style={{ marginBottom: 16 }}>
+      <section id="inquiry-form-section" style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0', padding: '36px 0', width: '100%' }}>
+        <div className="fleet-container">
+          <div className="section-header text-center" style={{ marginBottom: 20 }}>
             <span className="section-label-red">Instant Booking & Quote</span>
             <h2 className="section-title" style={{ fontSize: 'clamp(20px, 3.5vw, 26px)', margin: '4px 0' }}>Submit Your <span>Car Rental Inquiry</span></h2>
           </div>
 
           <div style={{
             background: '#FFFFFF',
-            borderRadius: 16,
-            padding: '16px 18px',
+            borderRadius: 18,
+            padding: 'clamp(16px, 3vw, 28px)',
             border: '1px solid #E2E8F0',
-            boxShadow: '0 4px 18px rgba(15, 23, 42, 0.05)',
+            boxShadow: '0 6px 24px rgba(15, 23, 42, 0.06)',
           }}>
             <BookingForm car={null} onSuccess={() => toast.success('Rental inquiry submitted! We will reach out shortly.')} />
           </div>
@@ -472,68 +473,62 @@ export default function HomePage() {
       </section>
 
       {/* 6. TESTIMONIALS */}
-      <section className="section-sm" style={{ background: '#F7F7F8', borderTop: '1px solid #E4E6EA', paddingBottom: 48 }}>
-        <div className="container">
+      <section className="section-sm" style={{ background: '#F7F7F8', borderTop: '1px solid #E4E6EA', paddingBottom: 48, width: '100%' }}>
+        <div className="fleet-container">
           <div className="section-header text-center" style={{ marginBottom: 28 }}>
             <span className="section-label-red">Reviews</span>
             <h2 className="section-title">Loved by <span>Drivers</span></h2>
           </div>
 
-          {reviews.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '24px 0', color: '#64748B', fontSize: 13 }}>
-              No customer reviews published yet. Admin can add live customer reviews in Admin Panel Settings.
-            </div>
-          ) : (
-            <div className="reviews-grid">
-              {reviews.map((rev, idx) => (
-                <div
-                  key={rev.id || idx}
-                  style={{
-                    padding: 22,
-                    background: '#FFFFFF',
-                    borderRadius: 16,
-                    border: '1px solid #E4E6EA',
-                    boxShadow: '0 4px 20px rgba(17,19,24,0.05)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    gap: 14,
-                  }}
-                >
-                  <div>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
-                      <div style={{ display: 'flex', gap: 3, color: '#F59E0B' }}>
-                        {[...Array(rev.rating || 5)].map((_, i) => <BsStarFill key={i} size={14} />)}
-                      </div>
-                      <span style={{ fontSize: 11, background: 'rgba(22,163,74,0.08)', color: '#16A34A', fontWeight: 700, padding: '2px 8px', borderRadius: 99, border: '1px solid rgba(22,163,74,0.2)' }}>
-                        Verified Customer
-                      </span>
+          <div className="reviews-grid">
+            {(reviews.length > 0 ? reviews : TESTIMONIALS.slice(0, 4)).map((rev, idx) => (
+              <div
+                key={rev.id || idx}
+                style={{
+                  padding: 20,
+                  background: '#FFFFFF',
+                  borderRadius: 16,
+                  border: '1px solid #E4E6EA',
+                  boxShadow: '0 4px 18px rgba(17,19,24,0.05)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: 14,
+                }}
+              >
+                <div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                    <div style={{ display: 'flex', gap: 3, color: '#F59E0B' }}>
+                      {[...Array(rev.rating || 5)].map((_, i) => <BsStarFill key={i} size={14} />)}
                     </div>
-                    <p style={{ fontSize: 13, fontStyle: 'italic', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.6 }}>
-                      "{rev.comment}"
-                    </p>
+                    <span style={{ fontSize: 11, background: 'rgba(22,163,74,0.08)', color: '#16A34A', fontWeight: 700, padding: '2px 8px', borderRadius: 99, border: '1px solid rgba(22,163,74,0.2)' }}>
+                      Verified Customer
+                    </span>
                   </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 10, borderTop: '1px solid #F0F1F3' }}>
-                    <div style={{
-                      width: 38, height: 38,
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #FF4500 0%, #900007 100%)',
-                      color: '#FFFFFF',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 13, fontWeight: 800,
-                      boxShadow: '0 2px 10px rgba(255, 69, 0,0.30)',
-                    }}>
-                      {rev.name?.charAt(0) || 'R'}
-                    </div>
-                    <div>
-                      <strong style={{ display: 'block', fontSize: 14, color: '#000000', lineHeight: 1.2 }}>{rev.name}</strong>
-                      <span style={{ fontSize: 11, color: '#334155', fontWeight: 600 }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
-                    </div>
+                  <p style={{ fontSize: 13, fontStyle: 'italic', color: '#000000', fontWeight: 600, margin: 0, lineHeight: 1.6 }}>
+                    "{rev.comment}"
+                  </p>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 10, borderTop: '1px solid #F0F1F3' }}>
+                  <div style={{
+                    width: 38, height: 38,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #FF4500 0%, #900007 100%)',
+                    color: '#FFFFFF',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 13, fontWeight: 800,
+                    boxShadow: '0 2px 10px rgba(255, 69, 0,0.30)',
+                  }}>
+                    {rev.name?.charAt(0) || 'R'}
+                  </div>
+                  <div>
+                    <strong style={{ display: 'block', fontSize: 13.5, color: '#000000', lineHeight: 1.2 }}>{rev.name}</strong>
+                    <span style={{ fontSize: 11, color: '#334155', fontWeight: 600 }}>{rev.city || rev.location || 'Pune'} • {rev.carUsed || rev.carName || 'Self Drive'}</span>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

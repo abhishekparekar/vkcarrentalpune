@@ -197,58 +197,47 @@ ol {
   list-style: none;
 }
 
-/* ── Container & Grids ── */
+/* ── Container & Grids (100% Full-Size 4-Column Fleet Grid across all devices) ── */
 .container,
 .fleet-container {
   width: 100%;
-  max-width: 1340px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 100%;
+  padding-left: clamp(14px, 2.5vw, 32px);
+  padding-right: clamp(14px, 2.5vw, 32px);
+  margin-left: auto;
+  margin-right: auto;
   box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .container,
-  .fleet-container {
-    padding: 0 14px;
-  }
-}
-
-@media (max-width: 480px) {
-  .container,
-  .fleet-container {
-    padding: 0 10px;
-  }
 }
 
 .grid-fleet-catalog {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .grid-fleet-catalog {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .grid-fleet-catalog {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .grid-fleet-catalog {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 8px;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 320px) {
   .grid-fleet-catalog {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -257,30 +246,33 @@ ol {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 .grid-4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
+  width: 100%;
 }
 
 @media (max-width: 1024px) {
   .grid-4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 
   .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
 }
@@ -292,8 +284,8 @@ ol {
   }
 
   .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .grid-4 {
@@ -302,50 +294,45 @@ ol {
   }
 }
 
-@media (max-width: 380px) {
-  .grid-3 {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-  }
-}
-
-/* ── Reviews Grid ── */
+/* ── Reviews Grid (100% Full-Size 4-Column Layout) ── */
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  width: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1280px) {
   .reviews-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .reviews-grid {
-    display: flex !important;
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    gap: 12px !important;
-    padding: 4px 4px 16px;
-    margin: 0 -4px;
-    scrollbar-width: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
+}
 
-  .reviews-grid::-webkit-scrollbar {
-    display: none;
+@media (max-width: 540px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
+}
 
-  .reviews-grid>div {
-    min-width: 260px;
-    max-width: 300px;
-    width: 80vw;
-    flex-shrink: 0;
-    scroll-snap-align: center;
-  }
+/* ── React DatePicker Full-Width Responsive Wrapper ── */
+.react-datepicker-wrapper,
+.react-datepicker__input-container {
+  width: 100% !important;
+  display: block !important;
+}
+
+.react-datepicker-wrapper input {
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 /* ── Glass Card ── */
@@ -861,6 +848,7 @@ ol {
 .table-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
 }
