@@ -566,6 +566,10 @@ export default function Navbar() {
           }
           .mobile-call-pill {
             display: inline-flex !important;
+            position: absolute !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            z-index: 10;
           }
           .mobile-logo-img {
             height: 44px !important;
@@ -575,14 +579,17 @@ export default function Navbar() {
         @media (max-width: 480px) {
           .mobile-call-pill {
             padding: 5px 10px !important;
-            font-size: 12px !important;
-          }
-          .mobile-call-pill span:last-child {
-            display: none;
+            font-size: 12.5px !important;
           }
           .mobile-logo-img {
-            height: 40px !important;
-            max-height: 40px !important;
+            height: 38px !important;
+            max-height: 38px !important;
+          }
+        }
+        @media (max-width: 360px) {
+          .mobile-call-pill {
+            padding: 4px 8px !important;
+            font-size: 11.5px !important;
           }
         }
       `}</style>
