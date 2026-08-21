@@ -388,26 +388,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Quick Trust Badges Strip inside Mobile Drawer */}
-              <div style={{
-                padding: '8px 14px',
-                background: '#F8FAFC',
-                borderBottom: '1px solid #F1F5F9',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                fontSize: 10.5,
-                fontWeight: 800,
-                color: '#475569',
-              }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <FiShield color="#FF4500" size={12} /> Zero Deposit
-                </span>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                  <FiClock color="#FF4500" size={12} /> 24/7 Delivery
-                </span>
-              </div>
-
               {/* Drawer Main Navigation Links */}
               <div style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 5 }}>
                 <span style={{ fontSize: 10.5, fontWeight: 900, color: '#64748B', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
