@@ -7,6 +7,7 @@ import {
 import { BsCarFront, BsStarFill } from 'react-icons/bs';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 import TermsAndConditions from '../../components/ui/TermsAndConditions';
 
 import { useTenant } from '../../contexts/TenantContext';
@@ -79,6 +80,12 @@ export default function AboutPage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      <SEO
+        title="About Us | VK RENTAL CARS PUNE — Trusted Self Drive Car Rentals"
+        description="Learn about VK RENTAL CARS PUNE: Pune's trusted self drive car rental partner. Offering doorstep delivery, 300 km daily limit, sanitized fleet and 24/7 road assistance."
+        keywords="about VK Rental Cars, car rental company Pune, trusted self drive cars Pune, VK car hire story, Pune car rental services"
+        canonicalPath="/about"
+      />
       <Navbar />
 
       <main style={{ paddingTop: 72, paddingBottom: 36, flex: 1 }}>

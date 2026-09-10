@@ -48,23 +48,37 @@ export default function AdminLayout({ children }) {
     }}>
       {/* Logo */}
       <div style={{
-        padding: sidebarOpen ? '10px 14px 12px' : '10px 8px 12px',
+        padding: sidebarOpen ? '10px 14px 14px' : '10px 8px 14px',
         borderBottom: '1px solid var(--color-border)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-        <img
-          src={logoImg}
-          alt="VK RENTAL CARS PUNE"
-          style={{
-            height: sidebarOpen ? 50 : 34,
-            maxWidth: '100%',
-            objectFit: 'contain',
-            display: 'block',
-            transition: 'height 0.2s ease',
-          }}
-        />
+        <div style={{
+          background: 'linear-gradient(180deg, #0F172A 0%, #070B14 100%)',
+          borderRadius: 14,
+          padding: sidebarOpen ? '8px 12px' : '6px 4px',
+          width: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.18)',
+          border: '1px solid rgba(255, 69, 0, 0.30)',
+          transition: 'all 0.2s ease',
+        }}>
+          <img
+            src={logoImg}
+            alt="VK RENTAL CARS PUNE"
+            style={{
+              height: sidebarOpen ? 52 : 34,
+              maxWidth: '100%',
+              objectFit: 'contain',
+              display: 'block',
+              filter: 'drop-shadow(0 2px 8px rgba(255, 69, 0, 0.35))',
+              transition: 'height 0.2s ease',
+            }}
+          />
+        </div>
       </div>
 
       {/* Nav Items */}

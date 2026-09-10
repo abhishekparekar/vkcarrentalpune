@@ -200,10 +200,15 @@ export default function AdminDashboard() {
           
           {/* Recent Inquiries Table */}
           <div className="glass-card" style={{ padding: 16, background: '#FFFFFF' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
-              <h3 style={{ fontSize: 15, margin: 0, color: '#0F172A', fontWeight: 800 }}>Recent Rental Inquiries</h3>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                <h3 style={{ fontSize: 15, margin: 0, color: '#0F172A', fontWeight: 800 }}>Recent Rental Inquiries</h3>
+                <span className="badge badge-success" style={{ fontSize: 10, padding: '1px 6px' }}>
+                  Live ➔ vishalkarke184@gmail.com
+                </span>
+              </div>
               <Link to="/admin/inquiries" style={{ fontSize: 12, color: '#FF4500', textDecoration: 'none', fontWeight: 800 }}>
-                View All Inquiries →
+                View All Inquiries ({inquiries.length}) →
               </Link>
             </div>
 
@@ -221,38 +226,45 @@ export default function AdminDashboard() {
                 <table className="table">
                   <thead>
                     <tr>
-                      <th>Customer Name</th>
-                      <th>Car Requested</th>
-                      <th>City / Type</th>
+                      <th>Customer &amp; Phone</th>
+                      <th>Fleet Vehicle</th>
                       <th>Dates</th>
+                      <th>Price</th>
                       <th>Status</th>
-                      <th>Contact / Actions</th>
+                      <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {inquiries.slice(0, 6).map((item) => {
                       const cleanPhone = (item.phone || '').replace(/\D/g, '');
                       const waNum = cleanPhone.startsWith('91') ? cleanPhone : `91${cleanPhone}`;
+                      const pDate = item.pickupDate ? new Date(item.pickupDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : null;
+                      const rDate = item.returnDate ? new Date(item.returnDate).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) : null;
                       return (
                         <tr key={item.id}>
                           <td>
                             <div>
                               <strong style={{ color: '#0F172A', display: 'block', fontSize: 12.5 }}>{item.customerName}</strong>
-                              <span style={{ fontSize: 11, color: '#64748B' }}>{item.phone}</span>
+                              <a href={`tel:${item.phone}`} style={{ fontSize: 11, color: '#FF4500', textDecoration: 'none', fontWeight: 700 }}>
+                                📞 {item.phone}
+                              </a>
                             </div>
                           </td>
                           <td>
                             <strong style={{ color: '#FF4500', fontSize: 12.5 }}>{item.carName || 'General'}</strong>
                           </td>
                           <td>
-                            <span style={{ fontSize: 12, color: '#334155' }}>
-                              {item.city || 'Pune'} ({item.pickupType || 'delivery'})
+                            <span style={{ fontSize: 11.5, color: '#334155', display: 'block' }}>
+                              {pDate ? `${pDate} ${rDate && rDate !== pDate ? '➔ ' + rDate : ''}` : 'Flexible'}
+                            </span>
+                            <span style={{ fontSize: 10.5, color: '#64748B' }}>
+                              📍 {item.city || 'Pune'}
                             </span>
                           </td>
                           <td>
-                            <span style={{ fontSize: 11.5, color: '#64748B' }}>
-                              {formatTimestamp(item.pickupDate)}
-                            </span>
+                            <strong style={{ color: '#16A34A', fontSize: 12.5 }}>
+                              {item.estimatedPrice ? formatCurrency(item.estimatedPrice) : 'Quote'}
+                            </strong>
                           </td>
                           <td>
                             <select
@@ -270,7 +282,7 @@ export default function AdminDashboard() {
                           <td>
                             <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
                               <a
-                                href={`https://wa.me/${waNum}`}
+                                href={`https://wa.me/${waNum}?text=Hi%20${encodeURIComponent(item.customerName || 'Customer')},%20regarding%20your%20inquiry%20for%20${encodeURIComponent(item.carName || 'our fleet')}.`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="btn btn-secondary btn-sm"

@@ -14,6 +14,7 @@ import { BsCarFront, BsStarFill, BsAward, BsCarFrontFill, BsWhatsapp } from 'rea
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 import RevvCarCard from '../../components/ui/RevvCarCard';
 import CarSkeleton from '../../components/ui/CarSkeleton';
 import Modal from '../../components/ui/Modal';
@@ -101,6 +102,12 @@ export default function HomePage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F7F7F8' }}>
+      <SEO
+        title="VK RENTAL CARS PUNE | Best Self Drive Cars & Car Rental in Pune"
+        description="Book top-rated self drive cars in Pune with VK RENTAL CARS. Rent Thar 4x4, Swift, Ertiga 7-Seater, Baleno with doorstep delivery, 300 km daily limit, 0 security deposit & 24/7 roadside assist."
+        keywords="VK Rental Cars, VK Rental Cars Pune, self drive cars Pune, car rental Pune, car hire in Pune, self drive car rental Pune, Thar 4x4 rental Pune, Ertiga rental Pune, Swift rental Pune, PCMC self drive"
+        canonicalPath="/"
+      />
       <Navbar />
 
       {/* 1. CINEMATIC ANIMATED HERO SECTION */}

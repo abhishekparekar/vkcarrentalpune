@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 
 import { useTenant } from '../../contexts/TenantContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -127,7 +128,7 @@ export default function ContactPage() {
         pickupType: 'Doorstep Delivery',
       }, user?.uid || 'guest');
       setSubmitted(true);
-      toast.success('Message submitted successfully! We will contact you within 15 minutes.');
+      toast.success('Inquiry submitted successfully! Notification dispatched to vishalkarke184@gmail.com');
     } catch (err) {
       console.error('Error submitting contact form:', err);
       toast.error('Failed to submit message. Please try WhatsApp directly.');
@@ -138,6 +139,12 @@ export default function ContactPage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      <SEO
+        title="Contact VK RENTAL CARS PUNE | 24/7 Car Rental Booking & Support"
+        description="Contact VK RENTAL CARS PUNE for instant self-drive car bookings in Pune. Call/WhatsApp +91 8381052230, email vishalkarke184@gmail.com. 24/7 doorstep delivery available."
+        keywords="contact VK Rental Cars, car rental contact Pune, book self drive car Pune, VK rental phone number, Pune car hire contact"
+        canonicalPath="/contact"
+      />
       <Navbar />
 
       <main style={{ paddingTop: 'clamp(68px, 9vw, 84px)', paddingBottom: 40, flex: 1 }}>

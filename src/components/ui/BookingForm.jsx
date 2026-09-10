@@ -3,7 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { motion } from 'framer-motion';
 import { FiSend, FiCheckCircle, FiMapPin, FiTruck, FiKey, FiCalendar, FiClock } from 'react-icons/fi';
-import { BsCarFront } from 'react-icons/bs';
+import { BsCarFront, BsWhatsapp } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { addInquiry, subscribeToCars } from '../../firebase/firestore';
 import { useTenant } from '../../contexts/TenantContext';
@@ -91,7 +91,7 @@ export default function BookingForm({ car, onSuccess }) {
       }, user?.uid || 'guest');
 
       setSubmitted(true);
-      toast.success('Rental Inquiry submitted successfully!');
+      toast.success('Rental Inquiry submitted! Alert sent to vishalkarke184@gmail.com');
       if (onSuccess) onSuccess();
     } catch (err) {
       console.error(err);
@@ -130,10 +130,47 @@ export default function BookingForm({ car, onSuccess }) {
 
         <h3 style={{ fontSize: 19, margin: 0, color: '#0F172A', fontWeight: 900 }}>Inquiry Received!</h3>
         <p style={{ fontSize: 13, color: '#64748B', maxWidth: 380, margin: 0, lineHeight: 1.6 }}>
-          Thank you, <strong>{formData.customerName}</strong>! Our representative will confirm vehicle availability ({activeCar?.name}) and coordinate doorstep delivery within 15 minutes.
+          Thank you, <strong>{formData.customerName}</strong>! Your inquiry for <strong>{activeCar?.name}</strong> has been logged in our system and an alert has been dispatched to <strong>vishalkarke184@gmail.com</strong>.
         </p>
 
-        <div style={{ display: 'flex', gap: 10, marginTop: 6 }}>
+        <div style={{
+          background: '#F8FAFC',
+          border: '1px solid #E2E8F0',
+          borderRadius: 10,
+          padding: '8px 14px',
+          fontSize: 12,
+          color: '#334155',
+          maxWidth: 380,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+        }}>
+          <span>✉️</span>
+          <span>Confirmation &amp; admin notification delivered to: <strong>vishalkarke184@gmail.com</strong></span>
+        </div>
+
+        <div style={{ display: 'flex', gap: 10, marginTop: 6, flexWrap: 'wrap', justifyContent: 'center' }}>
+          <a
+            href={`https://wa.me/918381052230?text=Hi%20VK%20Rental%20Cars,%20I%20just%20submitted%20an%20inquiry%20for%20${encodeURIComponent(activeCar?.name || 'Car')}.%20Customer:%20${encodeURIComponent(formData.customerName)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-sm"
+            style={{
+              background: '#25D366',
+              color: '#FFFFFF',
+              border: 'none',
+              fontWeight: 800,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '8px 16px',
+              borderRadius: 10,
+              textDecoration: 'none',
+            }}
+          >
+            <BsWhatsapp size={14} /> WhatsApp Support
+          </a>
+
           <a
             href="/my-inquiries"
             className="btn btn-primary btn-sm"

@@ -61,17 +61,28 @@ export default function AdminLogin() {
       >
         {/* Header Logo */}
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <img
-            src={logoImg}
-            alt="VK RENTAL CARS PUNE"
-            style={{
-              height: 64,
-              width: 'auto',
-              margin: '0 auto 12px',
-              display: 'block',
-              filter: 'drop-shadow(0 4px 14px rgba(255, 69, 0,0.40))',
-            }}
-          />
+          <div style={{
+            background: 'linear-gradient(180deg, #0F172A 0%, #070B14 100%)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '12px 24px',
+            borderRadius: 18,
+            margin: '0 auto 16px',
+            boxShadow: '0 8px 24px rgba(0, 0, 0, 0.25)',
+            border: '1.5px solid rgba(255, 69, 0, 0.35)',
+          }}>
+            <img
+              src={logoImg}
+              alt="VK RENTAL CARS PUNE"
+              style={{
+                height: 70,
+                width: 'auto',
+                display: 'block',
+                filter: 'drop-shadow(0 4px 14px rgba(255, 69, 0, 0.40))',
+              }}
+            />
+          </div>
           <h2 style={{ fontSize: 20, fontWeight: 800, margin: '0 0 4px', color: '#111318' }}>VK Car Rental Admin Portal</h2>
           <p style={{ fontSize: 12, color: '#6B7080', margin: 0 }}>
             Authorized Admin Access Only

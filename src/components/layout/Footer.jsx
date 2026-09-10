@@ -63,25 +63,29 @@ export default function Footer() {
 
             {/* ── 1. Brand & Business Info Column ── */}
             <div className="footer-brand-col">
-              <Link to="/" style={{ display: 'inline-block', marginBottom: 16, textDecoration: 'none' }}>
-                <div style={{
-                  background: '#FFFFFF',
-                  padding: '8px 16px',
-                  borderRadius: 14,
-                  boxShadow: '0 6px 24px rgba(0, 0, 0, 0.45)',
-                  display: 'inline-block',
-                }}>
-                  <img
-                    src={logoImg}
-                    alt={settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
-                    style={{
-                      height: 52,
-                      width: 'auto',
-                      objectFit: 'contain',
-                      display: 'block',
-                    }}
-                  />
-                </div>
+              <Link
+                to="/"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  marginBottom: 18,
+                  textDecoration: 'none',
+                }}
+              >
+                <img
+                  src={logoImg}
+                  alt={settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
+                  style={{
+                    height: 64,
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                    filter: 'drop-shadow(0 4px 18px rgba(255, 69, 0, 0.40))',
+                    transition: 'transform 0.25s ease',
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                />
               </Link>
 
               <h3 style={{ fontSize: 15, fontWeight: 900, color: '#FFFFFF', marginBottom: 8, letterSpacing: '0.3px' }}>

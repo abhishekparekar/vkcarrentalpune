@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 import { useTenant } from '../../contexts/TenantContext';
 import { subscribeToInquiries, formatTimestamp } from '../../firebase/firestore';
 import { formatCurrency } from '../../utils/formatCurrency';
@@ -69,6 +70,11 @@ export default function MyInquiriesPage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      <SEO
+        title="Track Rental Inquiries | VK RENTAL CARS PUNE"
+        description="Check status and updates for your car booking inquiry with VK RENTAL CARS PUNE. Track your self-drive reservation instantly."
+        canonicalPath="/my-inquiries"
+      />
       <Navbar />
 
       <main style={{ paddingTop: 'clamp(68px, 9vw, 84px)', paddingBottom: 40, flex: 1 }}>

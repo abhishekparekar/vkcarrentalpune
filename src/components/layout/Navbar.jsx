@@ -69,12 +69,12 @@ export default function Navbar() {
           transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
           transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.25s ease, box-shadow 0.25s ease',
           background: scrolled || menuOpen
-            ? 'rgba(255, 255, 255, 0.96)'
-            : 'rgba(255, 255, 255, 0.92)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          borderBottom: scrolled ? '1px solid rgba(226, 232, 240, 0.9)' : '1px solid rgba(241, 245, 249, 0.8)',
-          boxShadow: scrolled ? '0 8px 30px rgba(0, 0, 0, 0.08)' : '0 2px 10px rgba(0, 0, 0, 0.03)',
+            ? 'rgba(10, 15, 29, 0.98)'
+            : 'rgba(15, 23, 42, 0.94)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: scrolled ? '0 10px 35px rgba(0, 0, 0, 0.60)' : '0 4px 20px rgba(0, 0, 0, 0.35)',
         }}
       >
         <div className="container" style={{
@@ -99,15 +99,15 @@ export default function Navbar() {
               fetchPriority="high"
               className="mobile-logo-img"
               style={{
-                height: 52,
-                maxHeight: 52,
+                height: 58,
+                maxHeight: 58,
                 width: 'auto',
                 objectFit: 'contain',
                 display: 'block',
-                filter: 'drop-shadow(0 4px 12px rgba(255, 69, 0, 0.22))',
+                filter: 'drop-shadow(0 4px 16px rgba(255, 69, 0, 0.40))',
                 transition: 'transform 0.2s ease',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.04)'}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </Link>
@@ -125,11 +125,11 @@ export default function Navbar() {
                   padding: '8px 20px',
                   borderRadius: '9999px',
                   fontSize: 14.5,
-                  fontWeight: isActive ? 800 : 700,
-                  color: isActive ? '#FF4500' : '#000000',
-                  background: isActive ? 'rgba(255, 69, 0, 0.09)' : 'transparent',
-                  border: isActive ? '1px solid rgba(255, 69, 0, 0.32)' : '1px solid transparent',
-                  boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.15)' : 'none',
+                  fontWeight: isActive ? 800 : 600,
+                  color: isActive ? '#FF5500' : '#F1F5F9',
+                  background: isActive ? 'rgba(255, 69, 0, 0.15)' : 'transparent',
+                  border: isActive ? '1px solid rgba(255, 69, 0, 0.45)' : '1px solid transparent',
+                  boxShadow: isActive ? '0 4px 16px rgba(255, 69, 0, 0.25)' : 'none',
                   transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                   textDecoration: 'none',
                   display: 'flex',
@@ -138,23 +138,7 @@ export default function Navbar() {
                 })}
               >
                 {({ isActive }) => (
-                  <>
-                    <span>{link.label}</span>
-                    {isActive && (
-                      <motion.div
-                        layoutId="activeNavIndicator"
-                        style={{
-                          position: 'absolute',
-                          bottom: -2,
-                          left: '25%',
-                          right: '25%',
-                          height: 3,
-                          borderRadius: 2,
-                          background: 'linear-gradient(90deg, #FF5500 0%, #FF4500 100%)',
-                        }}
-                      />
-                    )}
-                  </>
+                  <span>{link.label}</span>
                 )}
               </NavLink>
             ))}
@@ -171,25 +155,27 @@ export default function Navbar() {
                 gap: 7,
                 padding: '8px 18px',
                 borderRadius: '9999px',
-                background: '#FFFFFF',
-                border: '1.5px solid #E2E8F0',
-                color: '#000000',
+                background: 'rgba(255, 255, 255, 0.08)',
+                border: '1.5px solid rgba(255, 255, 255, 0.16)',
+                color: '#FFFFFF',
                 fontSize: 13.5,
                 fontWeight: 800,
                 textDecoration: 'none',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                 transition: 'all 0.2s ease',
               }}
               className="desktop-nav"
               onMouseEnter={e => {
-                e.currentTarget.style.color = '#FF4500';
+                e.currentTarget.style.color = '#FF5500';
                 e.currentTarget.style.borderColor = '#FF4500';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(255, 69, 0, 0.20)';
+                e.currentTarget.style.background = 'rgba(255, 69, 0, 0.12)';
+                e.currentTarget.style.boxShadow = '0 4px 14px rgba(255, 69, 0, 0.25)';
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = '#000000';
-                e.currentTarget.style.borderColor = '#E2E8F0';
-                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.16)';
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
               }}
             >
               <FiPhone size={14} style={{ color: '#FF4500' }} />
@@ -206,14 +192,14 @@ export default function Navbar() {
                 gap: 7,
                 padding: '6.5px 14px',
                 borderRadius: '9999px',
-                background: '#FFFFFF',
-                color: '#111318',
+                background: 'rgba(15, 23, 42, 0.95)',
+                color: '#FFFFFF',
                 border: '1.5px solid #FF4500',
                 fontSize: 13.5,
                 fontWeight: 900,
                 letterSpacing: '0.3px',
                 textDecoration: 'none',
-                boxShadow: '0 4px 16px rgba(255, 69, 0, 0.25)',
+                boxShadow: '0 4px 16px rgba(255, 69, 0, 0.35)',
                 whiteSpace: 'nowrap',
                 transition: 'all 0.2s ease',
               }}
@@ -260,14 +246,14 @@ export default function Navbar() {
                 width: 44,
                 height: 44,
                 borderRadius: 14,
-                background: menuOpen ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : '#FFFFFF',
-                border: menuOpen ? '1px solid #FF4500' : '1.5px solid #E2E8F0',
-                color: menuOpen ? '#FFFFFF' : '#000000',
+                background: menuOpen ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : 'rgba(255, 255, 255, 0.08)',
+                border: menuOpen ? '1px solid #FF4500' : '1.5px solid rgba(255, 255, 255, 0.18)',
+                color: '#FFFFFF',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 cursor: 'pointer',
-                boxShadow: menuOpen ? '0 6px 20px rgba(255, 69, 0, 0.40)' : '0 2px 8px rgba(0,0,0,0.06)',
+                boxShadow: menuOpen ? '0 6px 20px rgba(255, 69, 0, 0.40)' : '0 2px 8px rgba(0,0,0,0.2)',
                 transition: 'all 0.2s cubic-bezier(0.4,0,0.2,1)',
                 touchAction: 'manipulation',
                 WebkitTapHighlightColor: 'transparent',
@@ -316,49 +302,45 @@ export default function Navbar() {
                 width: '82%',
                 maxWidth: 300,
                 zIndex: 10001,
-                background: '#FFFFFF',
-                boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.35)',
+                background: '#0F172A',
+                boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.65)',
                 display: 'flex',
                 flexDirection: 'column',
                 overflowY: 'auto',
                 borderTopLeftRadius: 20,
                 borderBottomLeftRadius: 20,
+                borderLeft: '1px solid rgba(255, 69, 0, 0.35)',
               }}
               className="mobile-only"
             >
               {/* Drawer Top Header */}
               <div style={{
-                padding: '12px 14px',
-                borderBottom: '1px solid #F1F5F9',
+                padding: '14px 16px',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                background: '#FFFFFF',
+                background: '#0B0F19',
               }}>
                 <Link
                   to="/"
                   onClick={() => setMenuOpen(false)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
                 >
-                  <div style={{
-                    background: '#FFFFFF',
-                    padding: '3px 6px',
-                    borderRadius: 8,
-                    border: '1px solid #E2E8F0',
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                    <img
-                      src={logoImg}
-                      alt="VK RENTAL CARS PUNE"
-                      style={{ height: 34, width: 'auto', objectFit: 'contain' }}
-                    />
-                  </div>
+                  <img
+                    src={logoImg}
+                    alt="VK RENTAL CARS PUNE"
+                    style={{
+                      height: 44,
+                      width: 'auto',
+                      objectFit: 'contain',
+                      display: 'block',
+                      filter: 'drop-shadow(0 2px 10px rgba(255, 69, 0, 0.35))',
+                    }}
+                  />
 
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: 12.5, fontWeight: 900, color: '#000000', letterSpacing: '-0.2px', lineHeight: 1.2 }}>
+                    <span style={{ fontSize: 13, fontWeight: 900, color: '#FFFFFF', letterSpacing: '-0.2px', lineHeight: 1.2 }}>
                       VK RENTAL CARS
                     </span>
                     <span style={{ fontSize: 10, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
@@ -374,9 +356,9 @@ export default function Navbar() {
                     width: 32,
                     height: 32,
                     borderRadius: '50%',
-                    background: '#F1F5F9',
-                    border: '1px solid #E2E8F0',
-                    color: '#000000',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    color: '#FFFFFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -389,8 +371,8 @@ export default function Navbar() {
               </div>
 
               {/* Drawer Main Navigation Links */}
-              <div style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 5 }}>
-                <span style={{ fontSize: 10.5, fontWeight: 900, color: '#64748B', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
+              <div style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span style={{ fontSize: 10.5, fontWeight: 900, color: '#94A3B8', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
                   Explore Menu
                 </span>
 
@@ -404,11 +386,11 @@ export default function Navbar() {
                       padding: '10px 12px',
                       borderRadius: 12,
                       fontSize: 14,
-                      fontWeight: isActive ? 900 : 700,
-                      color: isActive ? '#FF4500' : '#000000',
-                      background: isActive ? 'linear-gradient(135deg, rgba(255, 69, 0, 0.12) 0%, rgba(255, 69, 0, 0.05) 100%)' : '#FFFFFF',
-                      border: isActive ? '1.5px solid rgba(255, 69, 0, 0.35)' : '1px solid #F1F5F9',
-                      boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.10)' : 'none',
+                      fontWeight: isActive ? 900 : 600,
+                      color: isActive ? '#FF4500' : '#F1F5F9',
+                      background: isActive ? 'rgba(255, 69, 0, 0.16)' : 'rgba(255, 255, 255, 0.04)',
+                      border: isActive ? '1.5px solid rgba(255, 69, 0, 0.45)' : '1px solid rgba(255, 255, 255, 0.06)',
+                      boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.20)' : 'none',
                       textDecoration: 'none',
                       display: 'flex',
                       alignItems: 'center',
@@ -420,15 +402,15 @@ export default function Navbar() {
                       <>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           <div style={{
-                            width: 30,
-                            height: 30,
+                            width: 32,
+                            height: 32,
                             borderRadius: 8,
-                            background: isActive ? '#FF4500' : '#F8FAFC',
-                            color: isActive ? '#FFFFFF' : '#FF4500',
+                            background: isActive ? '#FF4500' : 'rgba(255, 255, 255, 0.08)',
+                            color: '#FFFFFF',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            border: isActive ? 'none' : '1px solid #E2E8F0',
+                            border: isActive ? 'none' : '1px solid rgba(255, 255, 255, 0.12)',
                             flexShrink: 0,
                           }}>
                             {link.icon}
@@ -438,7 +420,7 @@ export default function Navbar() {
                         {isActive ? (
                           <FiCheckCircle size={16} color="#FF4500" />
                         ) : (
-                          <FiChevronRight size={16} style={{ color: '#94A3B8' }} />
+                          <FiChevronRight size={16} style={{ color: '#64748B' }} />
                         )}
                       </>
                     )}
@@ -449,8 +431,8 @@ export default function Navbar() {
               {/* Drawer Bottom CTAs (Direct Call + WhatsApp + Book Now) */}
               <div style={{
                 padding: '12px 10px 16px',
-                borderTop: '1px solid #F1F5F9',
-                background: '#FFFFFF',
+                borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                background: '#0B0F19',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 8,
@@ -465,9 +447,9 @@ export default function Navbar() {
                       gap: 5,
                       padding: '10px 8px',
                       borderRadius: 12,
-                      background: '#F8FAFC',
-                      border: '1.5px solid #E2E8F0',
-                      color: '#000000',
+                      background: 'rgba(255, 255, 255, 0.07)',
+                      border: '1.5px solid rgba(255, 255, 255, 0.14)',
+                      color: '#FFFFFF',
                       fontWeight: 800,
                       fontSize: 12.5,
                       textDecoration: 'none',
@@ -552,8 +534,8 @@ export default function Navbar() {
             z-index: 10;
           }
           .mobile-logo-img {
-            height: 44px !important;
-            max-height: 44px !important;
+            height: 48px !important;
+            max-height: 48px !important;
           }
         }
         @media (max-width: 480px) {
@@ -562,8 +544,8 @@ export default function Navbar() {
             font-size: 12.5px !important;
           }
           .mobile-logo-img {
-            height: 38px !important;
-            max-height: 38px !important;
+            height: 44px !important;
+            max-height: 44px !important;
           }
         }
         @media (max-width: 360px) {

@@ -26,6 +26,7 @@ import toast from 'react-hot-toast';
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 import BookingForm from '../../components/ui/BookingForm';
 import TermsAndConditions from '../../components/ui/TermsAndConditions';
 import RevvCarCard from '../../components/ui/RevvCarCard';
@@ -124,8 +125,39 @@ export default function CarDetailPage() {
     `Hi VK Rental Cars, I want to book ${car.name} (₹${car.pricePerDay || 2300}/day). Please confirm availability.`
   );
 
+  const carSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": `${car.name} - Self Drive Rental in Pune`,
+    "image": images[0] || 'https://vkcarrentalpune.com/vklogo1.png',
+    "description": `Rent ${car.name} (${car.transmission || 'Manual'}, ${car.fuelType || 'Petrol'}, ${car.seats || 5} Seats) in Pune with 300 km daily limit and doorstep delivery by VK RENTAL CARS PUNE.`,
+    "brand": {
+      "@type": "Brand",
+      "name": car.name.split(' ')[0] || "VK RENTAL CARS"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": car.pricePerDay || 2300,
+      "priceCurrency": "INR",
+      "availability": car.available !== false ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "seller": {
+        "@type": "AutoRental",
+        "name": "VK RENTAL CARS PUNE",
+        "telephone": "+91-8381052230"
+      }
+    }
+  };
+
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      <SEO
+        title={`Rent ${car.name} in Pune | Self Drive Car Rental | VK RENTAL CARS`}
+        description={`Rent ${car.name} (${car.transmission || 'Manual'}, ${car.fuelType || 'Petrol'}) for ₹${car.pricePerDay || 2300}/day in Pune. 300 km daily limit included, zero deposit options, doorstep delivery across Pune & PCMC.`}
+        keywords={`${car.name} rental Pune, rent ${car.name} Pune, self drive ${car.name}, VK Rental Cars ${car.name}, car hire Pune`}
+        canonicalPath={`/cars/${carId}`}
+        ogImage={images[0] || 'https://vkcarrentalpune.com/vklogo1.png'}
+        schemaJson={carSchema}
+      />
       <Navbar />
 
       <main className="car-detail-main">

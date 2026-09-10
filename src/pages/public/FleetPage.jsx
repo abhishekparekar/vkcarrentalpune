@@ -6,6 +6,7 @@ import { BsCarFront, BsCarFrontFill } from 'react-icons/bs';
 
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import SEO from '../../components/common/SEO';
 import RevvCarCard from '../../components/ui/RevvCarCard';
 import CarSkeleton from '../../components/ui/CarSkeleton';
 import Modal from '../../components/ui/Modal';
@@ -60,6 +61,12 @@ export default function FleetPage() {
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
+      <SEO
+        title="Our Fleet — Self Drive Cars & Rental Cars in Pune | VK RENTAL CARS"
+        description="Browse all self-drive cars for rent in Pune by VK RENTAL CARS. Hatchbacks (Swift, i20), Sedans (Dzire CNG), SUVs (Thar 4x4, Punch), 7-Seater (Ertiga) with 300 km/day limit."
+        keywords="car fleet Pune, self drive cars Pune, Thar rental Pune, Ertiga rental Pune, Swift car hire Pune, rent SUV Pune, 7 seater car rental Pune, VK Rental Cars fleet"
+        canonicalPath="/fleet"
+      />
       <Navbar />
 
       <main style={{ paddingTop: 72, paddingBottom: 36, flex: 1 }}>

@@ -19,6 +19,7 @@ import {
   Timestamp,
 } from 'firebase/firestore';
 import { db } from './config';
+import { sendInquiryEmailNotification } from '../utils/emailNotifier';
 
 // ─── Tenant Scoping ────────────────────────────────────────────────────────────
 /**
@@ -197,7 +198,7 @@ export async function upsertCustomer(tenantId, { name, email, phone }, userId = 
 // ─── Inquiries ─────────────────────────────────────────────────────────────────
 export async function addInquiry(tenantId, inquiryData, userId = null) {
   const activeUserId = userId || inquiryData.userId || 'guest';
-  return addDoc(tenantCollection(tenantId, 'inquiries'), {
+  const docRef = await addDoc(tenantCollection(tenantId, 'inquiries'), {
     tenantId,
     userId: activeUserId,
     createdBy: activeUserId,
@@ -206,6 +207,14 @@ export async function addInquiry(tenantId, inquiryData, userId = null) {
     createdAt: serverTimestamp(),
     updatedAt: serverTimestamp(),
   });
+
+  // Automatically dispatch notification email to vishalkarke184@gmail.com
+  sendInquiryEmailNotification({
+    id: docRef.id,
+    ...inquiryData,
+  }).catch(err => console.warn('[Firestore] Inquiry email alert notification notice:', err));
+
+  return docRef;
 }
 
 export function subscribeToInquiries(tenantId, callback) {
