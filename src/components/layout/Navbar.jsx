@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  FiMenu, FiX, FiPhone, FiCalendar, FiChevronRight,
-  FiHome, FiTruck, FiInfo, FiPhoneCall, FiFileText, FiCheckCircle, FiClock, FiShield
+  FiMenu, FiX, FiPhone, FiCalendar,
+  FiHome, FiTruck, FiInfo, FiPhoneCall, FiFileText
 } from 'react-icons/fi';
-import { BsWhatsapp } from 'react-icons/bs';
 
 import logoImg from '../../assets/vklogo1.png';
 import { useTenant } from '../../contexts/TenantContext';
@@ -24,6 +23,9 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const phoneNumber = settings?.phone || '+91 83810 52230';
+  const cleanPhone = phoneNumber.replace(/\s+/g, '');
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -61,35 +63,47 @@ export default function Navbar() {
 
   return (
     <>
+      {/* ── Full Width Edge-to-Edge Luxury Navbar ── */}
       <header
         style={{
           position: 'fixed',
-          top: 0, left: 0, right: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: '100%',
+          height: 72,
           zIndex: 9999,
+          background: '#0B0F17',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: scrolled
+            ? '0 10px 30px rgba(0, 0, 0, 0.60)'
+            : '0 4px 20px rgba(0, 0, 0, 0.35)',
           transform: hidden && !menuOpen ? 'translateY(-100%)' : 'translateY(0)',
-          transition: 'transform 0.3s cubic-bezier(0.4,0,0.2,1), background 0.25s ease, box-shadow 0.25s ease',
-          background: scrolled || menuOpen
-            ? 'rgba(10, 15, 29, 0.98)'
-            : 'rgba(15, 23, 42, 0.94)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          borderBottom: scrolled ? '1px solid rgba(255, 255, 255, 0.12)' : '1px solid rgba(255, 255, 255, 0.08)',
-          boxShadow: scrolled ? '0 10px 35px rgba(0, 0, 0, 0.60)' : '0 4px 20px rgba(0, 0, 0, 0.35)',
+          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease',
         }}
       >
-        <div className="container" style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          height: 72,
-          position: 'relative',
-        }}>
-
-          {/* ── Logo Branding ── */}
+        <div
+          className="navbar-inner-container"
+          style={{
+            maxWidth: 1280,
+            height: '100%',
+            margin: '0 auto',
+            padding: '0 24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+          }}
+        >
+          {/* ── 1. Logo (Left) ── */}
           <Link
             to="/"
             onClick={handleLogoClick}
-            style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
+            aria-label="VK Rental Cars Pune"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              textDecoration: 'none',
+            }}
           >
             <img
               src={logoImg}
@@ -97,180 +111,190 @@ export default function Navbar() {
               loading="eager"
               decoding="async"
               fetchPriority="high"
-              className="mobile-logo-img"
+              className="navbar-brand-logo"
               style={{
-                height: 58,
-                maxHeight: 58,
+                height: 54,
+                maxHeight: 54,
                 width: 'auto',
                 objectFit: 'contain',
                 display: 'block',
-                filter: 'drop-shadow(0 4px 16px rgba(255, 69, 0, 0.40))',
+                filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5))',
                 transition: 'transform 0.2s ease',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.06)'}
+              onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
             />
           </Link>
 
-          {/* ── Desktop Executive Navigation Links ── */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: 6 }} className="desktop-nav">
+          {/* ── 2. Desktop Navigation Links (Center) ── */}
+          <nav className="desktop-nav-menu" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             {navLinks.map(link => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 end={link.to === '/'}
-                className="desktop-nav-item"
+                className="desktop-nav-link"
                 style={({ isActive }) => ({
                   position: 'relative',
-                  padding: '8px 20px',
-                  borderRadius: '9999px',
+                  padding: '8px 18px',
                   fontSize: 14.5,
-                  fontWeight: isActive ? 800 : 600,
-                  color: isActive ? '#FF5500' : '#F1F5F9',
-                  background: isActive ? 'rgba(255, 69, 0, 0.15)' : 'transparent',
-                  border: isActive ? '1px solid rgba(255, 69, 0, 0.45)' : '1px solid transparent',
-                  boxShadow: isActive ? '0 4px 16px rgba(255, 69, 0, 0.25)' : 'none',
-                  transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                  fontWeight: isActive ? 700 : 500,
+                  color: isActive ? '#FF4500' : '#E2E8F0',
+                  background: 'transparent',
+                  border: 'none',
                   textDecoration: 'none',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: 6,
+                  letterSpacing: '0.2px',
+                  transition: 'color 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
                 })}
               >
                 {({ isActive }) => (
-                  <span>{link.label}</span>
+                  <span style={{ position: 'relative', display: 'inline-block', paddingBottom: 4 }}>
+                    {link.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="navActiveBorder"
+                        style={{
+                          position: 'absolute',
+                          bottom: -2,
+                          left: '8%',
+                          right: '8%',
+                          height: 2.5,
+                          borderRadius: 9999,
+                          background: '#FF4500',
+                          boxShadow: '0 0 10px rgba(255, 69, 0, 0.8)',
+                        }}
+                      />
+                    )}
+                  </span>
                 )}
               </NavLink>
             ))}
           </nav>
 
-          {/* ── Desktop Right Call & Action CTAs + Mobile Call Pill ── */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            {/* Desktop Call Pill */}
+          {/* ── 3. Desktop Action CTAs (Right) ── */}
+          <div className="desktop-action-ctas" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            {/* Direct Call Button */}
             <a
-              href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
+              href={`tel:${cleanPhone}`}
               style={{
-                display: 'flex',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '8px 18px',
+                borderRadius: 9999,
+                background: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.14)',
+                color: '#FFFFFF',
+                fontSize: 13.5,
+                fontWeight: 700,
+                textDecoration: 'none',
+                letterSpacing: '0.2px',
+                transition: 'all 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 69, 0, 0.14)';
+                e.currentTarget.style.borderColor = 'rgba(255, 69, 0, 0.45)';
+                e.currentTarget.style.color = '#FF4500';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.14)';
+                e.currentTarget.style.color = '#FFFFFF';
+              }}
+            >
+              <FiPhone size={14} color="#FF4500" />
+              <span>{phoneNumber}</span>
+            </a>
+
+            {/* Book Now Button */}
+            <button
+              onClick={() => navigate('/fleet')}
+              style={{
+                display: 'inline-flex',
                 alignItems: 'center',
                 gap: 7,
-                padding: '8px 18px',
-                borderRadius: '9999px',
-                background: 'rgba(255, 255, 255, 0.08)',
-                border: '1.5px solid rgba(255, 255, 255, 0.16)',
+                padding: '10px 24px',
+                borderRadius: 9999,
+                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
                 color: '#FFFFFF',
                 fontSize: 13.5,
                 fontWeight: 800,
-                textDecoration: 'none',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
-                transition: 'all 0.2s ease',
-              }}
-              className="desktop-nav"
-              onMouseEnter={e => {
-                e.currentTarget.style.color = '#FF5500';
-                e.currentTarget.style.borderColor = '#FF4500';
-                e.currentTarget.style.background = 'rgba(255, 69, 0, 0.12)';
-                e.currentTarget.style.boxShadow = '0 4px 14px rgba(255, 69, 0, 0.25)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.color = '#FFFFFF';
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.16)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.2)';
-              }}
-            >
-              <FiPhone size={14} style={{ color: '#FF4500' }} />
-              <span>{settings?.phone || '+91 83810 52230'}</span>
-            </a>
-
-            {/* 📱 ULTRA HIGH-END CENTERED MOBILE CALL PILL */}
-            <a
-              href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
-              className="mobile-call-pill"
-              style={{
-                display: 'none',
-                alignItems: 'center',
-                gap: 7,
-                padding: '6.5px 14px',
-                borderRadius: '9999px',
-                background: 'rgba(15, 23, 42, 0.95)',
-                color: '#FFFFFF',
-                border: '1.5px solid #FF4500',
-                fontSize: 13.5,
-                fontWeight: 900,
                 letterSpacing: '0.3px',
-                textDecoration: 'none',
-                boxShadow: '0 4px 16px rgba(255, 69, 0, 0.35)',
-                whiteSpace: 'nowrap',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <span style={{
-                width: 22,
-                height: 22,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#FFFFFF',
-                flexShrink: 0,
-              }}>
-                <FiPhoneCall size={12} color="#FFFFFF" />
-              </span>
-              <span>{settings?.phone || '+91 83810 52230'}</span>
-            </a>
-
-            <button
-              className="btn btn-primary btn-sm desktop-nav"
-              onClick={() => navigate('/fleet')}
-              style={{
-                fontWeight: 900,
-                letterSpacing: '0.4px',
-                padding: '10px 22px',
-                fontSize: 14,
-                borderRadius: '9999px',
-                background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                boxShadow: '0 6px 20px rgba(255, 69, 0, 0.35)',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <FiCalendar size={15} /> Book Now
-            </button>
-
-            {/* 📱 MODERN MOBILE MENU TOGGLE BUTTON */}
-            <button
-              type="button"
-              onClick={() => { setMenuOpen(p => !p); if (hidden) setHidden(false); }}
-              aria-label="Toggle Menu"
-              style={{
-                width: 44,
-                height: 44,
-                borderRadius: 14,
-                background: menuOpen ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : 'rgba(255, 255, 255, 0.08)',
-                border: menuOpen ? '1px solid #FF4500' : '1.5px solid rgba(255, 255, 255, 0.18)',
-                color: '#FFFFFF',
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                border: 'none',
                 cursor: 'pointer',
-                boxShadow: menuOpen ? '0 6px 20px rgba(255, 69, 0, 0.40)' : '0 2px 8px rgba(0,0,0,0.2)',
-                transition: 'all 0.2s cubic-bezier(0.4,0,0.2,1)',
-                touchAction: 'manipulation',
-                WebkitTapHighlightColor: 'transparent',
+                boxShadow: '0 4px 18px rgba(255, 69, 0, 0.38)',
+                transition: 'all 0.2s ease',
               }}
-              className="mobile-only"
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-1.5px)';
+                e.currentTarget.style.boxShadow = '0 6px 22px rgba(255, 69, 0, 0.55)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 18px rgba(255, 69, 0, 0.38)';
+              }}
             >
-              {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              <FiCalendar size={14} />
+              <span>Book Now</span>
             </button>
           </div>
+
+          {/* ── 4. Mobile Top Elements (< 980px) ── */}
+          {/* Mobile Call Button */}
+          <a
+            href={`tel:${cleanPhone}`}
+            className="mobile-header-call"
+            style={{
+              display: 'none',
+              alignItems: 'center',
+              gap: 6,
+              padding: '6px 14px',
+              borderRadius: 9999,
+              background: 'rgba(255, 255, 255, 0.08)',
+              border: '1px solid rgba(255, 69, 0, 0.45)',
+              color: '#FFFFFF',
+              fontSize: 12.5,
+              fontWeight: 800,
+              textDecoration: 'none',
+            }}
+          >
+            <FiPhone size={12} color="#FF4500" />
+            <span>{phoneNumber}</span>
+          </a>
+
+          {/* Mobile Hamburger Toggle */}
+          <button
+            type="button"
+            className="mobile-menu-toggle"
+            onClick={() => { setMenuOpen(p => !p); if (hidden) setHidden(false); }}
+            aria-label="Toggle Menu"
+            style={{
+              display: 'none',
+              width: 42,
+              height: 42,
+              borderRadius: 10,
+              background: menuOpen ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : 'rgba(255, 255, 255, 0.08)',
+              border: menuOpen ? '1px solid #FF4500' : '1px solid rgba(255, 255, 255, 0.16)',
+              color: '#FFFFFF',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+              WebkitTapHighlightColor: 'transparent',
+            }}
+          >
+            {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
+          </button>
         </div>
       </header>
 
-      {/* ── 📱 EXECUTIVE MOBILE FULL-SHEET NAVIGATION DRAWER ── */}
+      {/* ── 📱 Minimal Clean Mobile Sidebar Drawer ── */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop Dark Glass Overlay */}
+            {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -281,101 +305,75 @@ export default function Navbar() {
                 position: 'fixed',
                 inset: 0,
                 zIndex: 10000,
-                background: 'rgba(15, 23, 42, 0.75)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
+                background: 'rgba(5, 8, 15, 0.70)',
               }}
-              className="mobile-only"
+              className="mobile-only-display"
             />
 
-            {/* Slide-Over Executive Compact Sheet Drawer */}
+            {/* Sidebar Drawer Panel */}
             <motion.aside
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 260 }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
               style={{
                 position: 'fixed',
                 top: 0,
                 right: 0,
                 bottom: 0,
-                width: '82%',
-                maxWidth: 300,
+                width: '78%',
+                maxWidth: 290,
                 zIndex: 10001,
-                background: '#0F172A',
-                boxShadow: '-10px 0 40px rgba(0, 0, 0, 0.65)',
+                background: '#0B0F17',
+                boxShadow: '-8px 0 30px rgba(0, 0, 0, 0.65)',
                 display: 'flex',
                 flexDirection: 'column',
-                overflowY: 'auto',
-                borderTopLeftRadius: 20,
-                borderBottomLeftRadius: 20,
-                borderLeft: '1px solid rgba(255, 69, 0, 0.35)',
+                borderLeft: '1px solid rgba(255, 255, 255, 0.08)',
               }}
-              className="mobile-only"
+              className="mobile-only-display"
             >
-              {/* Drawer Top Header */}
+              {/* Drawer Clean Header */}
               <div style={{
-                padding: '14px 16px',
-                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+                padding: '18px 20px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                background: '#0B0F19',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
               }}>
-                <Link
-                  to="/"
-                  onClick={() => setMenuOpen(false)}
-                  style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}
-                >
-                  <img
-                    src={logoImg}
-                    alt="VK RENTAL CARS PUNE"
-                    style={{
-                      height: 44,
-                      width: 'auto',
-                      objectFit: 'contain',
-                      display: 'block',
-                      filter: 'drop-shadow(0 2px 10px rgba(255, 69, 0, 0.35))',
-                    }}
-                  />
-
-                  <div style={{ display: 'flex', flexDirection: 'column' }}>
-                    <span style={{ fontSize: 13, fontWeight: 900, color: '#FFFFFF', letterSpacing: '-0.2px', lineHeight: 1.2 }}>
-                      VK RENTAL CARS
-                    </span>
-                    <span style={{ fontSize: 10, fontWeight: 900, color: '#FF4500', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
-                      PUNE • SELF DRIVE
-                    </span>
-                  </div>
-                </Link>
+                <img
+                  src={logoImg}
+                  alt="VK RENTAL CARS"
+                  style={{
+                    height: 42,
+                    width: 'auto',
+                    objectFit: 'contain',
+                    display: 'block',
+                  }}
+                />
 
                 <button
                   type="button"
                   onClick={() => setMenuOpen(false)}
+                  aria-label="Close menu"
                   style={{
-                    width: 32,
-                    height: 32,
+                    width: 34,
+                    height: 34,
                     borderRadius: '50%',
                     background: 'rgba(255, 255, 255, 0.08)',
-                    border: '1px solid rgba(255, 255, 255, 0.16)',
+                    border: '1px solid rgba(255, 255, 255, 0.14)',
                     color: '#FFFFFF',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    transition: 'all 0.18s ease',
                   }}
                 >
                   <FiX size={16} />
                 </button>
               </div>
 
-              {/* Drawer Main Navigation Links */}
-              <div style={{ flex: 1, padding: '12px 10px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-                <span style={{ fontSize: 10.5, fontWeight: 900, color: '#94A3B8', letterSpacing: '1px', textTransform: 'uppercase', marginBottom: 2, paddingLeft: 4 }}>
-                  Explore Menu
-                </span>
-
+              {/* Clean Navigation Links List */}
+              <div style={{ flex: 1, padding: '16px 12px', display: 'flex', flexDirection: 'column', gap: 4 }}>
                 {navLinks.map(link => (
                   <NavLink
                     key={link.to}
@@ -383,123 +381,77 @@ export default function Navbar() {
                     end={link.to === '/'}
                     onClick={() => setMenuOpen(false)}
                     style={({ isActive }) => ({
-                      padding: '10px 12px',
-                      borderRadius: 12,
-                      fontSize: 14,
-                      fontWeight: isActive ? 900 : 600,
-                      color: isActive ? '#FF4500' : '#F1F5F9',
-                      background: isActive ? 'rgba(255, 69, 0, 0.16)' : 'rgba(255, 255, 255, 0.04)',
-                      border: isActive ? '1.5px solid rgba(255, 69, 0, 0.45)' : '1px solid rgba(255, 255, 255, 0.06)',
-                      boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.20)' : 'none',
+                      padding: '12px 16px',
+                      borderRadius: 10,
+                      fontSize: 15,
+                      fontWeight: isActive ? 700 : 500,
+                      color: isActive ? '#FF4500' : '#E2E8F0',
+                      background: isActive ? 'rgba(255, 69, 0, 0.08)' : 'transparent',
                       textDecoration: 'none',
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'space-between',
-                      transition: 'all 0.2s ease',
+                      gap: 12,
+                      transition: 'all 0.15s ease',
                     })}
                   >
-                    {({ isActive }) => (
-                      <>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                          <div style={{
-                            width: 32,
-                            height: 32,
-                            borderRadius: 8,
-                            background: isActive ? '#FF4500' : 'rgba(255, 255, 255, 0.08)',
-                            color: '#FFFFFF',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            border: isActive ? 'none' : '1px solid rgba(255, 255, 255, 0.12)',
-                            flexShrink: 0,
-                          }}>
-                            {link.icon}
-                          </div>
-                          <span>{link.label}</span>
-                        </div>
-                        {isActive ? (
-                          <FiCheckCircle size={16} color="#FF4500" />
-                        ) : (
-                          <FiChevronRight size={16} style={{ color: '#64748B' }} />
-                        )}
-                      </>
-                    )}
+                    <span style={{ color: '#94A3B8', display: 'flex', alignItems: 'center' }}>
+                      {link.icon}
+                    </span>
+                    <span>{link.label}</span>
                   </NavLink>
                 ))}
               </div>
 
-              {/* Drawer Bottom CTAs (Direct Call + WhatsApp + Book Now) */}
+              {/* Drawer Bottom Actions */}
               <div style={{
-                padding: '12px 10px 16px',
+                padding: '16px 16px 20px',
                 borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                background: '#0B0F19',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 8,
+                gap: 10,
               }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
-                  <a
-                    href={`tel:${(settings?.phone || '+91 8381052230').replace(/\s+/g, '')}`}
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 5,
-                      padding: '10px 8px',
-                      borderRadius: 12,
-                      background: 'rgba(255, 255, 255, 0.07)',
-                      border: '1.5px solid rgba(255, 255, 255, 0.14)',
-                      color: '#FFFFFF',
-                      fontWeight: 800,
-                      fontSize: 12.5,
-                      textDecoration: 'none',
-                    }}
-                  >
-                    <FiPhone size={14} color="#FF4500" /> Call
-                  </a>
-
-                  <a
-                    href={`https://wa.me/${(settings?.whatsapp || settings?.phone || '918381052230').replace(/\D/g, '')}?text=Hi%20${encodeURIComponent(settings?.businessName || "VK SELF DRIVE CAR'S PUNE")},%20I%20want%20to%20book%20a%20car.`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: 5,
-                      padding: '10px 8px',
-                      borderRadius: 12,
-                      background: '#25D366',
-                      color: '#FFFFFF',
-                      fontWeight: 900,
-                      fontSize: 12.5,
-                      textDecoration: 'none',
-                      boxShadow: '0 3px 10px rgba(37,211,102,0.3)',
-                    }}
-                  >
-                    <BsWhatsapp size={14} /> WhatsApp
-                  </a>
-                </div>
+                <a
+                  href={`tel:${cleanPhone}`}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 7,
+                    padding: '11px',
+                    borderRadius: 10,
+                    background: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    color: '#FFFFFF',
+                    fontWeight: 700,
+                    fontSize: 13,
+                    textDecoration: 'none',
+                  }}
+                >
+                  <FiPhone size={13} color="#FF4500" />
+                  <span>{phoneNumber}</span>
+                </a>
 
                 <button
                   type="button"
                   onClick={() => { setMenuOpen(false); navigate('/fleet'); }}
-                  className="btn btn-primary"
                   style={{
                     width: '100%',
-                    padding: '11px',
+                    padding: '12px',
                     fontSize: 13.5,
-                    fontWeight: 900,
-                    borderRadius: 12,
+                    fontWeight: 800,
+                    borderRadius: 10,
+                    background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
+                    color: '#FFFFFF',
+                    border: 'none',
+                    cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: 6,
-                    background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
                     boxShadow: '0 4px 16px rgba(255, 69, 0, 0.35)',
                   }}
                 >
-                  <FiCalendar size={15} /> Book Self-Drive Cars
+                  <FiCalendar size={14} /> Book Now
                 </button>
               </div>
             </motion.aside>
@@ -507,51 +459,41 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
+      {/* ── Responsive CSS Rules ── */}
       <style>{`
-        .desktop-nav {
-          display: flex !important;
-        }
-        .mobile-only {
-          display: none !important;
-        }
-        .desktop-nav-item:hover {
+        .desktop-nav-link:hover {
           color: #FF4500 !important;
-          background: rgba(255, 69, 0, 0.06) !important;
-          border-color: rgba(255, 69, 0, 0.22) !important;
         }
         @media (max-width: 980px) {
-          .desktop-nav {
-            display: none !important;
+          .navbar-inner-container {
+            padding: 0 16px !important;
           }
-          .mobile-only {
-            display: inline-flex !important;
-          }
-          .mobile-call-pill {
-            display: inline-flex !important;
-            position: absolute !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            z-index: 10;
-          }
-          .mobile-logo-img {
-            height: 48px !important;
-            max-height: 48px !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .mobile-call-pill {
-            padding: 5px 10px !important;
-            font-size: 12.5px !important;
-          }
-          .mobile-logo-img {
+          .navbar-brand-logo {
             height: 44px !important;
             max-height: 44px !important;
           }
+          .desktop-nav-menu,
+          .desktop-action-ctas {
+            display: none !important;
+          }
+          .mobile-header-call,
+          .mobile-menu-toggle {
+            display: inline-flex !important;
+          }
         }
-        @media (max-width: 360px) {
-          .mobile-call-pill {
-            padding: 4px 8px !important;
+        @media (min-width: 981px) {
+          .mobile-only-display {
+            display: none !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .mobile-header-call {
             font-size: 11.5px !important;
+            padding: 5px 10px !important;
+          }
+          .navbar-brand-logo {
+            height: 40px !important;
+            max-height: 40px !important;
           }
         }
       `}</style>

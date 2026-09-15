@@ -196,37 +196,18 @@ export default function HomePage() {
               </span>
             </motion.h1>
 
-            {/* Floating Trust Metrics Badges */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="hero-trust-badges"
-            >
-              {[
-                { icon: <FiCheckCircle color="#22C55E" size={15} />, text: '10,000+ Renters' },
-                { icon: <FiTruck color="#FF4500" size={15} />, text: 'Doorstep Pickup' },
-                { icon: <FiStar color="#F59E0B" size={15} />, text: '4.9★ Rated' },
-                { icon: <FiShield color="#3B82F6" size={15} />, text: '24/7 Assist' },
-              ].map((item, idx) => (
-                <div key={idx} className="hero-trust-pill">
-                  {item.icon} <span>{item.text}</span>
-                </div>
-              ))}
-            </motion.div>
-
             {/* Hero Action Buttons (Short Compact Pills) */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
+              transition={{ duration: 0.5, delay: 0.25 }}
               className="hero-action-btns"
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 10,
-                marginTop: 18,
+                marginTop: 24,
               }}
             >
               <Link
