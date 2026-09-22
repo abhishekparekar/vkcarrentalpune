@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { BsFacebook, BsInstagram, BsTwitterX, BsYoutube, BsWhatsapp } from 'react-icons/bs';
-import { 
-  FiMail, FiPhone, FiMapPin, FiShield, FiArrowRight, FiCheckCircle, 
+import {
+  FiMail, FiPhone, FiMapPin, FiShield, FiArrowRight, FiCheckCircle,
   FiChevronRight, FiTruck, FiClock, FiCalendar
 } from 'react-icons/fi';
 import logoImg from '../../assets/vklogo1.png';
@@ -12,25 +12,25 @@ export default function Footer() {
 
   const footerLinks = {
     'Quick Navigation': [
-      { label: 'Home Page',    to: '/' },
-      { label: 'Our Fleet',    to: '/fleet' },
-      { label: 'About Us',     to: '/about' },
-      { label: 'Contact Us',   to: '/contact' },
+      { label: 'Home Page', to: '/' },
+      { label: 'Our Fleet', to: '/fleet' },
+      { label: 'About Us', to: '/about' },
+      { label: 'Contact Us', to: '/contact' },
       { label: 'My Inquiries', to: '/my-inquiries' },
     ],
     'Car Categories': [
       { label: 'Hatchback Fleet', to: '/fleet?category=hatchback' },
-      { label: 'Sedan Fleet',     to: '/fleet?category=sedan' },
+      { label: 'Sedan Fleet', to: '/fleet?category=sedan' },
       { label: 'SUV & 4x4 Fleet', to: '/fleet?category=suv' },
-      { label: 'Luxury Cars',    to: '/fleet?category=luxury' },
+      { label: 'Luxury Cars', to: '/fleet?category=luxury' },
     ],
   };
 
   const socials = [
-    { icon: <BsFacebook />,  href: settings?.facebook || '#', label: 'Facebook' },
+    { icon: <BsFacebook />, href: settings?.facebook || '#', label: 'Facebook' },
     { icon: <BsInstagram />, href: settings?.instagram || '#', label: 'Instagram' },
-    { icon: <BsTwitterX />,  href: settings?.twitter || '#', label: 'Twitter/X' },
-    { icon: <BsYoutube />,   href: settings?.youtube || '#', label: 'YouTube' },
+    { icon: <BsTwitterX />, href: settings?.twitter || '#', label: 'Twitter/X' },
+    { icon: <BsYoutube />, href: settings?.youtube || '#', label: 'YouTube' },
   ];
 
   const rawPhone = settings?.phone || '+91 8381052230';
@@ -321,7 +321,43 @@ export default function Footer() {
               © {new Date().getFullYear()} <strong style={{ color: '#FFFFFF' }}>{settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}</strong>. All rights reserved.
             </p>
 
-            <div style={{ display: 'flex', gap: 14, fontSize: 12.5, color: 'rgba(255, 255, 255, 0.85)', fontWeight: 600, flexWrap: 'wrap' }}>
+            <div style={{
+              fontSize: 12.5,
+              color: 'rgba(255, 255, 255, 0.85)',
+              fontWeight: 500,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+            }}>
+              <span>Design by</span>
+              <a
+                href="https://www.icoded.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Visit Icoded Automation"
+                style={{
+                  color: '#FFFFFF',
+                  fontWeight: 700,
+                  textDecoration: 'none',
+                  letterSpacing: '0.2px',
+                  borderBottom: '1.5px solid rgba(255, 255, 255, 0.6)',
+                  paddingBottom: 1,
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.color = '#FFE4E4';
+                  e.currentTarget.style.borderBottomColor = '#FFFFFF';
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = '#FFFFFF';
+                  e.currentTarget.style.borderBottomColor = 'rgba(255, 255, 255, 0.6)';
+                }}
+              >
+                Icoded Automation Pvt Ltd
+              </a>
+            </div>
+
+            <div style={{ display: 'flex', gap: 14, fontSize: 12.5, color: 'rgba(255, 255, 255, 0.85)', fontWeight: 600, flexWrap: 'wrap', alignItems: 'center' }}>
               <Link to="/about" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>About Us</Link>
               <span>•</span>
               <Link to="/contact" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Contact Support</Link>
