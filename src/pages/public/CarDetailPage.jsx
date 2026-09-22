@@ -16,11 +16,15 @@ import {
   FiPhoneCall,
   FiMaximize2,
   FiX,
-  FiFileText,
   FiCheck,
-  FiInfo,
+  FiArrowRight,
+  FiFileText,
+  FiRadio,
+  FiLock,
+  FiNavigation,
+  FiSmile
 } from 'react-icons/fi';
-import { BsFuelPump, BsStarFill, BsLuggage, BsShieldCheck } from 'react-icons/bs';
+import { BsFuelPump, BsStarFill, BsShieldCheck } from 'react-icons/bs';
 import { FaWhatsapp } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
@@ -39,25 +43,28 @@ import { formatCurrency } from '../../utils/formatCurrency';
 
 export default function CarDetailPage() {
   const { carId } = useParams();
-  const { tenantId } = useTenant();
+  const { tenantId, settings } = useTenant();
   const navigate = useNavigate();
 
   const [car, setCar] = useState(null);
   const [similarCars, setSimilarCars] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState('specs'); // 'specs' | 'tariff' | 'terms'
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
+  const phoneNumber = settings?.phone || '+91 8381052230';
+  const cleanPhone = phoneNumber.replace(/\D/g, '');
+
   useEffect(() => {
     setLoading(true);
+    setSelectedImageIndex(0);
     getCar(tenantId, carId)
       .then((data) => {
         setCar(data);
         if (data) {
           getCars(tenantId).then((all) => {
-            const filtered = all.filter((c) => c.id !== carId && c.category === data.category);
+            const filtered = all.filter((c) => c.id !== carId && (c.category === data.category || c.isPopular));
             setSimilarCars(filtered.slice(0, 3));
           });
         }
@@ -73,7 +80,7 @@ export default function CarDetailPage() {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
         <Navbar />
-        <main style={{ paddingTop: 84, flex: 1 }} className="container">
+        <main style={{ paddingTop: 90, paddingBottom: 40, flex: 1 }} className="container">
           <CarSkeleton />
         </main>
         <Footer />
@@ -85,13 +92,13 @@ export default function CarDetailPage() {
     return (
       <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
         <Navbar />
-        <main style={{ paddingTop: 110, flex: 1, textAlign: 'center' }} className="container">
-          <h2 style={{ fontSize: 22, fontWeight: 900, color: '#0F172A' }}>Car Not Found</h2>
-          <p style={{ color: '#475569', marginBottom: 16, fontWeight: 600, fontSize: 13 }}>
-            The requested car listing does not exist or has been removed.
+        <main style={{ paddingTop: 110, paddingBottom: 60, flex: 1, textAlign: 'center' }} className="container">
+          <h2 style={{ fontSize: 24, fontWeight: 900, color: '#0F172A', marginBottom: 8 }}>Car Not Found</h2>
+          <p style={{ color: '#64748B', marginBottom: 20, fontSize: 14 }}>
+            The requested vehicle listing does not exist or has been removed from our fleet.
           </p>
-          <Link to="/fleet" className="btn btn-primary" style={{ padding: '8px 20px', borderRadius: 99, fontSize: 13 }}>
-            Browse Fleet
+          <Link to="/fleet" className="btn btn-primary" style={{ padding: '10px 24px', borderRadius: 99, fontSize: 14, fontWeight: 800 }}>
+            <FiArrowLeft /> Browse All Fleet
           </Link>
         </main>
         <Footer />
@@ -101,9 +108,9 @@ export default function CarDetailPage() {
 
   const images = car.images && car.images.length > 0
     ? car.images
-    : ['https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80'];
+    : ['https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80'];
 
-  const extraKmRate = car.extraKmRate || (car.name?.toLowerCase().includes('thar') ? 14 : (car.seats === 7 ? 12 : 9));
+  const extraKmRate = car.extraKmRate || (car.name?.toLowerCase().includes('thar') ? 14 : (car.seats === 7 ? 7 : 6));
   const extraTimeRate = car.extraTimeRate || (car.name?.toLowerCase().includes('thar') ? 300 : 200);
   const securityDeposit = car.securityDeposit || 2000;
   const dailyKmLimit = car.dailyKmLimit || 300;
@@ -133,7 +140,7 @@ export default function CarDetailPage() {
     "description": `Rent ${car.name} (${car.transmission || 'Manual'}, ${car.fuelType || 'Petrol'}, ${car.seats || 5} Seats) in Pune with 300 km daily limit and doorstep delivery by VK RENTAL CARS PUNE.`,
     "brand": {
       "@type": "Brand",
-      "name": car.name.split(' ')[0] || "VK RENTAL CARS"
+      "name": car.brand || car.name.split(' ')[0] || "VK RENTAL CARS"
     },
     "offers": {
       "@type": "Offer",
@@ -143,7 +150,7 @@ export default function CarDetailPage() {
       "seller": {
         "@type": "AutoRental",
         "name": "VK RENTAL CARS PUNE",
-        "telephone": "+91-8381052230"
+        "telephone": phoneNumber
       }
     }
   };
@@ -160,416 +167,364 @@ export default function CarDetailPage() {
       />
       <Navbar />
 
-      <main className="car-detail-main">
+      <main className="car-detail-page">
         <div className="car-detail-container">
-          
-          {/* Compact Navigation Bar */}
-          <div className="car-compact-nav">
-            <Link to="/fleet" className="compact-back-btn">
-              <FiArrowLeft size={13} /> Back to Fleet
-            </Link>
 
-            <div className="compact-crumb-info">
-              <span className="crumb-item">Pune Fleet</span>
-              <span className="crumb-dot">•</span>
-              <span className="crumb-cat">{(car.category || 'FLEET').toUpperCase()}</span>
-              <span className="crumb-dot">•</span>
-              <span className="crumb-name">{car.name}</span>
+          {/* 1. TOP BREADCRUMB & BACK BUTTON */}
+          <div className="car-detail-nav">
+            <Link to="/fleet" className="car-back-link">
+              <FiArrowLeft size={14} /> Back to All Fleet
+            </Link>
+            <div className="car-nav-trail">
+              <span>Pune Fleet</span>
+              <span className="sep">/</span>
+              <span className="cat-chip">{(car.category || 'FLEET').toUpperCase()}</span>
+              <span className="sep">/</span>
+              <span className="cur-name">{car.name}</span>
             </div>
           </div>
 
-          {/* Master 2-Column Compact Layout */}
+          {/* 2. FULL PROFESSIONAL TWO-COLUMN SPLIT LAYOUT */}
           <div className="car-main-layout">
-            
-            {/* LEFT COLUMN: Gallery & Interactive Tabbed Dashboard */}
-            <div className="car-left-pane">
-              
-              {/* Compact Showroom Gallery Card */}
-              <div className="compact-gallery-card">
-                <div className="compact-viewport" onClick={() => setIsLightboxOpen(true)}>
-                  {/* Ambient Backdrop Depth */}
+
+            {/* ── LEFT COLUMN: Gallery & Vehicle Specs ── */}
+            <div className="car-left-col">
+
+              {/* 📸 Automotive Vehicle Showcase (No Awkward Zoom / Crops) */}
+              <section className="car-gallery-card">
+                <div className="car-showcase-stage" onClick={() => setIsLightboxOpen(true)}>
+                  
+                  {/* Atmospheric Backdrop Lighting */}
                   <img
                     src={images[selectedImageIndex]}
                     alt=""
                     aria-hidden="true"
-                    className="compact-ambient-bg"
+                    className="car-stage-blur-bg"
                   />
 
-                  {/* Fully Visible Car Photo without weird cropping */}
+                  {/* Complete, Uncropped Vehicle Image */}
                   <img
                     src={images[selectedImageIndex]}
                     alt={car.name}
-                    className="compact-car-img"
+                    className="car-stage-main-img"
                     onError={(e) => {
-                      e.target.src = 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1000&q=80';
+                      e.target.src = 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&w=1200&q=80';
                     }}
                   />
 
-                  {/* Floating Micro-Badges */}
-                  <div className="compact-img-badges">
-                    <span className="img-badge category">{(car.category || 'FLEET').toUpperCase()}</span>
-                    <span className="img-badge kmlimit">⚡ {dailyKmLimit} KM/Day Included</span>
+                  {/* Floating Status Badges */}
+                  <div className="stage-badges-top-left">
+                    {car.isPopular && (
+                      <span className="stage-badge popular">🔥 POPULAR CHOICE</span>
+                    )}
+                    <span className="stage-badge category">{(car.category || 'FLEET').toUpperCase()}</span>
+                    <span className="stage-badge limit">⚡ {dailyKmLimit} KM/Day Included</span>
                   </div>
 
-                  {/* Top Action Icons */}
-                  <div className="compact-img-actions">
+                  {/* Share & Zoom CTAs */}
+                  <div className="stage-actions-top-right">
                     <button
                       type="button"
-                      className="img-action-btn"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleShare();
                       }}
+                      className="stage-action-btn"
                       title="Share Vehicle"
                     >
-                      <FiShare2 size={13} />
+                      <FiShare2 size={15} />
                     </button>
                     <button
                       type="button"
-                      className="img-action-btn"
                       onClick={(e) => {
                         e.stopPropagation();
                         setIsLightboxOpen(true);
                       }}
-                      title="Fullscreen Preview"
+                      className="stage-action-btn"
+                      title="Full Screen View"
                     >
-                      <FiMaximize2 size={13} />
+                      <FiMaximize2 size={15} />
                     </button>
                   </div>
 
-                  {/* Counter */}
                   {images.length > 1 && (
-                    <div className="compact-img-counter">
-                      {selectedImageIndex + 1}/{images.length}
+                    <div className="stage-counter">
+                      {selectedImageIndex + 1} / {images.length}
                     </div>
                   )}
                 </div>
 
-                {/* Thumbnails Strip */}
+                {/* Multi-angle Thumbnails Strip */}
                 {images.length > 1 && (
-                  <div className="compact-thumb-strip">
+                  <div className="stage-thumbs-strip">
                     {images.map((img, idx) => (
                       <button
                         key={idx}
                         type="button"
                         onClick={() => setSelectedImageIndex(idx)}
-                        className={`compact-thumb-btn ${selectedImageIndex === idx ? 'active' : ''}`}
+                        className={`stage-thumb-item ${selectedImageIndex === idx ? 'active' : ''}`}
                       >
-                        <img src={img} alt={`${car.name} ${idx + 1}`} />
+                        <img src={img} alt={`${car.name} angle ${idx + 1}`} />
                       </button>
                     ))}
                   </div>
                 )}
-              </div>
+              </section>
 
-              {/* Vehicle Title & Quick Highlights Bar */}
-              <div className="compact-title-card">
-                <div className="compact-title-row">
-                  <div className="title-left">
-                    <div className="compact-meta-pills">
-                      {car.rating && (
-                        <span className="pill-rating">
-                          <BsStarFill size={10} /> {car.rating} Rating
-                        </span>
-                      )}
-                      <span className="pill-verified">
-                        <BsShieldCheck size={11} /> VK Verified
-                      </span>
-                      <span className="pill-available">
-                        <FiCheckCircle size={10} /> Available Today
-                      </span>
-                    </div>
-
-                    <h1 className="compact-vehicle-name">{car.name}</h1>
-                  </div>
+              {/* 🏷️ Vehicle Identity & Compact Overview */}
+              <section className="car-info-card">
+                <div className="car-badges-row">
+                  <span className="info-verified"><BsShieldCheck size={13} /> VK Verified Fleet</span>
+                  <span className="info-rating"><BsStarFill size={11} /> 4.9 (500+ Trips)</span>
+                  <span className="info-available"><FiCheckCircle size={12} /> Ready for Handover</span>
                 </div>
 
-                <p className="compact-vehicle-desc">
-                  {car.description || 'Sanitized self-drive car with 300 KM daily limit, commercial insurance & 24/7 doorstep delivery in Pune & PCMC.'}
+                <h1 className="car-title-heading">{car.name}</h1>
+                <p className="car-desc-text">
+                  {car.description || `${car.name} with ${car.transmission || 'Manual'} transmission and ${car.fuelType || 'Petrol'} engine. 100% sanitized, commercial tourist permit, 300 KM daily limit, and 30-min doorstep delivery across Pune & PCMC.`}
                 </p>
 
-                {/* Fast Inclusion Pills Bar */}
-                <div className="quick-inclusions-bar">
-                  <span className="q-inc-item"><FiTruck /> 30m Doorstep Delivery</span>
-                  <span className="q-inc-item"><FiKey /> 300 KM Daily Quota</span>
-                  <span className="q-inc-item"><FiShield /> Roadside Assistance</span>
-                  <span className="q-inc-item"><FiCheck /> Zero Hidden Charges</span>
+                {/* ⚙️ Compact Key Specs Grid */}
+                <h3 className="section-sub-heading">Key Specifications</h3>
+                <div className="car-specs-grid">
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiSettings size={18} /></div>
+                    <div>
+                      <span className="spec-label">Transmission</span>
+                      <strong className="spec-value">{car.transmission ? car.transmission.charAt(0).toUpperCase() + car.transmission.slice(1) : 'Manual'}</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><BsFuelPump size={18} /></div>
+                    <div>
+                      <span className="spec-label">Fuel Type</span>
+                      <strong className="spec-value">{car.fuelType ? car.fuelType.toUpperCase() : 'PETROL'}</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiUsers size={18} /></div>
+                    <div>
+                      <span className="spec-label">Seating</span>
+                      <strong className="spec-value">{car.seats || 5} Passenger Seats</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiKey size={18} /></div>
+                    <div>
+                      <span className="spec-label">Daily Limit</span>
+                      <strong className="spec-value">{dailyKmLimit} KM Included</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiClock size={18} /></div>
+                    <div>
+                      <span className="spec-label">Extra KM Rate</span>
+                      <strong className="spec-value">₹{extraKmRate}/km</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiShield size={18} /></div>
+                    <div>
+                      <span className="spec-label">Overtime Rate</span>
+                      <strong className="spec-value">₹{extraTimeRate}/hr</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiZap size={18} /></div>
+                    <div>
+                      <span className="spec-label">Security Deposit</span>
+                      <strong className="spec-value">{formatCurrency(securityDeposit)}</strong>
+                    </div>
+                  </div>
+
+                  <div className="spec-card">
+                    <div className="spec-icon-box"><FiTruck size={18} /></div>
+                    <div>
+                      <span className="spec-label">Handover</span>
+                      <strong className="spec-value">Doorstep Delivery</strong>
+                    </div>
+                  </div>
                 </div>
-              </div>
 
-              {/* Compact Tabbed Content Section (Zero Vertical Bloat) */}
-              <div className="compact-tabs-card">
-                <div className="tabs-header-strip">
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('specs')}
-                    className={`tab-toggle-btn ${activeTab === 'specs' ? 'active' : ''}`}
-                  >
-                    <FiSettings size={13} /> Specifications & Specs
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('tariff')}
-                    className={`tab-toggle-btn ${activeTab === 'tariff' ? 'active' : ''}`}
-                  >
-                    <FiClock size={13} /> Tariff & Rates
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setActiveTab('terms')}
-                    className={`tab-toggle-btn ${activeTab === 'terms' ? 'active' : ''}`}
-                  >
-                    <FiFileText size={13} /> Terms & Documents
-                  </button>
+                {/* 🌟 Included Amenities */}
+                <h3 className="section-sub-heading" style={{ marginTop: 22 }}>Included Features</h3>
+                <div className="car-features-pills">
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Air Conditioning & Heater</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Power Steering & Windows</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Bluetooth / Aux Audio</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Dual Airbags & ABS</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Fastag Enabled</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Spare Tyre & Toolkit</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> Deep Cleaned & Sanitized</span>
+                  <span className="feature-pill"><FiCheck color="#B80000" /> 24/7 Roadside Assistance</span>
                 </div>
+              </section>
 
-                {/* Tab 1: Vehicle Specifications */}
-                {activeTab === 'specs' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="tab-panel"
-                  >
-                    <div className="compact-specs-grid">
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Transmission</span>
-                        <strong className="c-spec-val">
-                          <FiSettings size={13} className="c-spec-icon" /> {car.transmission || 'Manual'}
-                        </strong>
-                      </div>
+              {/* 📄 Compact Policy & Documentation Accordion */}
+              <section className="car-policy-section">
+                <TermsAndConditions expandable={true} defaultOpen={false} compact={true} />
+              </section>
 
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Fuel Type</span>
-                        <strong className="c-spec-val">
-                          <BsFuelPump size={13} className="c-spec-icon" /> {car.fuelType || 'Diesel'}
-                        </strong>
-                      </div>
-
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Seating</span>
-                        <strong className="c-spec-val">
-                          <FiUsers size={13} className="c-spec-icon" /> {car.seats || 5} Seats
-                        </strong>
-                      </div>
-
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Mileage</span>
-                        <strong className="c-spec-val">
-                          <FiZap size={13} className="c-spec-icon" /> {car.mileage || '18 kmpl'}
-                        </strong>
-                      </div>
-
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Luggage</span>
-                        <strong className="c-spec-val">
-                          <BsLuggage size={13} className="c-spec-icon" /> {car.luggage || '2-3 Bags'}
-                        </strong>
-                      </div>
-
-                      <div className="c-spec-box">
-                        <span className="c-spec-label">Insurance</span>
-                        <strong className="c-spec-val">
-                          <FiShield size={13} className="c-spec-icon" /> Full Comprehensive
-                        </strong>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Tab 2: Tariff & Transparent Rates */}
-                {activeTab === 'tariff' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="tab-panel"
-                  >
-                    <div className="compact-tariff-grid">
-                      <div className="c-tariff-box">
-                        <span className="c-t-label">Daily KM Limit</span>
-                        <div className="c-t-val">{dailyKmLimit} KM <span className="unit">/ 24h</span></div>
-                        <span className="c-t-sub">Free 300 km included</span>
-                      </div>
-
-                      <div className="c-tariff-box">
-                        <span className="c-t-label">Extra KM Rate</span>
-                        <div className="c-t-val">₹{extraKmRate} <span className="unit">/ km</span></div>
-                        <span className="c-t-sub">After {dailyKmLimit} km</span>
-                      </div>
-
-                      <div className="c-tariff-box">
-                        <span className="c-t-label">Extra Time Rate</span>
-                        <div className="c-t-val">₹{extraTimeRate} <span className="unit">/ hr</span></div>
-                        <span className="c-t-sub">Standard overtime charge</span>
-                      </div>
-
-                      <div className="c-tariff-box">
-                        <span className="c-t-label">Refundable Deposit</span>
-                        <div className="c-t-val">{formatCurrency(securityDeposit)}</div>
-                        <span className="c-t-sub">Instant refund on return</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Tab 3: Documents & Rules */}
-                {activeTab === 'terms' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="tab-panel"
-                  >
-                    <div className="compact-docs-grid">
-                      <div className="c-doc-item">
-                        <FiCheck className="c-doc-icon" />
-                        <div>
-                          <strong>Valid Driving License</strong>
-                          <span>Original or DigiLocker verified LMV car license.</span>
-                        </div>
-                      </div>
-                      <div className="c-doc-item">
-                        <FiCheck className="c-doc-icon" />
-                        <div>
-                          <strong>Aadhaar Card / Govt ID</strong>
-                          <span>For quick identity and address verification.</span>
-                        </div>
-                      </div>
-                      <div className="c-doc-item">
-                        <FiCheck className="c-doc-icon" />
-                        <div>
-                          <strong>Age Criteria</strong>
-                          <span>Driver must be 21+ years with 1+ yr driving experience.</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div style={{ marginTop: 12 }}>
-                      <TermsAndConditions expandable={true} defaultOpen={false} />
-                    </div>
-                  </motion.div>
-                )}
-              </div>
             </div>
 
-            {/* RIGHT COLUMN: Compact Sticky Booking Box */}
-            <aside className="car-right-pane">
-              <div className="compact-sticky-box">
-                
-                {/* Price Display Card */}
-                <div className="compact-price-strip">
-                  <div>
-                    <span className="c-price-caption">TARIFF (LIVE ADMIN RATE)</span>
-                    <div className="c-price-row">
-                      <span className="c-price-val">{formatCurrency(car.pricePerDay || 2300)}</span>
-                      <span className="c-price-period">/ 24 hrs</span>
+            {/* ── RIGHT COLUMN: Sticky Professional Tariff & Booking Card ── */}
+            <div className="car-right-col">
+              <aside className="sticky-booking-sidebar">
+                <div className="sidebar-tariff-card">
+                  
+                  {/* Tariff Header */}
+                  <div className="tariff-header-block">
+                    <div className="tariff-badge-wrap">
+                      <span className="tariff-official-tag">OFFICIAL TARIFF</span>
+                      <span className="tariff-guarantee-tag"><BsShieldCheck /> Best Price Guaranteed</span>
+                    </div>
+
+                    <div className="tariff-price-display">
+                      <span className="tariff-currency">₹</span>
+                      <span className="tariff-amount">{car.pricePerDay || 2300}</span>
+                      <span className="tariff-period">/ 24 hrs</span>
+                    </div>
+
+                    <div className="tariff-sub-note">
+                      ⚡ <strong>{dailyKmLimit} KM daily limit included</strong> with every booking.
                     </div>
                   </div>
-                  <span className="c-price-tag">Best Rate</span>
-                </div>
 
-                {/* Benefits Checklist */}
-                <div className="compact-perks-list">
-                  <div className="c-perk">
-                    <FiTruck className="c-perk-ico" />
-                    <span>Doorstep Delivery in 30 Mins</span>
+                  {/* Transparent Calculation & Inclusions */}
+                  <div className="tariff-breakdown-list">
+                    <div className="breakdown-item">
+                      <span className="item-label"><FiKey /> Daily Limit</span>
+                      <strong className="item-val">{dailyKmLimit} KM / 24 hrs</strong>
+                    </div>
+                    <div className="breakdown-item">
+                      <span className="item-label"><FiClock /> Extra KM Charge</span>
+                      <strong className="item-val">₹{extraKmRate}/km</strong>
+                    </div>
+                    <div className="breakdown-item">
+                      <span className="item-label"><FiLock /> Refundable Deposit</span>
+                      <strong className="item-val">{formatCurrency(securityDeposit)}</strong>
+                    </div>
+                    <div className="breakdown-item">
+                      <span className="item-label"><FiTruck /> Delivery Location</span>
+                      <strong className="item-val">Pune &amp; PCMC Doorstep</strong>
+                    </div>
                   </div>
-                  <div className="c-perk">
-                    <FiKey className="c-perk-ico" />
-                    <span>300 KM Daily Quota Included</span>
+
+                  {/* Primary & Secondary Action CTAs */}
+                  <div className="sidebar-action-buttons">
+                    <button
+                      type="button"
+                      onClick={() => setIsModalOpen(true)}
+                      className="btn-sidebar-book-now"
+                    >
+                      <FiCalendar size={18} />
+                      <span>Book / Inquire Fleet</span>
+                      <FiArrowRight size={16} />
+                    </button>
+
+                    <a
+                      href={`https://wa.me/${cleanPhone || '918381052230'}?text=${whatsappMessage}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-sidebar-whatsapp"
+                    >
+                      <FaWhatsapp size={19} />
+                      <span>Instant WhatsApp Booking</span>
+                    </a>
+
+                    <a href={`tel:${cleanPhone || '+918381052230'}`} className="btn-sidebar-phone">
+                      <FiPhoneCall size={15} />
+                      <span>Direct Call: {phoneNumber}</span>
+                    </a>
                   </div>
-                  <div className="c-perk">
-                    <FiShield className="c-perk-ico" />
-                    <span>Comprehensive Commercial Insurance</span>
+
+                  {/* Trust Highlights */}
+                  <div className="sidebar-trust-checklist">
+                    <div className="trust-check-row">
+                      <FiCheckCircle size={15} color="#16A34A" />
+                      <span>Zero hidden charges • Transparent booking</span>
+                    </div>
+                    <div className="trust-check-row">
+                      <FiCheckCircle size={15} color="#16A34A" />
+                      <span>30-Min doorstep delivery across Pune</span>
+                    </div>
+                    <div className="trust-check-row">
+                      <FiCheckCircle size={15} color="#16A34A" />
+                      <span>100% sanitized &amp; serviced vehicles</span>
+                    </div>
+                    <div className="trust-check-row">
+                      <FiCheckCircle size={15} color="#16A34A" />
+                      <span>Pay rental + deposit at car pickup</span>
+                    </div>
                   </div>
+
                 </div>
+              </aside>
+            </div>
 
-                {/* Primary Booking Button */}
-                <motion.button
-                  whileHover={{ scale: 1.01 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="button"
-                  onClick={() => setIsModalOpen(true)}
-                  className="compact-btn-primary"
-                >
-                  <FiCalendar size={15} /> Book / Inquire Vehicle
-                </motion.button>
-
-                {/* Direct WhatsApp CTA */}
-                <a
-                  href={`https://wa.me/918381052230?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="compact-btn-whatsapp"
-                >
-                  <FaWhatsapp size={16} /> Instant WhatsApp Booking
-                </a>
-
-                {/* Phone Call Support */}
-                <a href="tel:+918381052230" className="compact-btn-call">
-                  <FiPhoneCall size={12} /> Direct Call: +91 8381052230
-                </a>
-
-                {/* Security Guarantee */}
-                <div className="compact-trust-strip">
-                  <span>🔒 Zero Hidden Fees</span>
-                  <span>•</span>
-                  <span>💯 Sanitized Fleet</span>
-                </div>
-              </div>
-            </aside>
           </div>
 
-          {/* Similar Recommended Cars */}
+          {/* 3. SIMILAR RECOMMENDED VEHICLES (Full Width Below) */}
           {similarCars.length > 0 && (
-            <div className="compact-similar-section">
-              <div className="similar-title-bar">
-                <h2 className="similar-title">Similar Recommended Vehicles</h2>
-                <Link to="/fleet" className="similar-viewall">
-                  View All Fleet <FiArrowLeft style={{ transform: 'rotate(180deg)' }} />
+            <section className="similar-vehicles-section">
+              <div className="similar-header">
+                <div>
+                  <span className="similar-sub-badge">SIMILAR FLEET</span>
+                  <h2 className="similar-main-title">Recommended Alternatives in Pune</h2>
+                </div>
+                <Link to="/fleet" className="similar-see-all">
+                  <span>View All Fleet</span> <FiArrowRight size={14} />
                 </Link>
               </div>
-              <div className="grid-3">
+
+              <div className="similar-cars-grid">
                 {similarCars.map((sCar) => (
-                  <RevvCarCard key={sCar.id} car={sCar} onEnquire={(c) => navigate(`/cars/${c.id}`)} />
+                  <RevvCarCard
+                    key={sCar.id}
+                    car={sCar}
+                    onEnquire={() => navigate(`/cars/${sCar.id}`)}
+                  />
                 ))}
               </div>
-            </div>
+            </section>
           )}
+
         </div>
       </main>
 
-      {/* Floating Bottom Bar for Mobile View */}
-      <div className="mobile-bottom-bar">
-        <div className="mobile-b-price">
-          <span className="val">{formatCurrency(car.pricePerDay || 2300)}</span>
-          <span className="unit">/ 24 hrs</span>
+      {/* 📱 Mobile Sticky Bottom Booking Bar */}
+      <div className="mobile-bottom-booking-bar">
+        <div className="mobile-bar-price">
+          <span className="bar-amt">{formatCurrency(car.pricePerDay || 2300)}</span>
+          <span className="bar-sub">/ 24 hrs • {dailyKmLimit} km</span>
         </div>
-
-        <div className="mobile-b-actions">
+        <div className="mobile-bar-ctas">
           <a
-            href={`https://wa.me/918381052230?text=${whatsappMessage}`}
+            href={`https://wa.me/${cleanPhone || '918381052230'}?text=${whatsappMessage}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="mobile-wa-icon"
-            title="WhatsApp Inquiry"
+            className="mobile-bar-whatsapp-btn"
+            aria-label="WhatsApp Booking"
           >
             <FaWhatsapp size={18} />
           </a>
           <button
             type="button"
             onClick={() => setIsModalOpen(true)}
-            className="mobile-book-btn"
+            className="mobile-bar-book-btn"
           >
-            <FiCalendar size={14} /> Book Now
+            Book Now
           </button>
         </div>
       </div>
 
-      {/* Booking Form Modal */}
+      {/* Interactive Booking Form Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -581,31 +536,31 @@ export default function CarDetailPage() {
         />
       </Modal>
 
-      {/* High-Resolution Lightbox Modal */}
+      {/* Fullscreen Lightbox Modal */}
       <AnimatePresence>
         {isLightboxOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="lightbox-overlay"
+            className="car-lightbox-backdrop"
             onClick={() => setIsLightboxOpen(false)}
           >
             <button
               type="button"
-              className="lightbox-close"
+              className="lightbox-close-btn"
               onClick={() => setIsLightboxOpen(false)}
             >
-              <FiX size={22} />
+              <FiX size={24} />
             </button>
-            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <div className="lightbox-image-box" onClick={(e) => e.stopPropagation()}>
               <img
                 src={images[selectedImageIndex]}
                 alt={car.name}
                 className="lightbox-img"
               />
               <div className="lightbox-caption">
-                <strong>{car.name}</strong> • {car.category?.toUpperCase()}
+                <strong>{car.name}</strong> • {(car.category || 'FLEET').toUpperCase()} • 300 KM/Day Included
               </div>
             </div>
           </motion.div>
@@ -614,761 +569,779 @@ export default function CarDetailPage() {
 
       <Footer />
 
+      {/* ── Ultra-Professional Styling ── */}
       <style>{`
-        .car-detail-main {
-          padding-top: 74px;
-          padding-bottom: 30px;
+        .car-detail-page {
+          padding-top: 86px;
+          padding-bottom: 50px;
           flex: 1;
         }
         .car-detail-container {
-          max-width: 1160px;
+          max-width: 1260px;
           margin: 0 auto;
-          padding: 0 14px;
+          padding: 0 20px;
         }
 
-        /* Top Navigation Strip */
-        .car-compact-nav {
+        /* ─── Breadcrumb Navigation ─── */
+        .car-detail-nav {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-bottom: 10px;
-          gap: 8px;
+          margin-bottom: 16px;
           flex-wrap: wrap;
+          gap: 10px;
         }
-        .compact-back-btn {
+        .car-back-link {
           display: inline-flex;
           align-items: center;
-          gap: 5px;
-          font-size: 12px;
+          gap: 6px;
+          font-size: 13px;
           font-weight: 800;
-          color: #FF4500;
+          color: #B80000;
           text-decoration: none;
-          background: rgba(255, 69, 0, 0.08);
-          padding: 4px 12px;
+          background: rgba(184, 0, 0, 0.08);
+          padding: 6px 14px;
           border-radius: 999px;
-          border: 1px solid rgba(255, 69, 0, 0.22);
-          transition: all 0.18s ease;
+          border: 1px solid rgba(184, 0, 0, 0.25);
+          transition: all 0.2s ease;
         }
-        .compact-back-btn:hover {
-          background: #FF4500;
+        .car-back-link:hover {
+          background: #B80000;
           color: #FFFFFF;
         }
-        .compact-crumb-info {
+        .car-nav-trail {
           display: flex;
           align-items: center;
-          gap: 5px;
-          font-size: 11.5px;
+          gap: 8px;
+          font-size: 12px;
           color: #64748B;
           font-weight: 700;
         }
-        .crumb-dot { color: #CBD5E1; }
-        .crumb-cat {
-          background: #EEF2F6;
-          color: #334155;
-          padding: 1px 6px;
-          border-radius: 5px;
-          font-size: 10px;
-          font-weight: 800;
+        .car-nav-trail .sep { color: #CBD5E1; }
+        .car-nav-trail .cat-chip {
+          background: #E2E8F0;
+          color: #0F172A;
+          padding: 2px 8px;
+          border-radius: 6px;
+          font-size: 10.5px;
+          font-weight: 900;
         }
-        .crumb-name { color: #0F172A; font-weight: 800; }
+        .car-nav-trail .cur-name { color: #0F172A; font-weight: 800; }
 
-        /* Master 2-Column Grid */
+        /* ─── Main 2-Column Grid Layout ─── */
         .car-main-layout {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) 320px;
-          gap: 16px;
+          grid-template-columns: minmax(0, 1.45fr) 400px;
+          gap: 28px;
           align-items: start;
         }
-        .car-left-pane {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-          min-width: 0;
-        }
-        .car-right-pane {
-          position: sticky;
-          top: 80px;
-          align-self: start;
-        }
 
-        /* Compact Gallery */
-        .compact-gallery-card {
+        /* ─── LEFT COLUMN: Vehicle Stage & Specs ─── */
+        .car-gallery-card {
           background: #FFFFFF;
-          border-radius: 14px;
-          padding: 6px;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 2px 14px rgba(15, 23, 42, 0.04);
+          border-radius: 20px;
+          padding: 12px;
+          border: 1.5px solid #E2E8F0;
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+          margin-bottom: 20px;
         }
-        .compact-viewport {
+        .car-showcase-stage {
           position: relative;
           width: 100%;
-          height: 290px;
+          height: 400px;
+          background: radial-gradient(circle at center, #1E293B 0%, #0B0F19 100%);
+          border-radius: 14px;
+          overflow: hidden;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        /* Blurred Backdrop for atmospheric lighting without ugly borders */
+        .car-stage-blur-bg {
+          position: absolute;
+          inset: -10%;
+          width: 120%;
+          height: 120%;
+          object-fit: cover;
+          filter: blur(28px) brightness(0.6);
+          opacity: 0.45;
+          pointer-events: none;
+        }
+        /* Foreground Main Vehicle - 100% Uncropped & Proportionate */
+        .car-stage-main-img {
+          position: relative;
+          z-index: 1;
+          max-width: 94%;
+          max-height: 90%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.65));
+          transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .car-showcase-stage:hover .car-stage-main-img {
+          transform: scale(1.03);
+        }
+
+        .stage-badges-top-left {
+          position: absolute;
+          top: 14px;
+          left: 14px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          z-index: 2;
+        }
+        .stage-badge {
+          font-size: 11px;
+          font-weight: 900;
+          padding: 4px 12px;
+          border-radius: 999px;
+          letter-spacing: 0.3px;
+        }
+        .stage-badge.popular {
+          background: linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%);
+          color: #FFFFFF;
+          box-shadow: 0 4px 14px rgba(184, 0, 0, 0.45);
+        }
+        .stage-badge.category {
+          background: rgba(15, 23, 42, 0.85);
+          color: #FFFFFF;
+          backdrop-filter: blur(6px);
+        }
+        .stage-badge.limit {
+          background: rgba(255, 255, 255, 0.95);
+          color: #B80000;
+          font-weight: 800;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .stage-actions-top-right {
+          position: absolute;
+          top: 14px;
+          right: 14px;
+          display: flex;
+          gap: 8px;
+          z-index: 2;
+        }
+        .stage-action-btn {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.9);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          color: #0F172A;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+        }
+        .stage-action-btn:hover {
+          background: #B80000;
+          color: #FFFFFF;
+          border-color: #B80000;
+          transform: scale(1.08);
+        }
+        .stage-counter {
+          position: absolute;
+          bottom: 14px;
+          right: 14px;
+          background: rgba(15, 23, 42, 0.8);
+          color: #FFFFFF;
+          font-size: 11px;
+          font-weight: 800;
+          padding: 4px 12px;
+          border-radius: 999px;
+          backdrop-filter: blur(4px);
+          z-index: 2;
+        }
+
+        .stage-thumbs-strip {
+          display: flex;
+          gap: 10px;
+          margin-top: 12px;
+          overflow-x: auto;
+          padding-bottom: 4px;
+        }
+        .stage-thumb-item {
+          width: 86px;
+          height: 60px;
           border-radius: 10px;
           overflow: hidden;
+          border: 2px solid transparent;
           background: #0B0F19;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           cursor: pointer;
-        }
-        .compact-ambient-bg {
-          position: absolute;
-          inset: -20px;
-          width: calc(100% + 40px);
-          height: calc(100% + 40px);
-          object-fit: cover;
-          filter: blur(28px) brightness(0.35) saturate(1.2);
-          opacity: 0.75;
-          pointer-events: none;
-          z-index: 1;
-        }
-        .compact-car-img {
-          position: relative;
-          z-index: 2;
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          object-position: center;
-          padding: 6px;
-          transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .compact-viewport:hover .compact-car-img {
-          transform: scale(1.025);
-        }
-
-        .compact-img-badges {
-          position: absolute;
-          top: 8px;
-          left: 8px;
-          display: flex;
-          gap: 5px;
-          z-index: 3;
-        }
-        .img-badge.category {
-          background: #FF4500;
-          color: #FFFFFF;
-          font-size: 10px;
-          font-weight: 900;
-          padding: 3px 8px;
-          border-radius: 999px;
-        }
-        .img-badge.kmlimit {
-          background: rgba(15, 23, 42, 0.85);
-          backdrop-filter: blur(4px);
-          color: #FFFFFF;
-          font-size: 10px;
-          font-weight: 800;
-          padding: 3px 8px;
-          border-radius: 999px;
-          border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .compact-img-actions {
-          position: absolute;
-          top: 8px;
-          right: 8px;
-          display: flex;
-          gap: 5px;
-          z-index: 3;
-        }
-        .img-action-btn {
-          width: 28px;
-          height: 28px;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.92);
-          border: 1px solid #E2E8F0;
-          color: #0F172A;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.18s ease;
-        }
-        .img-action-btn:hover {
-          background: #FF4500;
-          color: #FFFFFF;
-          border-color: #FF4500;
-        }
-
-        .compact-img-counter {
-          position: absolute;
-          bottom: 8px;
-          right: 8px;
-          background: rgba(15, 23, 42, 0.80);
-          color: #FFFFFF;
-          font-size: 10px;
-          font-weight: 800;
-          padding: 2px 7px;
-          border-radius: 999px;
-          z-index: 3;
-        }
-
-        .compact-thumb-strip {
-          display: flex;
-          gap: 6px;
-          margin-top: 6px;
-          overflow-x: auto;
-          padding-bottom: 2px;
-          scrollbar-width: none;
-        }
-        .compact-thumb-strip::-webkit-scrollbar { display: none; }
-        .compact-thumb-btn {
-          width: 58px;
-          height: 40px;
-          border-radius: 6px;
-          overflow: hidden;
           padding: 0;
-          border: 1.5px solid #E2E8F0;
-          background: #0F172A;
-          cursor: pointer;
           flex-shrink: 0;
-          transition: all 0.15s ease;
+          transition: all 0.2s ease;
         }
-        .compact-thumb-btn.active {
-          border-color: #FF4500;
-          box-shadow: 0 0 0 1.5px rgba(255, 69, 0, 0.3);
+        .stage-thumb-item.active {
+          border-color: #B80000;
+          box-shadow: 0 2px 12px rgba(184, 0, 0, 0.4);
         }
-        .compact-thumb-btn img {
+        .stage-thumb-item img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
 
-        /* Compact Title Card */
-        .compact-title-card {
+        /* ─── Vehicle Info Card ─── */
+        .car-info-card {
           background: #FFFFFF;
-          border-radius: 14px;
-          padding: 12px 16px;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03);
+          border-radius: 20px;
+          padding: 26px;
+          border: 1.5px solid #E2E8F0;
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+          margin-bottom: 20px;
         }
-        .compact-meta-pills {
+        .car-badges-row {
           display: flex;
           align-items: center;
-          gap: 5px;
-          margin-bottom: 4px;
+          gap: 8px;
           flex-wrap: wrap;
-        }
-        .pill-rating {
-          font-size: 10.5px;
-          font-weight: 800;
-          background: #FEF3C7;
-          color: #B45309;
-          padding: 2px 7px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          gap: 3px;
-        }
-        .pill-verified {
-          font-size: 10.5px;
-          font-weight: 800;
-          background: #EFF6FF;
-          color: #1D4ED8;
-          padding: 2px 7px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          gap: 3px;
-        }
-        .pill-available {
-          font-size: 10.5px;
-          font-weight: 800;
-          background: #DCFCE7;
-          color: #15803D;
-          padding: 2px 7px;
-          border-radius: 999px;
-          display: inline-flex;
-          align-items: center;
-          gap: 3px;
-        }
-        .compact-vehicle-name {
-          font-size: clamp(20px, 2.5vw, 24px);
-          font-weight: 900;
-          color: #0F172A;
-          margin: 2px 0;
-          line-height: 1.2;
-        }
-        .compact-vehicle-desc {
-          font-size: 12.5px;
-          color: #475569;
-          margin: 2px 0 8px;
-          line-height: 1.45;
-          font-weight: 600;
-        }
-        .quick-inclusions-bar {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 6px;
-          padding-top: 8px;
-          border-top: 1px solid #F1F5F9;
-        }
-        .q-inc-item {
-          font-size: 11px;
-          font-weight: 700;
-          color: #334155;
-          background: #F8FAFC;
-          border: 1px solid #E2E8F0;
-          padding: 3px 8px;
-          border-radius: 6px;
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-        }
-
-        /* Compact Tabs Card */
-        .compact-tabs-card {
-          background: #FFFFFF;
-          border-radius: 14px;
-          padding: 12px 16px;
-          border: 1px solid #E2E8F0;
-          box-shadow: 0 2px 12px rgba(15, 23, 42, 0.03);
-        }
-        .tabs-header-strip {
-          display: flex;
-          gap: 6px;
-          border-bottom: 1px solid #E2E8F0;
-          padding-bottom: 8px;
           margin-bottom: 12px;
-          overflow-x: auto;
-          scrollbar-width: none;
         }
-        .tabs-header-strip::-webkit-scrollbar { display: none; }
-        .tab-toggle-btn {
-          background: #F8FAFC;
-          border: 1px solid #E2E8F0;
-          color: #64748B;
-          font-size: 12px;
-          font-weight: 800;
-          padding: 6px 12px;
-          border-radius: 8px;
-          cursor: pointer;
+        .info-verified {
           display: inline-flex;
           align-items: center;
           gap: 5px;
-          transition: all 0.18s ease;
-          white-space: nowrap;
+          background: #EFF6FF;
+          color: #2563EB;
+          font-size: 11.5px;
+          font-weight: 900;
+          padding: 4px 10px;
+          border-radius: 999px;
+          border: 1px solid #BFDBFE;
         }
-        .tab-toggle-btn:hover {
-          color: #0F172A;
-          border-color: #CBD5E1;
-        }
-        .tab-toggle-btn.active {
-          background: #FF4500;
-          color: #FFFFFF;
-          border-color: #FF4500;
-          box-shadow: 0 2px 8px rgba(255, 69, 0, 0.3);
-        }
-
-        /* Specs Grid */
-        .compact-specs-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 8px;
-        }
-        .c-spec-box {
-          background: #F8FAFC;
-          border: 1px solid #E2E8F0;
-          border-radius: 8px;
-          padding: 8px 10px;
-        }
-        .c-spec-label {
-          font-size: 9.5px;
-          font-weight: 800;
-          color: #64748B;
-          text-transform: uppercase;
-          display: block;
-        }
-        .c-spec-val {
-          font-size: 12px;
-          font-weight: 800;
-          color: #0F172A;
-          display: flex;
+        .info-rating {
+          display: inline-flex;
           align-items: center;
           gap: 4px;
-          margin-top: 2px;
-          text-transform: capitalize;
+          background: #FFFBEB;
+          color: #D97706;
+          font-size: 11.5px;
+          font-weight: 900;
+          padding: 4px 10px;
+          border-radius: 999px;
+          border: 1px solid #FDE68A;
         }
-        .c-spec-icon { color: #FF4500; flex-shrink: 0; }
-
-        /* Tariff Grid */
-        .compact-tariff-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
+        .info-available {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          background: #F0FDF4;
+          color: #16A34A;
+          font-size: 11.5px;
+          font-weight: 900;
+          padding: 4px 10px;
+          border-radius: 999px;
+          border: 1px solid #BBF7D0;
         }
-        .c-tariff-box {
-          background: #F8FAFC;
-          border: 1px solid #E2E8F0;
-          border-radius: 8px;
-          padding: 8px 10px;
-        }
-        .c-t-label {
-          font-size: 10px;
-          color: #64748B;
-          font-weight: 800;
-          display: block;
-        }
-        .c-t-val {
-          font-size: 15px;
+        .car-title-heading {
+          font-size: clamp(24px, 3.2vw, 32px);
           font-weight: 900;
           color: #0F172A;
-          margin: 2px 0 0;
+          margin: 0 0 10px;
+          line-height: 1.25;
         }
-        .c-t-val .unit {
-          font-size: 11px;
+        .car-desc-text {
+          font-size: 14.5px;
           color: #64748B;
-          font-weight: 700;
+          line-height: 1.65;
+          margin: 0 0 22px;
         }
-        .c-t-sub {
-          font-size: 10px;
-          color: #15803D;
-          font-weight: 700;
-          display: block;
+        .section-sub-heading {
+          font-size: 16px;
+          font-weight: 900;
+          color: #0F172A;
+          margin: 0 0 14px;
+          letter-spacing: -0.2px;
         }
 
-        /* Docs Grid */
-        .compact-docs-grid {
+        /* ─── Compact Specs Grid (4 Cols) ─── */
+        .car-specs-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 8px;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
         }
-        .c-doc-item {
+        .spec-card {
           display: flex;
-          align-items: flex-start;
-          gap: 7px;
+          align-items: center;
+          gap: 10px;
           background: #F8FAFC;
-          padding: 8px 10px;
-          border-radius: 8px;
+          padding: 12px 14px;
+          border-radius: 12px;
           border: 1px solid #E2E8F0;
-          font-size: 12px;
         }
-        .c-doc-icon {
-          color: #16A34A;
-          font-size: 14px;
-          margin-top: 1px;
+        .spec-icon-box {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+          background: rgba(184, 0, 0, 0.08);
+          color: #B80000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           flex-shrink: 0;
         }
-        .c-doc-item strong {
+        .spec-label {
           display: block;
-          color: #0F172A;
-          font-weight: 800;
-          font-size: 11.5px;
-        }
-        .c-doc-item span {
+          font-size: 10px;
           color: #64748B;
-          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+          margin-bottom: 2px;
+        }
+        .spec-value {
+          display: block;
+          font-size: 13px;
+          font-weight: 900;
+          color: #0F172A;
         }
 
-        /* Sticky Booking Sidebar */
-        .compact-sticky-box {
-          background: #FFFFFF;
-          border-radius: 16px;
-          padding: 16px;
-          border: 1.5px solid #E2E8F0;
-          box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
+        /* ─── Included Features Pills ─── */
+        .car-features-pills {
           display: flex;
-          flex-direction: column;
-          gap: 11px;
+          flex-wrap: wrap;
+          gap: 8px;
         }
-        .compact-price-strip {
+        .feature-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12.5px;
+          font-weight: 700;
+          color: #1E293B;
+          background: #F1F5F9;
+          padding: 7px 14px;
+          border-radius: 999px;
+          border: 1px solid #E2E8F0;
+        }
+
+        /* ─── Policy Accordion ─── */
+        .car-policy-section {
+          margin-top: 10px;
+          margin-bottom: 20px;
+        }
+
+        /* ─── RIGHT COLUMN: Sticky Tariff Sidebar ─── */
+        .sticky-booking-sidebar {
+          position: sticky;
+          top: 92px;
+        }
+        .sidebar-tariff-card {
+          background: linear-gradient(180deg, #0A0E18 0%, #101626 100%);
+          border-radius: 24px;
+          padding: 26px;
+          border: 1.5px solid rgba(184, 0, 0, 0.40);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+          color: #FFFFFF;
+        }
+        .tariff-badge-wrap {
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: space-between;
-          border-bottom: 1px solid #F1F5F9;
-          padding-bottom: 10px;
+          margin-bottom: 12px;
         }
-        .c-price-caption {
-          font-size: 9.5px;
+        .tariff-official-tag {
+          font-size: 10.5px;
           font-weight: 900;
-          color: #64748B;
-          letter-spacing: 0.5px;
-          display: block;
+          color: #E61800;
+          letter-spacing: 0.8px;
         }
-        .c-price-row {
+        .tariff-guarantee-tag {
+          display: inline-flex;
+          align-items: center;
+          gap: 4px;
+          font-size: 11px;
+          font-weight: 800;
+          color: #4ADE80;
+        }
+        .tariff-price-display {
           display: flex;
           align-items: baseline;
           gap: 4px;
-          margin-top: 2px;
+          margin-bottom: 6px;
         }
-        .c-price-val {
+        .tariff-currency {
           font-size: 26px;
           font-weight: 900;
-          color: #FF4500;
+          color: #E61800;
+        }
+        .tariff-amount {
+          font-size: 44px;
+          font-weight: 900;
+          color: #FFFFFF;
           line-height: 1;
         }
-        .c-price-period {
-          font-size: 12px;
-          color: #475569;
-          font-weight: 800;
+        .tariff-period {
+          font-size: 15px;
+          color: #94A3B8;
+          font-weight: 700;
+          margin-left: 2px;
         }
-        .c-price-tag {
-          font-size: 9.5px;
-          font-weight: 800;
-          background: #DCFCE7;
-          color: #15803D;
-          padding: 2.5px 7px;
-          border-radius: 999px;
+        .tariff-sub-note {
+          font-size: 12.5px;
+          color: #CBD5E1;
+          margin-bottom: 20px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .tariff-sub-note strong {
+          color: #FFB800;
         }
 
-        .compact-perks-list {
-          background: #F8FAFC;
-          border: 1px solid #E2E8F0;
-          border-radius: 10px;
-          padding: 10px 12px;
+        .tariff-breakdown-list {
           display: flex;
           flex-direction: column;
-          gap: 7px;
+          gap: 11px;
+          margin-bottom: 22px;
         }
-        .c-perk {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          font-size: 11.5px;
-          color: #1E293B;
-          font-weight: 800;
-        }
-        .c-perk-ico {
-          color: #FF4500;
-          flex-shrink: 0;
-          font-size: 13px;
-        }
-
-        .compact-btn-primary {
-          width: 100%;
-          padding: 12px;
-          font-size: 14px;
-          font-weight: 900;
-          border-radius: 10px;
-          background: linear-gradient(135deg, #FF4500 0%, #E63900 100%);
-          box-shadow: 0 4px 16px rgba(255, 69, 0, 0.35);
-          color: #FFFFFF;
-          border: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 7px;
-          cursor: pointer;
-          transition: all 0.18s ease;
-        }
-        .compact-btn-primary:hover {
-          box-shadow: 0 6px 20px rgba(255, 69, 0, 0.5);
-        }
-
-        .compact-btn-whatsapp {
-          width: 100%;
-          padding: 9.5px 12px;
-          font-size: 12.5px;
-          font-weight: 800;
-          border-radius: 8px;
-          background: #F0FDF4;
-          color: #15803D;
-          border: 1px solid #BBF7D0;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 6px;
-          transition: all 0.18s ease;
-        }
-        .compact-btn-whatsapp:hover {
-          background: #DCFCE7;
-        }
-
-        .compact-btn-call {
-          width: 100%;
-          padding: 6px;
-          font-size: 11.5px;
-          font-weight: 700;
-          color: #475569;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 5px;
-          transition: all 0.18s ease;
-        }
-        .compact-btn-call:hover {
-          color: #0F172A;
-          text-decoration: underline;
-        }
-
-        .compact-trust-strip {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-top: 1px dashed #E2E8F0;
-          padding-top: 8px;
-          gap: 8px;
-          font-size: 10.5px;
-          color: #64748B;
-          font-weight: 700;
-        }
-
-        /* Similar Fleet */
-        .compact-similar-section {
-          margin-top: 24px;
-        }
-        .similar-title-bar {
+        .breakdown-item {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          margin-bottom: 12px;
+          font-size: 13px;
         }
-        .similar-title {
-          font-size: 17px;
+        .breakdown-item .item-label {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #94A3B8;
+          font-weight: 600;
+        }
+        .breakdown-item .item-val {
+          color: #FFFFFF;
+          font-weight: 800;
+        }
+
+        .sidebar-action-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin-bottom: 22px;
+        }
+        .btn-sidebar-book-now {
+          background: linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%);
+          color: #FFFFFF;
+          font-size: 15px;
+          font-weight: 900;
+          padding: 14px 20px;
+          border-radius: 999px;
+          border: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          box-shadow: 0 6px 20px rgba(184, 0, 0, 0.45);
+          transition: all 0.2s ease;
+          width: 100%;
+        }
+        .btn-sidebar-book-now:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 26px rgba(184, 0, 0, 0.6);
+        }
+        .btn-sidebar-whatsapp {
+          background: #25D366;
+          color: #FFFFFF;
+          font-size: 14px;
+          font-weight: 900;
+          padding: 13px 20px;
+          border-radius: 999px;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+          transition: all 0.2s ease;
+          width: 100%;
+        }
+        .btn-sidebar-whatsapp:hover {
+          background: #1EBE5D;
+          transform: translateY(-2px);
+        }
+        .btn-sidebar-phone {
+          background: rgba(255, 255, 255, 0.08);
+          color: #FFFFFF;
+          font-size: 13px;
+          font-weight: 800;
+          padding: 11px 18px;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          transition: all 0.2s ease;
+        }
+        .btn-sidebar-phone:hover {
+          background: rgba(255, 255, 255, 0.18);
+        }
+
+        .sidebar-trust-checklist {
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          padding-top: 16px;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .trust-check-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 12px;
+          color: #CBD5E1;
+          font-weight: 600;
+        }
+
+        /* ─── Similar Vehicles Grid ─── */
+        .similar-vehicles-section {
+          margin-top: 40px;
+          margin-bottom: 20px;
+        }
+        .similar-header {
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          margin-bottom: 18px;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .similar-sub-badge {
+          display: block;
+          font-size: 11px;
+          color: #B80000;
+          font-weight: 900;
+          letter-spacing: 0.8px;
+          margin-bottom: 2px;
+        }
+        .similar-main-title {
+          font-size: clamp(20px, 3.2vw, 26px);
           font-weight: 900;
           color: #0F172A;
           margin: 0;
         }
-        .similar-viewall {
-          font-size: 12px;
-          font-weight: 800;
-          color: #FF4500;
-          text-decoration: none;
+        .similar-see-all {
           display: inline-flex;
           align-items: center;
-          gap: 3px;
-        }
-
-        /* Mobile Bottom Bar */
-        .mobile-bottom-bar {
-          display: none;
-          position: fixed;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: #FFFFFF;
-          padding: 8px 14px;
-          box-shadow: 0 -4px 18px rgba(0,0,0,0.1);
-          border-top: 1px solid #E2E8F0;
-          z-index: 99;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .mobile-b-price {
-          display: flex;
-          align-items: baseline;
-          gap: 3px;
-        }
-        .mobile-b-price .val {
-          font-size: 18px;
-          font-weight: 900;
-          color: #FF4500;
-        }
-        .mobile-b-price .unit {
-          font-size: 10.5px;
-          font-weight: 700;
-          color: #64748B;
-        }
-        .mobile-b-actions {
-          display: flex;
-          align-items: center;
           gap: 6px;
-        }
-        .mobile-wa-icon {
-          width: 36px;
-          height: 36px;
-          border-radius: 8px;
-          background: #25D366;
-          color: #FFFFFF;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          font-size: 13.5px;
+          font-weight: 800;
+          color: #B80000;
           text-decoration: none;
         }
-        .mobile-book-btn {
-          padding: 9px 15px;
-          background: linear-gradient(135deg, #FF4500 0%, #E63900 100%);
-          color: #FFFFFF;
-          border: none;
-          border-radius: 8px;
-          font-size: 12.5px;
-          font-weight: 900;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          cursor: pointer;
+        .similar-see-all:hover {
+          text-decoration: underline;
+        }
+        .similar-cars-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
         }
 
-        /* Lightbox */
-        .lightbox-overlay {
+        /* ─── Mobile Sticky Bottom Bar ─── */
+        .mobile-bottom-booking-bar {
+          display: none;
+        }
+
+        /* ─── Lightbox Modal ─── */
+        .car-lightbox-backdrop {
           position: fixed;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background: rgba(15, 23, 42, 0.94);
-          backdrop-filter: blur(8px);
-          z-index: 9999;
+          background: rgba(0, 0, 0, 0.94);
+          z-index: 99999;
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 16px;
+          padding: 20px;
         }
-        .lightbox-close {
+        .lightbox-close-btn {
           position: absolute;
-          top: 16px;
-          right: 16px;
-          background: rgba(255,255,255,0.15);
+          top: 20px;
+          right: 20px;
+          background: rgba(255, 255, 255, 0.15);
           border: none;
           color: #FFFFFF;
-          width: 38px;
-          height: 38px;
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          cursor: pointer;
+          transition: background 0.2s;
         }
-        .lightbox-content {
+        .lightbox-close-btn:hover {
+          background: #B80000;
+        }
+        .lightbox-image-box {
           max-width: 90vw;
           max-height: 85vh;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
+          text-align: center;
         }
         .lightbox-img {
           max-width: 100%;
           max-height: 75vh;
+          border-radius: 12px;
           object-fit: contain;
-          border-radius: 10px;
         }
         .lightbox-caption {
           color: #FFFFFF;
-          margin-top: 10px;
+          margin-top: 12px;
           font-size: 14px;
-          font-weight: 700;
         }
 
-        /* Breakpoints */
-        @media (max-width: 920px) {
+        /* ─── Responsive Media Queries ─── */
+        @media (max-width: 1024px) {
           .car-main-layout {
-            grid-template-columns: minmax(0, 1fr) 280px;
-            gap: 12px;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 20px;
           }
-          .compact-specs-grid {
+          .car-specs-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          .compact-viewport {
-            height: 250px;
-          }
         }
-        @media (max-width: 768px) {
+
+        @media (max-width: 880px) {
           .car-main-layout {
             grid-template-columns: 1fr;
           }
-          .car-right-pane {
+          .sticky-booking-sidebar {
             position: static;
           }
-          .mobile-bottom-bar {
+          .similar-cars-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .car-detail-page {
+            padding-top: 76px;
+            padding-bottom: 90px; /* Space for mobile sticky bottom bar */
+          }
+          .car-detail-container {
+            padding: 0 12px;
+          }
+          .car-gallery-card {
+            padding: 8px;
+            border-radius: 16px;
+          }
+          .car-showcase-stage {
+            height: 250px;
+            border-radius: 12px;
+          }
+          .stage-badges-top-left .stage-badge {
+            font-size: 9.5px;
+            padding: 3px 8px;
+          }
+          .car-info-card {
+            padding: 16px;
+            border-radius: 16px;
+          }
+          .car-title-heading {
+            font-size: 20px !important;
+          }
+          .car-desc-text {
+            font-size: 13px !important;
+          }
+          .car-specs-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+          }
+          .spec-card {
+            padding: 9px 10px;
+            gap: 8px;
+          }
+          .spec-icon-box {
+            width: 30px;
+            height: 30px;
+          }
+          .spec-label {
+            font-size: 9px;
+          }
+          .spec-value {
+            font-size: 11.5px;
+          }
+          .feature-pill {
+            font-size: 11px;
+            padding: 5px 10px;
+          }
+          .similar-cars-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+          }
+
+          /* Mobile Sticky Bottom Bar Display */
+          .mobile-bottom-booking-bar {
             display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            background: rgba(10, 14, 24, 0.96);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 12px 16px;
+            border-top: 1.5px solid rgba(184, 0, 0, 0.4);
+            box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.35);
           }
-          .car-detail-main {
-            padding-bottom: 70px;
+          .mobile-bar-price {
+            display: flex;
+            flex-direction: column;
           }
-          .compact-viewport {
-            height: 220px;
+          .mobile-bar-price .bar-amt {
+            font-size: 19px;
+            font-weight: 900;
+            color: #FFFFFF;
+            line-height: 1.1;
+          }
+          .mobile-bar-price .bar-sub {
+            font-size: 10.5px;
+            color: #CBD5E1;
+            font-weight: 600;
+          }
+          .mobile-bar-ctas {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .mobile-bar-whatsapp-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.35);
+          }
+          .mobile-bar-book-btn {
+            background: linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%);
+            color: #FFFFFF;
+            font-size: 13.5px;
+            font-weight: 900;
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(184, 0, 0, 0.4);
           }
         }
       `}</style>

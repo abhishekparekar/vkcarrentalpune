@@ -9,7 +9,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
-import { FiSearch, FiMapPin, FiCalendar, FiChevronLeft, FiChevronRight, FiShield, FiClock, FiKey, FiTruck, FiArrowRight, FiZap, FiCheckCircle, FiStar } from 'react-icons/fi';
+import { FiSearch, FiMapPin, FiCalendar, FiChevronLeft, FiChevronRight, FiShield, FiClock, FiKey, FiTruck, FiArrowRight, FiZap, FiCheckCircle, FiStar, FiPhone } from 'react-icons/fi';
 import { BsCarFront, BsStarFill, BsAward, BsCarFrontFill, BsWhatsapp } from 'react-icons/bs';
 
 import Navbar from '../../components/layout/Navbar';
@@ -110,157 +110,227 @@ export default function HomePage() {
       />
       <Navbar />
 
-      {/* 1. CINEMATIC ANIMATED HERO SECTION */}
+      {/* 1. CINEMATIC HIGH-DEFINITION HERO SECTION WITH SCENIC THAR & FLEET */}
       <section
         className="hero-bg-section"
         style={{
-          backgroundImage: `linear-gradient(180deg, rgba(15, 23, 42, 0.08) 0%, rgba(15, 23, 42, 0.00) 50%, rgba(15, 23, 42, 0.25) 100%), url("${heroBgImg}")`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 38%',
-          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+          minHeight: 'clamp(520px, 62vh, 620px)',
+          paddingTop: 'clamp(120px, 13vw, 150px)',
+          paddingBottom: 'clamp(50px, 7vw, 75px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          overflow: 'hidden',
+          width: '100%',
         }}
       >
-        {/* Bhagwa Ambient Radial Glow — top right */}
-        <div style={{
-          position: 'absolute',
-          top: '-10%',
-          right: '-5%',
-          width: 520,
-          height: 520,
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(255, 69, 0, 0.22) 0%, rgba(255, 69, 0, 0) 70%)',
-          filter: 'blur(75px)',
-          pointerEvents: 'none',
-        }} />
+        {/* Crisp High-Definition Background Image with Zero Blur */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            backgroundImage: `url("${heroBgImg}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 42%',
+            backgroundRepeat: 'no-repeat',
+            zIndex: 0,
+          }}
+        />
+
+        {/* Cinematic Vignette Overlay to ensure text & buttons pop while preserving scenic road & cars */}
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background: 'linear-gradient(180deg, rgba(8, 12, 22, 0.80) 0%, rgba(8, 12, 22, 0.48) 45%, rgba(8, 12, 22, 0.85) 100%)',
+            zIndex: 1,
+            pointerEvents: 'none',
+          }}
+        />
 
         <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <div style={{ margin: '0 auto', textAlign: 'center' }}>
+          <div style={{ margin: '0 auto', textAlign: 'center', maxWidth: 860 }}>
 
-            {/* Business Name Badge */}
+            {/* Premium Business Badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              style={{ marginBottom: 16 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              style={{ marginBottom: 18 }}
             >
               <span style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 8,
-                padding: '7px 22px',
+                padding: '8px 22px',
                 borderRadius: '9999px',
-                background: 'rgba(15, 23, 42, 0.65)',
-                border: '1px solid rgba(255, 69, 0, 0.60)',
+                background: 'rgba(10, 15, 28, 0.80)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                border: '1.5px solid rgba(255, 215, 0, 0.65)',
                 color: '#FFFFFF',
-                fontSize: 'clamp(11.5px, 2vw, 14px)',
-                fontWeight: 900,
+                fontSize: 'clamp(11.5px, 2vw, 13px)',
+                fontWeight: 800,
                 letterSpacing: '1.8px',
                 textTransform: 'uppercase',
-                boxShadow: '0 4px 22px rgba(0, 0, 0, 0.50)',
-                backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)',
+                boxShadow: '0 4px 18px rgba(0, 0, 0, 0.55)',
               }}>
-                <BsCarFront color="#FF4500" size={17} /> VK RENTAL CARS PUNE
+                <FiStar color="#FFD700" size={15} />
+                <span>VK RENTAL CARS PUNE</span>
               </span>
             </motion.div>
 
-            {/* Main Animated Title */}
+            {/* Main Title Styled with Crisp Luxury Pure White & Brilliant Solid Gold */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="hero-main-title"
               style={{
-                color: '#FFFFFF',
-                fontWeight: 900,
+                margin: '0 0 16px',
                 lineHeight: 1.15,
-                textShadow: '0 4px 20px rgba(0,0,0,0.95), 0 2px 6px rgba(0,0,0,0.9)',
               }}
             >
-              <span>Drive your car your way</span><br />
-              <span style={{ fontWeight: 900 }}>
-                {/* "Premium" — Luxury Gold Shimmer Style */}
-                <span style={{
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 30%, #FFD700 55%, #FFFACD 75%, #FFA500 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  fontStyle: 'italic',
-                  fontWeight: 900,
-                  letterSpacing: '-0.5px',
-                  filter: 'drop-shadow(0 2px 12px rgba(255, 123, 0, 0.8))',
-                  textShadow: 'none',
-                }}>
-                  Premium Vk Rental Cars
-                </span>{' '}
+              <span style={{
+                display: 'block',
+                fontSize: 'clamp(2rem, 5vw, 3.6rem)',
+                fontWeight: 900,
+                color: '#FFFFFF',
+                textShadow: '0 4px 20px rgba(0, 0, 0, 0.95)',
+                letterSpacing: '-0.3px',
+              }}>
+                Drive Your Car Your Way
+              </span>
+              <span style={{
+                display: 'inline-block',
+                marginTop: 6,
+                fontSize: 'clamp(2.2rem, 5.8vw, 4.0rem)',
+                fontWeight: 950,
+                color: '#FFD700',
+                textShadow: '0 4px 24px rgba(0, 0, 0, 0.95), 0 0 35px rgba(255, 215, 0, 0.45)',
+                letterSpacing: '0.5px',
+              }}>
+                VK SELF DRIVE CARS
               </span>
             </motion.h1>
 
-            {/* Hero Action Buttons (Short Compact Pills) */}
+            {/* Clear Subtitle */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              style={{
+                color: 'rgba(255, 255, 255, 0.94)',
+                fontSize: 'clamp(14px, 1.9vw, 17px)',
+                fontWeight: 600,
+                margin: '0 auto',
+                maxWidth: 680,
+                lineHeight: 1.65,
+                textShadow: '0 2px 14px rgba(0, 0, 0, 0.90)',
+              }}
+            >
+              Verified self-drive car rentals across Pune &amp; PCMC • 300 km daily limit, 0 security deposit &amp; 30-min doorstep delivery.
+            </motion.p>
+
+            {/* 2 High-Converting Action Buttons: 1) Explore Fleet, 2) Contact */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="hero-action-btns"
+              transition={{ duration: 0.5, delay: 0.3 }}
               style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: 10,
-                marginTop: 24,
+                gap: 16,
+                flexWrap: 'wrap',
+                marginTop: 26,
               }}
             >
+              {/* Button 1: Explore Fleet */}
               <Link
                 to="/fleet"
-                className="btn btn-primary hero-btn-main"
+                className="hero-btn-explore"
                 style={{
-                  padding: '12px 34px',
-                  minWidth: 170,
-                  fontSize: 14.5,
-                  fontWeight: 900,
-                  letterSpacing: '0.3px',
-                  borderRadius: '9999px',
-                  background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-                  boxShadow: '0 6px 24px rgba(255, 69, 0, 0.45)',
-                  transition: 'all 0.25s ease',
-                  whiteSpace: 'nowrap',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 8,
+                  gap: 10,
+                  padding: '14px 34px',
+                  borderRadius: 9999,
+                  background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
+                  color: '#FFFFFF',
+                  fontSize: 15.5,
+                  fontWeight: 900,
+                  textDecoration: 'none',
+                  letterSpacing: '0.4px',
+                  border: '1.5px solid rgba(255, 255, 255, 0.35)',
+                  boxShadow: '0 8px 28px rgba(184, 0, 0, 0.60), 0 3px 8px rgba(0, 0, 0, 0.40)',
+                  transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               >
-                <BsCarFront size={16} /> Explore Fleet
+                <BsCarFront size={18} />
+                <span>Explore Fleet</span>
+                <FiArrowRight size={17} />
               </Link>
-              <a
-                href="https://wa.me/918381052230?text=Hi%20VK%20Self%20Drive%20Car%27s%20Pune,%20I%20want%20to%20inquire%20about%20booking%20a%20car."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary hero-btn-sub"
+
+              {/* Button 2: Contact */}
+              <Link
+                to="/contact"
+                className="hero-btn-contact"
                 style={{
-                  padding: '12px 30px',
-                  minWidth: 160,
-                  fontSize: 14.5,
-                  fontWeight: 900,
-                  borderRadius: '9999px',
-                  background: '#FFFFFF',
-                  color: '#000000',
-                  border: '1.5px solid #E2E8F0',
-                  boxShadow: '0 6px 20px rgba(0,0,0,0.15)',
-                  transition: 'all 0.25s ease',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: 8,
-                  whiteSpace: 'nowrap',
+                  gap: 10,
+                  padding: '14px 32px',
+                  borderRadius: 9999,
+                  background: 'rgba(255, 255, 255, 0.16)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  color: '#FFFFFF',
+                  fontSize: 15.5,
+                  fontWeight: 900,
+                  textDecoration: 'none',
+                  letterSpacing: '0.3px',
+                  border: '1.5px solid rgba(255, 255, 255, 0.55)',
+                  boxShadow: '0 6px 22px rgba(0, 0, 0, 0.35)',
+                  transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
                 }}
               >
-                <BsWhatsapp size={16} style={{ color: '#25D366' }} /> WhatsApp
-              </a>
+                <FiPhone size={17} color="#FFD700" />
+                <span>Contact Us</span>
+              </Link>
             </motion.div>
+
           </div>
         </div>
       </section>
+
+      {/* 1.5 ATTACHED HERO DOWNSIDE TRUST & FEATURE STRIP */}
+      <div className="hero-attached-feature-bar">
+        <div className="hero-feature-bar-inner">
+          <div className="hero-feature-pill">
+            <FiTruck className="feature-icon" />
+            <span>30m Doorstep Delivery</span>
+          </div>
+          <span className="feature-sep">•</span>
+          <div className="hero-feature-pill">
+            <FiKey className="feature-icon" />
+            <span>300 KM Daily Quota</span>
+          </div>
+          <span className="feature-sep">•</span>
+          <div className="hero-feature-pill">
+            <FiShield className="feature-icon" />
+            <span>0 Security Deposit</span>
+          </div>
+          <span className="feature-sep">•</span>
+          <div className="hero-feature-pill">
+            <FiClock className="feature-icon" />
+            <span>24/7 Roadside Assist</span>
+          </div>
+        </div>
+      </div>
 
       {/* 2. TOP SELLING CARS SECTION */}
       <section style={{ padding: '28px 0 20px', background: '#FFFFFF', width: '100%' }}>
@@ -270,7 +340,7 @@ export default function HomePage() {
             <div>
               <span className="section-label">Most Popular</span>
               <h2 style={{ fontSize: 'clamp(18px, 3.5vw, 24px)', fontWeight: 900, color: '#111318', margin: 0 }}>
-                Top Cars in <span style={{ color: '#FF4500' }}>{city}</span>
+                Top Cars in <span style={{ color: '#B80000' }}>{city}</span>
               </h2>
             </div>
             <Link to="/fleet" className="btn btn-secondary btn-sm" style={{ fontWeight: 800 }}>
@@ -338,7 +408,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. CATEGORIES - INFINITE MARQUEE */}
-      <section className="section-sm" style={{ background: '#FFF8F3', borderTop: '1px solid rgba(255, 69, 0,0.12)', borderBottom: '1px solid rgba(255, 69, 0,0.12)' }}>
+      <section className="section-sm" style={{ background: '#F8FAFC', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
         <div className="container">
           <div className="section-header text-center" style={{ marginBottom: 28 }}>
             <span className="section-label-red">Browse Fleet</span>
@@ -363,7 +433,7 @@ export default function HomePage() {
                     background: '#FFFFFF',
                     cursor: 'pointer',
                     borderRadius: 16,
-                    border: '1px solid rgba(255, 69, 0,0.15)',
+                    border: '1.5px solid #E2E8F0',
                     boxShadow: '0 4px 20px rgba(15,23,42,0.05)',
                     transition: 'all 0.2s ease',
                   }}
@@ -371,16 +441,16 @@ export default function HomePage() {
                   <div style={{
                     width: 52, height: 52,
                     borderRadius: 14,
-                    background: 'linear-gradient(135deg, rgba(255, 69, 0,0.12) 0%, rgba(255, 69, 0,0.05) 100%)',
-                    border: '1px solid rgba(255, 69, 0,0.22)',
-                    color: '#FF4500',
+                    background: 'rgba(184, 0, 0, 0.08)',
+                    border: '1px solid rgba(184, 0, 0, 0.22)',
+                    color: '#B80000',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     margin: '0 auto 12px',
                   }}>
                     {cat.icon}
                   </div>
-                  <h3 style={{ fontSize: 17, marginBottom: 4, color: '#111318', fontWeight: 800 }}>{cat.name}</h3>
-                  <p style={{ fontSize: 12, color: '#6B7080', margin: 0, lineHeight: 1.5 }}>{cat.desc}</p>
+                  <h3 style={{ fontSize: 17, marginBottom: 5, color: '#0F172A', fontWeight: 900 }}>{cat.name}</h3>
+                  <p style={{ fontSize: 12.5, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>{cat.desc}</p>
                 </div>
               </Link>
             ))}
@@ -428,8 +498,8 @@ export default function HomePage() {
                   padding: 22,
                   background: '#FFFFFF',
                   borderRadius: 16,
-                  border: '1px solid #E4E6EA',
-                  boxShadow: '0 4px 18px rgba(17,19,24,0.06)',
+                  border: '1.5px solid #E2E8F0',
+                  boxShadow: '0 4px 18px rgba(15,23,42,0.06)',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 8,
@@ -438,15 +508,15 @@ export default function HomePage() {
                 <div style={{
                   width: 44, height: 44,
                   borderRadius: 12,
-                  background: 'rgba(255, 69, 0,0.07)',
-                  border: '1px solid rgba(255, 69, 0,0.16)',
-                  color: '#FF4500',
+                  background: 'rgba(184, 0, 0, 0.08)',
+                  border: '1px solid rgba(184, 0, 0, 0.22)',
+                  color: '#B80000',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   {feat.icon}
                 </div>
-                <h3 style={{ fontSize: 16, color: '#111318', fontWeight: 800, margin: 0 }}>{feat.title}</h3>
-                <p style={{ fontSize: 13, color: '#5A5F6E', margin: 0, lineHeight: 1.5 }}>{feat.desc}</p>
+                <h3 style={{ fontSize: 16, color: '#0F172A', fontWeight: 900, margin: 0 }}>{feat.title}</h3>
+                <p style={{ fontSize: 13, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -456,7 +526,7 @@ export default function HomePage() {
       {/* 5.5 TERMS & CONDITIONS SECTION */}
       <section className="section-sm" style={{ background: '#FFFFFF', borderTop: '1px solid #E4E6EA' }}>
         <div className="container">
-          <TermsAndConditions expandable={true} defaultOpen={true} />
+          <TermsAndConditions expandable={true} defaultOpen={false} />
         </div>
       </section>
 
@@ -501,11 +571,11 @@ export default function HomePage() {
                   <div style={{
                     width: 38, height: 38,
                     borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #FF4500 0%, #900007 100%)',
+                    background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
                     color: '#FFFFFF',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 13, fontWeight: 800,
-                    boxShadow: '0 2px 10px rgba(255, 69, 0,0.30)',
+                    boxShadow: '0 2px 10px rgba(184, 0, 0, 0.30)',
                   }}>
                     {rev.name?.charAt(0) || 'R'}
                   </div>

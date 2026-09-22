@@ -81,19 +81,19 @@ export default function MyInquiriesPage() {
         <div className="container" style={{ maxWidth: 1000 }}>
           
           {/* Header */}
-          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 16, marginBottom: 24, padding: 'clamp(20px, 3vw, 28px)', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.04)' }}>
+          <div style={{ background: '#FFFFFF', border: '1.5px solid #E2E8F0', borderRadius: 16, marginBottom: 24, padding: 'clamp(20px, 3vw, 28px)', boxShadow: '0 4px 18px rgba(15, 23, 42, 0.04)' }}>
             <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Track Your Request</span>
-            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 8px', lineHeight: 1.25 }}>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#0F172A', margin: '0 0 8px', lineHeight: 1.25 }}>
               My{' '}
               <span style={{
-                background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
+                background: 'linear-gradient(90deg, #9E0000 0%, #D91400 50%, #B80000 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
               }}>RENTAL INQUIRIES</span>
             </h1>
-            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#64748B', margin: 0, maxWidth: 500, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(12.5px, 1.8vw, 14px)', color: '#334155', fontWeight: 600, margin: 0, maxWidth: 500, lineHeight: 1.6 }}>
               Enter your email or phone number to track all your submitted rental inquiries.
             </p>
           </div>
@@ -127,11 +127,12 @@ export default function MyInquiriesPage() {
               type="submit"
               className="btn btn-primary"
               style={{
-                background: 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)',
-                borderColor: '#FF4500',
+                background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
+                borderColor: '#B80000',
+                boxShadow: '0 4px 14px rgba(184, 0, 0, 0.38)',
                 whiteSpace: 'nowrap',
                 fontSize: 13.5,
-                fontWeight: 800,
+                fontWeight: 900,
                 padding: '0 20px',
                 height: 42,
               }}
@@ -144,14 +145,14 @@ export default function MyInquiriesPage() {
           {searched ? (
             <div>
               {loading ? (
-                <p style={{ textAlign: 'center', color: '#64748B', fontSize: 13, padding: '24px 0' }}>Searching records...</p>
+                <p style={{ textAlign: 'center', color: '#334155', fontSize: 13, fontWeight: 600, padding: '24px 0' }}>Searching records...</p>
               ) : inquiries.length === 0 ? (
-                <div className="glass-card empty-state" style={{ background: '#FFFFFF', padding: '36px 20px', textAlign: 'center', borderRadius: 16, border: '1px solid #E2E8F0' }}>
+                <div className="glass-card empty-state" style={{ background: '#FFFFFF', padding: '36px 20px', textAlign: 'center', borderRadius: 16, border: '1.5px solid #E2E8F0' }}>
                   <div className="empty-state-icon" style={{ margin: '0 auto 12px' }}>
-                    <FiFileText size={42} color="#FF4500" />
+                    <FiFileText size={42} color="#B80000" />
                   </div>
-                  <strong style={{ fontSize: 16, color: '#0F172A', display: 'block' }}>No inquiries found</strong>
-                  <p style={{ fontSize: 13, color: '#64748B', marginTop: 4, maxWidth: 440, margin: '4px auto 16px' }}>
+                  <strong style={{ fontSize: 16, color: '#0F172A', display: 'block', fontWeight: 900 }}>No inquiries found</strong>
+                  <p style={{ fontSize: 13, color: '#334155', fontWeight: 600, marginTop: 4, maxWidth: 440, margin: '4px auto 16px' }}>
                     We couldn't find any rental inquiries matching "{emailOrPhone}". Make sure the phone or email matches what you entered during booking.
                   </p>
                   <a
@@ -175,7 +176,7 @@ export default function MyInquiriesPage() {
                         padding: 20,
                         background: '#FFFFFF',
                         borderRadius: 16,
-                        border: '1px solid #E2E8F0',
+                        border: '1.5px solid #E2E8F0',
                         boxShadow: '0 4px 16px rgba(15, 23, 42, 0.05)',
                         display: 'flex',
                         flexDirection: 'column',
@@ -186,13 +187,13 @@ export default function MyInquiriesPage() {
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                            <span style={{ fontSize: 11, color: '#64748B', fontWeight: 800 }}>
+                            <span style={{ fontSize: 11, color: '#475569', fontWeight: 800 }}>
                               Ref: #{item.id.slice(0, 8)}
                             </span>
                             <button
                               type="button"
                               onClick={() => handleCopyRef(item.id)}
-                              style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#FF4500', padding: 0 }}
+                              style={{ border: 'none', background: 'none', cursor: 'pointer', color: '#B80000', padding: 0 }}
                               title="Copy Ref ID"
                             >
                               <FiCopy size={12} />
@@ -217,30 +218,30 @@ export default function MyInquiriesPage() {
                         fontSize: 12.5,
                       }}>
                         <div>
-                          <span style={{ fontSize: 10.5, color: '#64748B', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Location</span>
-                          <strong style={{ color: '#0F172A', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
-                            <FiMapPin size={12} color="#FF4500" /> {item.city || 'Pune'}
+                          <span style={{ fontSize: 10.5, color: '#475569', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Location</span>
+                          <strong style={{ color: '#0F172A', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2, fontWeight: 800 }}>
+                            <FiMapPin size={12} color="#B80000" /> {item.city || 'Pune'}
                           </strong>
                         </div>
 
                         <div>
-                          <span style={{ fontSize: 10.5, color: '#64748B', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Pickup Type</span>
-                          <strong style={{ color: '#0F172A', textTransform: 'capitalize', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
-                            <BsCarFront size={12} color="#FF4500" /> {item.pickupType || 'Doorstep Delivery'}
+                          <span style={{ fontSize: 10.5, color: '#475569', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Pickup Type</span>
+                          <strong style={{ color: '#0F172A', textTransform: 'capitalize', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2, fontWeight: 800 }}>
+                            <BsCarFront size={12} color="#B80000" /> {item.pickupType || 'Doorstep Delivery'}
                           </strong>
                         </div>
 
                         <div>
-                          <span style={{ fontSize: 10.5, color: '#64748B', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Submitted On</span>
-                          <strong style={{ color: '#0F172A', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2 }}>
-                            <FiCalendar size={12} color="#FF4500" /> {formatTimestamp(item.createdAt)}
+                          <span style={{ fontSize: 10.5, color: '#475569', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Submitted On</span>
+                          <strong style={{ color: '#0F172A', display: 'flex', alignItems: 'center', gap: 4, marginTop: 2, fontWeight: 800 }}>
+                            <FiCalendar size={12} color="#B80000" /> {formatTimestamp(item.createdAt)}
                           </strong>
                         </div>
 
                         {item.estimatedPrice && (
                           <div>
-                            <span style={{ fontSize: 10.5, color: '#64748B', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Est. Total</span>
-                            <strong style={{ color: '#FF4500', fontSize: 14, fontWeight: 900 }}>
+                            <span style={{ fontSize: 10.5, color: '#475569', fontWeight: 800, textTransform: 'uppercase', display: 'block' }}>Est. Total</span>
+                            <strong style={{ color: '#B80000', fontSize: 14, fontWeight: 900 }}>
                               {formatCurrency(item.estimatedPrice)}
                             </strong>
                           </div>
@@ -249,8 +250,8 @@ export default function MyInquiriesPage() {
 
                       {/* Customer Contact Summary */}
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 10, paddingTop: 4 }}>
-                        <div style={{ fontSize: 12.5, color: '#475569' }}>
-                          Customer: <strong>{item.customerName || 'Guest'}</strong> • {item.phone || item.email}
+                        <div style={{ fontSize: 12.5, color: '#334155', fontWeight: 600 }}>
+                          Customer: <strong style={{ color: '#0F172A', fontWeight: 800 }}>{item.customerName || 'Guest'}</strong> • {item.phone || item.email}
                         </div>
 
                         {/* Action Buttons: WhatsApp Share & Copy */}
@@ -289,32 +290,32 @@ export default function MyInquiriesPage() {
               gap: 14,
               marginTop: 8,
             }}>
-              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(255, 69, 0, 0.09)', color: '#FF4500', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1.5px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(184, 0, 0, 0.08)', color: '#B80000', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <FiClock size={18} />
                 </div>
-                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>15-Min Response</h4>
-                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' }}>15-Min Response</h4>
+                <p style={{ fontSize: 12.5, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>
                   Our team confirms car availability and coordinates doorstep pickup within 15 minutes.
                 </p>
               </div>
 
-              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1.5px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(37, 99, 235, 0.09)', color: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <FiCheckCircle size={18} />
                 </div>
-                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>Real-time Status</h4>
-                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' }}>Real-time Status</h4>
+                <p style={{ fontSize: 12.5, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>
                   Track live status updates from New Inquiry → Agent Contacted → Confirmed Booking.
                 </p>
               </div>
 
-              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
+              <div style={{ background: '#FFFFFF', borderRadius: 14, padding: 18, border: '1.5px solid #E2E8F0', boxShadow: '0 4px 14px rgba(15, 23, 42, 0.04)' }}>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(37, 211, 102, 0.12)', color: '#16A34A', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <BsWhatsapp size={18} />
                 </div>
-                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#111318', margin: '0 0 4px' }}>WhatsApp Direct</h4>
-                <p style={{ fontSize: 12, color: '#64748B', margin: 0, lineHeight: 1.5 }}>
+                <h4 style={{ fontSize: 14, fontWeight: 900, color: '#0F172A', margin: '0 0 4px' }}>WhatsApp Direct</h4>
+                <p style={{ fontSize: 12.5, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>
                   Need faster assistance? Send your inquiry reference directly to our 24/7 WhatsApp manager.
                 </p>
               </div>

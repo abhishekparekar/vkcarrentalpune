@@ -77,17 +77,17 @@ export default function FleetPage() {
             <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
               VK RENTAL CARS PUNE Fleet
             </span>
-            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#0F172A', margin: '0 0 10px', lineHeight: 1.25 }}>
               EXPLORE{' '}
               <span style={{
-                background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
+                background: 'linear-gradient(90deg, #9E0000 0%, #D91400 50%, #B80000 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
               }}>AVAILABLE PREMIUM RENTAL CARS</span>
             </h1>
-            <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#64748B', margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#334155', fontWeight: 600, margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
               All vehicles include 300 km daily limit, doorstep delivery, full insurance &amp; zero hidden charges.
             </p>
           </div>
@@ -120,10 +120,10 @@ export default function FleetPage() {
                     fontWeight: 800,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    border: isActive ? '1.5px solid #FF4500' : '1px solid #E2E8F0',
-                    background: isActive ? 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)' : '#FFFFFF',
+                    border: isActive ? '1.5px solid #B80000' : '1px solid #E2E8F0',
+                    background: isActive ? 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)' : '#FFFFFF',
                     color: isActive ? '#FFFFFF' : '#334155',
-                    boxShadow: isActive ? '0 4px 14px rgba(255, 69, 0, 0.35)' : '0 2px 6px rgba(15, 23, 42, 0.03)',
+                    boxShadow: isActive ? '0 4px 14px rgba(184, 0, 0, 0.38)' : '0 2px 6px rgba(15, 23, 42, 0.03)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 6,
@@ -252,7 +252,7 @@ export default function FleetPage() {
 
           {/* ─── RENTAL POLICY & MANDATORY DOCUMENTS ─── */}
           <div style={{ marginTop: 24, marginBottom: 24 }}>
-            <TermsAndConditions expandable={true} defaultOpen={true} />
+            <TermsAndConditions expandable={true} defaultOpen={false} />
           </div>
 
           <style>{`
@@ -289,27 +289,21 @@ export default function FleetPage() {
                 gap: 16px;
               }
             }
-            @media (max-width: 768px) {
+            @media (max-width: 860px) {
               .fleet-container {
                 padding: 0 14px;
               }
               .grid-fleet-catalog {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 14px;
               }
             }
-            @media (max-width: 480px) {
+            @media (max-width: 600px) {
               .fleet-container {
-                padding: 0 10px;
+                padding: 0 8px;
               }
               .grid-fleet-catalog {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 8px;
-              }
-            }
-            @media (max-width: 360px) {
-              .grid-fleet-catalog {
-                grid-template-columns: 1fr;
                 gap: 10px;
               }
             }

@@ -366,8 +366,8 @@ export default function BookingForm({ car, onSuccess }) {
                 padding: '0 8px',
                 borderRadius: 10,
                 justifyContent: 'center',
-                background: formData.pickupType === 'delivery' ? 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)' : '#FFFFFF',
-                borderColor: formData.pickupType === 'delivery' ? '#FF4500' : '#CBD5E1',
+                background: formData.pickupType === 'delivery' ? 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)' : '#FFFFFF',
+                borderColor: formData.pickupType === 'delivery' ? '#B80000' : '#CBD5E1',
                 color: formData.pickupType === 'delivery' ? '#FFFFFF' : '#334155',
               }}
             >
@@ -383,8 +383,8 @@ export default function BookingForm({ car, onSuccess }) {
                 padding: '0 8px',
                 borderRadius: 10,
                 justifyContent: 'center',
-                background: formData.pickupType === 'self-pickup' ? 'linear-gradient(135deg, #FF4500 0%, #E66E00 100%)' : '#FFFFFF',
-                borderColor: formData.pickupType === 'self-pickup' ? '#FF4500' : '#CBD5E1',
+                background: formData.pickupType === 'self-pickup' ? 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)' : '#FFFFFF',
+                borderColor: formData.pickupType === 'self-pickup' ? '#B80000' : '#CBD5E1',
                 color: formData.pickupType === 'self-pickup' ? '#FFFFFF' : '#334155',
               }}
             >
@@ -403,8 +403,8 @@ export default function BookingForm({ car, onSuccess }) {
         fontWeight: 600,
         color: '#1E293B',
         cursor: 'pointer',
-        background: agreedToTerms ? 'rgba(255, 69, 0,0.06)' : '#F8FAFC',
-        border: agreedToTerms ? '1px solid rgba(255, 69, 0,0.35)' : '1px solid #E2E8F0',
+        background: agreedToTerms ? 'rgba(184, 0, 0, 0.06)' : '#F8FAFC',
+        border: agreedToTerms ? '1px solid rgba(184, 0, 0, 0.35)' : '1px solid #E2E8F0',
         padding: '10px 12px',
         borderRadius: 10,
         marginTop: 2,
@@ -414,7 +414,7 @@ export default function BookingForm({ car, onSuccess }) {
           type="checkbox"
           checked={agreedToTerms}
           onChange={e => setAgreedToTerms(e.target.checked)}
-          style={{ width: 17, height: 17, accentColor: '#FF4500', cursor: 'pointer', marginTop: 1, flexShrink: 0 }}
+          style={{ width: 17, height: 17, accentColor: '#B80000', cursor: 'pointer', marginTop: 1, flexShrink: 0 }}
         />
         <span>
           I agree to <strong>Terms & Conditions</strong> & carry <strong>5 Required Documents</strong> (Original Aadhaar, Driving Licence, PAN, Rent Agreement & Job ID).
@@ -427,13 +427,13 @@ export default function BookingForm({ car, onSuccess }) {
         disabled={submitting || !agreedToTerms}
         className="btn btn-primary btn-lg w-full"
         style={{
-          background: 'linear-gradient(135deg, #FF4500 0%, #E63900 100%)',
-          borderColor: '#FF4500',
+          background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
+          borderColor: '#B80000',
           fontSize: 14.5,
           fontWeight: 900,
           padding: '11px',
           borderRadius: 12,
-          boxShadow: '0 4px 18px rgba(255, 69, 0, 0.35)',
+          boxShadow: '0 4px 18px rgba(184, 0, 0, 0.4)',
           opacity: agreedToTerms ? 1 : 0.65,
           marginTop: 4,
           display: 'flex',

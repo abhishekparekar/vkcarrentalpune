@@ -71,8 +71,8 @@ export default function ContactPage() {
       label: 'Call / WhatsApp (24/7)',
       value: phone,
       href: `https://wa.me/${whatsapp.replace(/\D/g, '')}`,
-      color: '#FF4500',
-      bg: 'rgba(255, 69, 0,0.09)',
+      color: '#B80000',
+      bg: 'rgba(184, 0, 0, 0.08)',
     },
     {
       icon: <FiMail size={18} />,
@@ -153,17 +153,17 @@ export default function ContactPage() {
         <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
           <div className="container" style={{ padding: '32px 0 24px' }}>
             <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 10 }}>Contact &amp; Instant Quote</span>
-            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
+            <h1 style={{ fontSize: 'clamp(22px, 4.5vw, 36px)', fontWeight: 900, color: '#0F172A', margin: '0 0 10px', lineHeight: 1.25 }}>
               GET IN{' '}
               <span style={{
-                background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
+                background: 'linear-gradient(90deg, #9E0000 0%, #D91400 50%, #B80000 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
                 fontWeight: 900,
               }}>TOUCH WITH CAR RENTAL SUPPORT</span>
             </h1>
-            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#475569', margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(13px, 2vw, 14.5px)', color: '#334155', fontWeight: 600, margin: 0, maxWidth: 680, lineHeight: 1.6 }}>
               Have questions about daily rates, doorstep delivery, or extra km charges? Fill out the quick form below or message us instantly on WhatsApp.
             </p>
           </div>
@@ -221,7 +221,7 @@ export default function ContactPage() {
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                   <div>
                     <h2 style={{ fontSize: 17, fontWeight: 900, color: '#0F172A', margin: 0 }}>Send Us a Message</h2>
-                    <span style={{ fontSize: 12, color: '#64748B' }}>
+                    <span style={{ fontSize: 12.5, color: '#334155', fontWeight: 600 }}>
                       Complete the form below for immediate rental assistance.
                     </span>
                   </div>
@@ -297,7 +297,7 @@ export default function ContactPage() {
                     type="submit"
                     disabled={submitting}
                     className="btn btn-primary btn-lg w-full"
-                    style={{ background: '#FF4500', borderColor: '#FF4500', fontSize: 14, fontWeight: 800, padding: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
+                    style={{ background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)', borderColor: '#B80000', boxShadow: '0 4px 18px rgba(184, 0, 0, 0.4)', fontSize: 14, fontWeight: 900, padding: '11px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}
                   >
                     {submitting ? 'Submitting Message...' : <><FiSend size={15} /> Submit Inquiry Message</>}
                   </button>
@@ -391,7 +391,7 @@ export default function ContactPage() {
                   {item.icon}
                 </div>
                 <div style={{ minWidth: 0 }}>
-                  <span style={{ fontSize: 10.5, fontWeight: 800, color: '#64748B', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>
+                  <span style={{ fontSize: 10.5, fontWeight: 800, color: '#334155', textTransform: 'uppercase', letterSpacing: '0.5px', display: 'block' }}>
                     {item.label}
                   </span>
                   {item.href ? (

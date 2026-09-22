@@ -48,14 +48,14 @@ export const HIGHLIGHT_CHIPS = [
   { text: 'Rent at Pickup', icon: '🛻' },
 ];
 
-export default function TermsAndConditions({ expandable = false, defaultOpen = true, compact = false }) {
+export default function TermsAndConditions({ expandable = true, defaultOpen = false, compact = false }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
     <div style={{
       background: '#FFFFFF',
       borderRadius: 16,
-      border: '1.5px solid rgba(255, 69, 0, 0.25)',
+      border: '1.5px solid rgba(184, 0, 0, 0.25)',
       boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
       overflow: 'hidden',
       width: '100%',
@@ -65,8 +65,8 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
         onClick={() => expandable && setIsOpen(prev => !prev)}
         style={{
           padding: compact ? '14px 16px' : '16px 20px',
-          background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.08) 0%, #FFFFFF 100%)',
-          borderBottom: (isOpen || !expandable) ? '1px solid rgba(255, 69, 0, 0.18)' : 'none',
+          background: 'linear-gradient(135deg, rgba(184, 0, 0, 0.08) 0%, #FFFFFF 100%)',
+          borderBottom: (isOpen || !expandable) ? '1px solid rgba(184, 0, 0, 0.18)' : 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -78,17 +78,17 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
           <div style={{
             width: 36, height: 36,
             borderRadius: 10,
-            background: 'linear-gradient(135deg, #FF4500 0%, #FF6B00 100%)',
+            background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
             color: '#FFFFFF',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontSize: 18,
-            boxShadow: '0 3px 10px rgba(255, 69, 0, 0.35)',
+            boxShadow: '0 3px 10px rgba(184, 0, 0, 0.35)',
             flexShrink: 0,
           }}>
             <FiShield />
           </div>
           <div>
-            <span style={{ fontSize: 10, color: '#FF4500', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: 2 }}>
+            <span style={{ fontSize: 10, color: '#B80000', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: 2 }}>
               VK RENTAL CARS PUNE • OFFICIAL POLICY
             </span>
             <h4 style={{ fontSize: compact ? 14 : 16, fontWeight: 900, color: '#111318', margin: 0, lineHeight: 1.25 }}>
@@ -104,11 +104,11 @@ export default function TermsAndConditions({ expandable = false, defaultOpen = t
             gap: 6,
             fontSize: 12,
             fontWeight: 800,
-            color: '#FF4500',
-            background: 'rgba(255, 69, 0, 0.09)',
+            color: '#B80000',
+            background: 'rgba(184, 0, 0, 0.09)',
             padding: '6px 12px',
             borderRadius: 99,
-            border: '1px solid rgba(255, 69, 0, 0.2)',
+            border: '1px solid rgba(184, 0, 0, 0.25)',
           }}>
             <span>{isOpen ? 'Collapse' : 'View Policy'}</span>
             {isOpen ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}

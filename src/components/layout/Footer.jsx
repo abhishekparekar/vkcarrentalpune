@@ -42,19 +42,25 @@ export default function Footer() {
     <footer
       className="footer-root"
       style={{
-        background: 'linear-gradient(180deg, #0F172A 0%, #070B14 100%)',
         position: 'relative',
         marginTop: 'auto',
-        color: '#F8FAFC',
-        borderTop: '1px solid rgba(255, 69, 0, 0.35)',
+        color: '#FFFFFF',
+        backgroundColor: '#7A0000',
+        backgroundImage: `
+          linear-gradient(90deg, #7A0000 0%, #B80000 25%, #E61800 50%, #B80000 75%, #7A0000 100%),
+          repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 30px),
+          repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0px, rgba(255, 255, 255, 0.025) 1px, transparent 1px, transparent 30px)
+        `,
+        borderTop: '2px solid #570000',
+        boxShadow: '0 -8px 32px rgba(122, 0, 0, 0.50)',
       }}
     >
-      {/* Top Glowing Bhagwa Accent Bar */}
+      {/* Top Glowing Gold Accent Bar */}
       <div style={{
         height: 3,
-        background: 'linear-gradient(90deg, #FF5500 0%, #FF4500 50%, #D63300 100%)',
+        background: 'linear-gradient(90deg, #FFB800 0%, #FFD700 50%, #FFB800 100%)',
         width: '100%',
-        boxShadow: '0 0 20px rgba(255, 69, 0, 0.65)',
+        boxShadow: '0 0 16px rgba(255, 215, 0, 0.75)',
       }} />
 
       <div style={{ padding: '56px 0 28px' }}>
@@ -80,7 +86,7 @@ export default function Footer() {
                     width: 'auto',
                     objectFit: 'contain',
                     display: 'block',
-                    filter: 'drop-shadow(0 4px 18px rgba(255, 69, 0, 0.40))',
+                    filter: 'drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55))',
                     transition: 'transform 0.25s ease',
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -88,15 +94,13 @@ export default function Footer() {
                 />
               </Link>
 
-              <h3 style={{ fontSize: 15, fontWeight: 900, color: '#FFFFFF', marginBottom: 8, letterSpacing: '0.3px' }}>
+              <h3 style={{ fontSize: 16, fontWeight: 900, color: '#FFFFFF', marginBottom: 8, letterSpacing: '0.3px' }}>
                 {settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
               </h3>
 
-              <p style={{ fontSize: 13, color: '#94A3B8', lineHeight: 1.65, marginBottom: 18, maxWidth: 300 }}>
+              <p style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.85)', lineHeight: 1.65, marginBottom: 18, maxWidth: 300 }}>
                 {settings?.tagline || 'Premium self-drive car rentals with unlimited daily kilometers, 24/7 doorstep delivery & zero deposit hassle in Pune.'}
               </p>
-
-
 
               {/* Social Media Buttons */}
               <div style={{ display: 'flex', gap: 10 }}>
@@ -114,23 +118,23 @@ export default function Footer() {
                       alignItems: 'center',
                       justifyContent: 'center',
                       borderRadius: 12,
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: '1px solid rgba(255, 255, 255, 0.12)',
-                      color: '#CBD5E1',
+                      background: 'rgba(0, 0, 0, 0.25)',
+                      border: '1px solid rgba(255, 255, 255, 0.28)',
+                      color: '#FFFFFF',
                       fontSize: 15,
                       transition: 'all 0.2s ease',
                       textDecoration: 'none',
                     }}
                     onMouseEnter={e => {
-                      e.currentTarget.style.background = '#FF4500';
-                      e.currentTarget.style.color = '#FFFFFF';
-                      e.currentTarget.style.borderColor = '#FF4500';
+                      e.currentTarget.style.background = '#FFFFFF';
+                      e.currentTarget.style.color = '#7A0000';
+                      e.currentTarget.style.borderColor = '#FFFFFF';
                       e.currentTarget.style.transform = 'translateY(-2px)';
                     }}
                     onMouseLeave={e => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                      e.currentTarget.style.color = '#CBD5E1';
-                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.12)';
+                      e.currentTarget.style.background = 'rgba(0, 0, 0, 0.25)';
+                      e.currentTarget.style.color = '#FFFFFF';
+                      e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.28)';
                       e.currentTarget.style.transform = 'translateY(0)';
                     }}
                   >
@@ -147,7 +151,7 @@ export default function Footer() {
                   <h4 style={{
                     fontSize: 12,
                     fontWeight: 900,
-                    color: '#FF4500',
+                    color: '#FFD700',
                     letterSpacing: '1.4px',
                     textTransform: 'uppercase',
                     marginBottom: 18,
@@ -160,7 +164,7 @@ export default function Footer() {
                           onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })}
                           style={{
                             fontSize: 13.5,
-                            color: '#94A3B8',
+                            color: 'rgba(255, 255, 255, 0.88)',
                             textDecoration: 'none',
                             transition: 'all 0.2s ease',
                             display: 'inline-flex',
@@ -169,15 +173,15 @@ export default function Footer() {
                             fontWeight: 600,
                           }}
                           onMouseEnter={e => {
-                            e.currentTarget.style.color = '#FFFFFF';
+                            e.currentTarget.style.color = '#FFD700';
                             e.currentTarget.style.transform = 'translateX(4px)';
                           }}
                           onMouseLeave={e => {
-                            e.currentTarget.style.color = '#94A3B8';
+                            e.currentTarget.style.color = 'rgba(255, 255, 255, 0.88)';
                             e.currentTarget.style.transform = 'translateX(0)';
                           }}
                         >
-                          <FiChevronRight size={13} color="#FF4500" />
+                          <FiChevronRight size={13} color="#FFD700" />
                           <span>{link.label}</span>
                         </Link>
                       </li>
@@ -192,7 +196,7 @@ export default function Footer() {
               <h4 style={{
                 fontSize: 12,
                 fontWeight: 900,
-                color: '#FF4500',
+                color: '#FFD700',
                 letterSpacing: '1.4px',
                 textTransform: 'uppercase',
                 marginBottom: 18,
@@ -212,17 +216,17 @@ export default function Footer() {
                       fontWeight: 800,
                       transition: 'color 0.18s ease',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#FF4500'}
+                    onMouseEnter={e => e.currentTarget.style.color = '#FFD700'}
                     onMouseLeave={e => e.currentTarget.style.color = '#FFFFFF'}
                   >
                     <div style={{
                       width: 34, height: 34, borderRadius: 10,
-                      background: 'rgba(255, 69, 0, 0.15)',
-                      border: '1px solid rgba(255, 69, 0, 0.3)',
+                      background: 'rgba(0, 0, 0, 0.28)',
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <FiPhone size={15} color="#FF4500" />
+                      <FiPhone size={15} color="#FFD700" />
                     </div>
                     <span>{rawPhone}</span>
                   </a>
@@ -236,37 +240,37 @@ export default function Footer() {
                       alignItems: 'center',
                       gap: 10,
                       fontSize: 13.5,
-                      color: '#CBD5E1',
+                      color: 'rgba(255, 255, 255, 0.88)',
                       textDecoration: 'none',
                       transition: 'color 0.18s ease',
                       wordBreak: 'break-all',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#FFFFFF'}
-                    onMouseLeave={e => e.currentTarget.style.color = '#CBD5E1'}
+                    onMouseEnter={e => e.currentTarget.style.color = '#FFD700'}
+                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255, 255, 255, 0.88)'}
                   >
                     <div style={{
                       width: 34, height: 34, borderRadius: 10,
-                      background: 'rgba(255, 69, 0, 0.15)',
-                      border: '1px solid rgba(255, 69, 0, 0.3)',
+                      background: 'rgba(0, 0, 0, 0.28)',
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <FiMail size={15} color="#FF4500" />
+                      <FiMail size={15} color="#FFD700" />
                     </div>
                     <span>{settings?.email || 'vishalkarke184@gmail.com'}</span>
                   </a>
                 </li>
 
                 <li>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: '#CBD5E1' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 13.5, color: 'rgba(255, 255, 255, 0.88)' }}>
                     <div style={{
                       width: 34, height: 34, borderRadius: 10,
-                      background: 'rgba(255, 69, 0, 0.15)',
-                      border: '1px solid rgba(255, 69, 0, 0.3)',
+                      background: 'rgba(0, 0, 0, 0.28)',
+                      border: '1px solid rgba(255, 255, 255, 0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <FiMapPin size={15} color="#FF4500" />
+                      <FiMapPin size={15} color="#FFD700" />
                     </div>
                     <span>{settings?.address || 'Pune, Maharashtra'}</span>
                   </div>
@@ -304,7 +308,7 @@ export default function Footer() {
           </div>
 
           {/* ── Bottom Divider & Copyright Bar ── */}
-          <div style={{ height: 1, background: 'rgba(255, 255, 255, 0.08)', margin: '36px 0 20px' }} />
+          <div style={{ height: 1, background: 'rgba(255, 255, 255, 0.16)', margin: '36px 0 20px' }} />
 
           <div className="footer-bottom-bar" style={{
             display: 'flex',
@@ -313,16 +317,16 @@ export default function Footer() {
             flexWrap: 'wrap',
             gap: 12,
           }}>
-            <p style={{ fontSize: 13, color: '#94A3B8', margin: 0, fontWeight: 500 }}>
+            <p style={{ fontSize: 13, color: 'rgba(255, 255, 255, 0.78)', margin: 0, fontWeight: 500 }}>
               © {new Date().getFullYear()} <strong style={{ color: '#FFFFFF' }}>{settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}</strong>. All rights reserved.
             </p>
 
-            <div style={{ display: 'flex', gap: 14, fontSize: 12.5, color: '#64748B', fontWeight: 600, flexWrap: 'wrap' }}>
-              <Link to="/about" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>About Us</Link>
+            <div style={{ display: 'flex', gap: 14, fontSize: 12.5, color: 'rgba(255, 255, 255, 0.85)', fontWeight: 600, flexWrap: 'wrap' }}>
+              <Link to="/about" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>About Us</Link>
               <span>•</span>
-              <Link to="/contact" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>Contact Support</Link>
+              <Link to="/contact" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Contact Support</Link>
               <span>•</span>
-              <Link to="/fleet" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: '#94A3B8', textDecoration: 'none' }}>Self Drive Fleet</Link>
+              <Link to="/fleet" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Self Drive Fleet</Link>
             </div>
           </div>
         </div>

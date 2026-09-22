@@ -16,26 +16,27 @@
   --color-border: #E2E8F0;
   --color-border-2: #CBD5E1;
 
-  /* ── Authentic Bhagwa (भगवा) Buttons & Proper Black Typography ── */
-  --color-accent: #FF4500;
-  --color-accent-light: #FF5500;
-  --color-accent-hover: #D63300;
-  --gradient-accent-btn: linear-gradient(135deg, #FF4500 0%, #E63900 50%, #CC2E00 100%);
+  /* ── Premium Automotive Royal Red Gradient & Accents (Matching Navbar & Brand Strip) ── */
+  --color-accent: #B80000;
+  --color-accent-light: #E61800;
+  --color-accent-hover: #8A0000;
+  --gradient-accent-btn: linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%);
   --gradient-secondary-btn: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
-  --gradient-hero-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(15, 23, 42, 0.76) 55%, rgba(255, 69, 0, 0.35) 100%);
+  --gradient-hero-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0.88) 0%, rgba(15, 23, 42, 0.76) 55%, rgba(184, 0, 0, 0.35) 100%);
 
-  --color-accent-glow: rgba(255, 69, 0, 0.28);
-  --color-accent-bg: rgba(255, 69, 0, 0.10);
-  --color-accent-border: rgba(255, 69, 0, 0.30);
+  --color-accent-glow: rgba(184, 0, 0, 0.32);
+  --color-accent-bg: rgba(184, 0, 0, 0.08);
+  --color-accent-border: rgba(184, 0, 0, 0.28);
 
   /* ── Silver/Chrome accents ── */
   --color-silver: #64748B;
   --color-silver-light: #94A3B8;
 
-  /* ── Proper Black (#000000) Typography for Maximum Contrast ── */
-  --color-text: #000000;
+  /* ── Deep Rich Black & Light Black Typography for Maximum Premium Contrast ── */
+  --color-text: #0F172A;
   --color-text-2: #1E293B;
-  --color-text-3: #475569;
+  --color-text-3: #334155;
+  --color-text-muted: #475569;
 
   /* ── Semantic Colors ── */
   --color-blue: #2563EB;
@@ -52,7 +53,7 @@
   --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08);
   --shadow-lg: 0 10px 32px rgba(15, 23, 42, 0.10);
   --shadow-xl: 0 20px 50px rgba(15, 23, 42, 0.12);
-  --shadow-accent: 0 6px 24px rgba(255, 69, 0, 0.40);
+  --shadow-accent: 0 6px 24px rgba(184, 0, 0, 0.40);
   --shadow-card: 0 2px 10px rgba(15, 23, 42, 0.06), 0 0 0 1px rgba(15, 23, 42, 0.04);
 
   /* ── Typography ── */
@@ -151,7 +152,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
+  font-weight: 800;
   color: var(--color-text);
   line-height: 1.25;
   letter-spacing: -0.02em;
@@ -170,7 +171,8 @@ h3 {
 }
 
 p {
-  color: var(--color-text-2);
+  color: var(--color-text-3);
+  line-height: 1.6;
 }
 
 a {
@@ -226,21 +228,101 @@ ol {
 @media (max-width: 860px) {
   .grid-fleet-catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .grid-fleet-catalog {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
+    gap: 10px;
+    width: 100%;
   }
 }
 
-@media (max-width: 320px) {
-  .grid-fleet-catalog {
-    grid-template-columns: 1fr;
-    gap: 10px;
+/* ── Hero Action Buttons ── */
+.hero-btn-explore:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(184, 0, 0, 0.75), 0 4px 12px rgba(0, 0, 0, 0.50) !important;
+  color: #FFFFFF !important;
+}
+.hero-btn-contact:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: #FFFFFF !important;
+  color: #7A0000 !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 10px 32px rgba(255, 255, 255, 0.45), 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+}
+.hero-btn-contact:hover svg {
+  color: #7A0000 !important;
+}
+@media (max-width: 520px) {
+  .hero-btn-explore, .hero-btn-contact {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+}
+
+/* ── Hero Attached Downside Feature Bar ── */
+.hero-attached-feature-bar {
+  width: 100%;
+  background: linear-gradient(90deg, #7A0000 0%, #B80000 25%, #E61800 50%, #B80000 75%, #7A0000 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid #570000;
+  box-shadow: 0 6px 24px rgba(184, 0, 0, 0.42);
+  padding: 13px 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-feature-bar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3vw, 28px);
+  flex-wrap: wrap;
+}
+
+.hero-feature-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #FFFFFF;
+  font-size: clamp(12.5px, 1.6vw, 14px);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.hero-feature-pill .feature-icon {
+  color: #FFFFFF;
+  font-size: 17px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+}
+
+.feature-sep {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .hero-attached-feature-bar {
+    padding: 10px 12px;
+  }
+  .hero-feature-bar-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 12px;
+  }
+  .feature-sep {
+    display: none;
+  }
+  .hero-feature-pill {
+    font-size: 12px;
+    justify-content: flex-start;
   }
 }
 
@@ -661,7 +743,7 @@ ol {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 28px rgba(255, 69, 0, 0.45);
+  box-shadow: 0 8px 28px rgba(184, 0, 0, 0.45);
   transform: translateY(-1.5px);
 }
 

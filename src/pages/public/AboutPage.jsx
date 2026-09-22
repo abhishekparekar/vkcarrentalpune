@@ -99,18 +99,15 @@ export default function AboutPage() {
             <h1 style={{ fontSize: 'clamp(24px, 4.5vw, 38px)', fontWeight: 900, color: '#111318', margin: '0 0 10px', lineHeight: 1.25 }}>
               {settings?.aboutTitle ? (
                 <span style={{
-                  background: 'linear-gradient(135deg, #111318 0%, #FF4500 50%, #FFD700 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  color: '#0F172A',
                 }}>
                   {settings.aboutTitle}
                 </span>
               ) : (
                 <>
-                  <span style={{ color: '#111318' }}>Reinventing</span>{' '}
+                  <span style={{ color: '#0F172A' }}>Reinventing</span>{' '}
                   <span style={{
-                    background: 'linear-gradient(90deg, #FF4500 0%, #FFA500 55%, #FFD700 100%)',
+                    background: 'linear-gradient(90deg, #9E0000 0%, #D91400 50%, #B80000 100%)',
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text',
@@ -119,7 +116,7 @@ export default function AboutPage() {
                 </>
               )}
             </h1>
-            <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#64748B', margin: 0, maxWidth: 640, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(13px, 1.8vw, 15px)', color: '#334155', fontWeight: 600, margin: 0, maxWidth: 640, lineHeight: 1.6 }}>
               {settings?.aboutSubtitle || 'Driven by 100% transparency, verified cars, 300 km daily limit, and 30-minute doorstep delivery in Pune.'}
             </p>
           </div>
@@ -141,7 +138,7 @@ export default function AboutPage() {
                   borderRadius: 16,
                   padding: '22px 16px',
                   textAlign: 'center',
-                  border: '1px solid #E2E8F0',
+                  border: '1.5px solid #E2E8F0',
                   boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
                   display: 'flex',
                   flexDirection: 'column',
@@ -153,19 +150,19 @@ export default function AboutPage() {
                   width: 46,
                   height: 46,
                   borderRadius: 12,
-                  background: 'rgba(255, 69, 0, 0.09)',
-                  border: '1px solid rgba(255, 69, 0, 0.25)',
-                  color: '#FF4500',
+                  background: 'rgba(184, 0, 0, 0.08)',
+                  border: '1px solid rgba(184, 0, 0, 0.25)',
+                  color: '#B80000',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}>
                   {s.icon}
                 </div>
-                <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 30px)', color: '#FF4500', fontWeight: 900, margin: 0, lineHeight: 1 }}>
+                <h2 style={{ fontSize: 'clamp(22px, 3.5vw, 30px)', color: '#B80000', fontWeight: 900, margin: 0, lineHeight: 1 }}>
                   {s.value}
                 </h2>
-                <p style={{ fontSize: 12, color: '#64748B', margin: 0, fontWeight: 700 }}>{s.label}</p>
+                <p style={{ fontSize: 12.5, color: '#334155', margin: 0, fontWeight: 800 }}>{s.label}</p>
               </motion.div>
             ))}
           </div>
@@ -175,7 +172,7 @@ export default function AboutPage() {
             background: '#FFFFFF',
             borderRadius: 18,
             padding: '28px 24px',
-            border: '1px solid #E2E8F0',
+            border: '1.5px solid #E2E8F0',
             boxShadow: '0 6px 24px rgba(15, 23, 42, 0.05)',
             marginBottom: 32,
           }}>
@@ -183,15 +180,15 @@ export default function AboutPage() {
               <span className="section-label-red" style={{ margin: 0 }}>Our Core Mission</span>
             </div>
 
-            <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 28px)', fontWeight: 900, color: '#111318', marginBottom: 12, lineHeight: 1.25 }}>
+            <h2 style={{ fontSize: 'clamp(20px, 3.5vw, 28px)', fontWeight: 900, color: '#0F172A', marginBottom: 12, lineHeight: 1.25 }}>
               {settings?.aboutMissionHeading || 'Empowering Renters with Complete Self-Drive Freedom'}
             </h2>
 
-            <p style={{ fontSize: 'clamp(13.5px, 1.8vw, 15.5px)', color: '#334155', lineHeight: 1.75, marginBottom: 14 }}>
+            <p style={{ fontSize: 'clamp(13.5px, 1.8vw, 15.5px)', color: '#1E293B', fontWeight: 600, lineHeight: 1.75, marginBottom: 14 }}>
               {settings?.aboutMissionText || 'We believe having a car for weekend family trips, business meetings, or hill-station drives should be simple — accessible on demand without ownership hassle.'}
             </p>
 
-            <p style={{ fontSize: 'clamp(13px, 1.6vw, 15px)', color: '#475569', lineHeight: 1.75, marginBottom: 24 }}>
+            <p style={{ fontSize: 'clamp(13px, 1.6vw, 15px)', color: '#334155', fontWeight: 600, lineHeight: 1.75, marginBottom: 24 }}>
               {settings?.aboutStoryText || 'Every vehicle in our fleet is deep-sanitized, digitally verified, and handed over with complete document verification.'}
             </p>
 
@@ -217,8 +214,8 @@ export default function AboutPage() {
                   <div style={{
                     width: 28, height: 28,
                     borderRadius: '50%',
-                    background: 'rgba(255, 69, 0, 0.12)',
-                    color: '#FF4500',
+                    background: 'rgba(184, 0, 0, 0.10)',
+                    color: '#B80000',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     flexShrink: 0,
                     fontSize: 14,
@@ -227,10 +224,10 @@ export default function AboutPage() {
                     <FiCheck />
                   </div>
                   <div>
-                    <strong style={{ fontSize: 13, color: '#111318', display: 'block', marginBottom: 3, fontWeight: 800 }}>
+                    <strong style={{ fontSize: 13, color: '#0F172A', display: 'block', marginBottom: 3, fontWeight: 900 }}>
                       {mp.title}
                     </strong>
-                    <span style={{ fontSize: 12, color: '#64748B', lineHeight: 1.4, display: 'block' }}>
+                    <span style={{ fontSize: 12, color: '#334155', fontWeight: 600, lineHeight: 1.45, display: 'block' }}>
                       {mp.desc}
                     </span>
                   </div>
@@ -241,14 +238,14 @@ export default function AboutPage() {
 
           {/* ─── RENTAL TERMS & MANDATORY DOCUMENTS SECTION ─── */}
           <div style={{ marginBottom: 32 }}>
-            <TermsAndConditions expandable={false} defaultOpen={true} />
+            <TermsAndConditions expandable={true} defaultOpen={false} />
           </div>
 
           {/* ─── WHY CHOOSE US CARD GRID ─── */}
           <div style={{ marginBottom: 36 }}>
             <div style={{ marginBottom: 20 }}>
               <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 6 }}>Why Choose Us</span>
-              <h2 style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 900, color: '#111318', margin: 0 }}>
+              <h2 style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 900, color: '#0F172A', margin: 0 }}>
                 Everything You Need For A Safe Trip
               </h2>
             </div>
@@ -264,7 +261,7 @@ export default function AboutPage() {
                     background: '#FFFFFF',
                     borderRadius: 16,
                     padding: '20px 18px',
-                    border: '1px solid #E2E8F0',
+                    border: '1.5px solid #E2E8F0',
                     boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
                   }}
                 >
@@ -272,9 +269,9 @@ export default function AboutPage() {
                     width: 44,
                     height: 44,
                     borderRadius: 12,
-                    background: 'rgba(255, 69, 0, 0.08)',
-                    border: '1px solid rgba(255, 69, 0, 0.20)',
-                    color: '#FF4500',
+                    background: 'rgba(184, 0, 0, 0.08)',
+                    border: '1px solid rgba(184, 0, 0, 0.20)',
+                    color: '#B80000',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -282,8 +279,8 @@ export default function AboutPage() {
                   }}>
                     {p.icon}
                   </div>
-                  <h3 style={{ fontSize: 15, fontWeight: 800, color: '#111318', margin: '0 0 6px' }}>{p.title}</h3>
-                  <p style={{ fontSize: 13, color: '#64748B', margin: 0, lineHeight: 1.5 }}>{p.desc}</p>
+                  <h3 style={{ fontSize: 15, fontWeight: 900, color: '#0F172A', margin: '0 0 6px' }}>{p.title}</h3>
+                  <p style={{ fontSize: 13, color: '#334155', fontWeight: 600, margin: 0, lineHeight: 1.55 }}>{p.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -294,7 +291,7 @@ export default function AboutPage() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
               <div>
                 <span className="section-label-red" style={{ display: 'inline-block', marginBottom: 6 }}>Customer Feedback</span>
-                <h2 style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 900, color: '#111318', margin: 0 }}>
+                <h2 style={{ fontSize: 'clamp(18px, 3vw, 24px)', fontWeight: 900, color: '#0F172A', margin: 0 }}>
                   What Our Renters Say
                 </h2>
               </div>
@@ -304,7 +301,7 @@ export default function AboutPage() {
             </div>
 
             {reviews.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '24px 0', color: '#64748B', fontSize: 13 }}>
+              <div style={{ textAlign: 'center', padding: '24px 0', color: '#334155', fontSize: 13, fontWeight: 600 }}>
                 No customer reviews published yet. Admin can add live reviews in Admin Panel Settings.
               </div>
             ) : (
@@ -316,7 +313,7 @@ export default function AboutPage() {
                       background: '#FFFFFF',
                       borderRadius: 16,
                       padding: '20px 18px',
-                      border: '1px solid #E2E8F0',
+                      border: '1.5px solid #E2E8F0',
                       boxShadow: '0 4px 16px rgba(15, 23, 42, 0.04)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -331,10 +328,10 @@ export default function AboutPage() {
                             <BsStarFill key={rIdx} size={14} />
                           ))}
                         </div>
-                        <span style={{ fontSize: 11, color: '#94A3B8', fontWeight: 600 }}>{rev.date || 'Verified'}</span>
+                        <span style={{ fontSize: 11, color: '#475569', fontWeight: 700 }}>{rev.date || 'Verified'}</span>
                       </div>
 
-                      <p style={{ fontSize: 13, color: '#000000', lineHeight: 1.6, margin: 0, fontStyle: 'italic', fontWeight: 600 }}>
+                      <p style={{ fontSize: 13, color: '#0F172A', lineHeight: 1.6, margin: 0, fontStyle: 'italic', fontWeight: 600 }}>
                         "{rev.comment}"
                       </p>
                     </div>
@@ -343,16 +340,17 @@ export default function AboutPage() {
                       <div style={{
                         width: 36, height: 36,
                         borderRadius: '50%',
-                        background: 'rgba(255, 69, 0,0.08)',
-                        color: '#FF4500',
+                        background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
+                        color: '#FFFFFF',
                         fontWeight: 800,
                         fontSize: 14,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        boxShadow: '0 2px 8px rgba(184, 0, 0, 0.35)',
                       }}>
                         {rev.name?.charAt(0) || 'R'}
                       </div>
                       <div>
-                        <strong style={{ fontSize: 13, color: '#000000', display: 'block', lineHeight: 1.2 }}>{rev.name}</strong>
+                        <strong style={{ fontSize: 13, color: '#0F172A', display: 'block', lineHeight: 1.2, fontWeight: 800 }}>{rev.name}</strong>
                         <span style={{ fontSize: 11, color: '#334155', fontWeight: 600 }}>{rev.location || 'Pune'} • {rev.carName || 'Self Drive'}</span>
                       </div>
                     </div>
