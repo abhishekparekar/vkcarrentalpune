@@ -363,6 +363,8 @@ export default function Footer() {
               <Link to="/contact" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Contact Support</Link>
               <span>•</span>
               <Link to="/fleet" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Self Drive Fleet</Link>
+              <span>•</span>
+              <Link to="/privacy-policy" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })} style={{ color: 'rgba(255, 255, 255, 0.85)', textDecoration: 'none' }}>Privacy Policy</Link>
             </div>
           </div>
         </div>

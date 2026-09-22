@@ -19,6 +19,7 @@ import CarDetailPage from './pages/public/CarDetailPage';
 import ContactPage from './pages/public/ContactPage';
 import AboutPage from './pages/public/AboutPage';
 import MyInquiriesPage from './pages/public/MyInquiriesPage';
+import PrivacyPolicyPage from './pages/public/PrivacyPolicyPage';
 
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -75,6 +76,7 @@ export default function App() {
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/my-inquiries" element={<MyInquiriesPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
 
               {/* 🔐 Admin Routes */}
               <Route path="/admin/login" element={<AdminLogin />} />
