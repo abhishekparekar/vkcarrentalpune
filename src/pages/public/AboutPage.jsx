@@ -88,11 +88,11 @@ export default function AboutPage() {
       />
       <Navbar />
 
-      <main style={{ paddingTop: 72, paddingBottom: 36, flex: 1 }}>
+      <main style={{ paddingTop: 68, paddingBottom: 36, flex: 1 }}>
 
         {/* ─── Hero Header ─── */}
-        <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 32 }}>
-          <div className="container" style={{ padding: '32px 0 24px' }}>
+        <div style={{ background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', marginBottom: 24 }}>
+          <div className="about-container" style={{ padding: '20px 0 16px' }}>
             <span className="section-label-red" style={{ marginBottom: 10, display: 'inline-block' }}>
               About {settings?.businessName || "VK SELF DRIVE CAR'S PUNE"}
             </span>
@@ -122,7 +122,7 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <div className="container">
+        <div className="about-container">
 
           {/* ─── Dynamic Stats Grid ─── */}
           <div className="about-stats-grid" style={{ marginBottom: 32 }}>
@@ -366,27 +366,37 @@ export default function AboutPage() {
       <Footer />
 
       <style>{`
+        .about-container {
+          width: 100%;
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          box-sizing: border-box;
+        }
         .about-stats-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 16px;
+          gap: 14px;
           width: 100%;
+          margin-bottom: 24px;
         }
         .about-cards-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 16px;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 14px;
           width: 100%;
         }
         @media (max-width: 1024px) {
           .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+          .about-cards-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        @media (max-width: 520px) {
+        @media (max-width: 640px) {
+          .about-container { padding: 0 12px; }
           .about-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
           .about-cards-grid { grid-template-columns: 1fr !important; }
         }
-        @media (max-width: 340px) {
-          .about-stats-grid { grid-template-columns: 1fr !important; }
+        @media (max-width: 380px) {
+          .about-container { padding: 0 10px; }
         }
       `}</style>
     </div>

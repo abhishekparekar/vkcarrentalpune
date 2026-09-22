@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { FiShield, FiAlertTriangle, FiCheckCircle, FiChevronDown, FiChevronUp, FiFileText, FiClock, FiKey, FiDollarSign } from 'react-icons/fi';
+import { FiShield, FiAlertTriangle, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 export const REQUIRED_DOCUMENTS = [
-  { id: 1, name: 'Aadhaar Card', icon: '🪪', req: 'Original Required' },
-  { id: 2, name: 'Driving Licence', icon: '🚗', req: 'Valid Original' },
-  { id: 3, name: 'PAN Card', icon: '💳', req: 'Original Required' },
-  { id: 4, name: 'Rent Agreement', icon: '🏠', req: 'Current Address Proof' },
-  { id: 5, name: 'Job ID Card', icon: '🆔', req: 'Employment Proof' },
+  { id: 1, name: 'Aadhaar Card',     icon: '🪪', req: 'Original Required' },
+  { id: 2, name: 'Driving Licence',  icon: '🚗', req: 'Valid Original' },
+  { id: 3, name: 'PAN Card',         icon: '💳', req: 'Original Required' },
+  { id: 4, name: 'Rent Agreement',   icon: '🏠', req: 'Current Address Proof' },
+  { id: 5, name: 'Job ID Card',      icon: '🆔', req: 'Employment Proof' },
 ];
 
 export const CATEGORIZED_TERMS = [
@@ -14,9 +14,9 @@ export const CATEGORIZED_TERMS = [
     category: 'Km & Overtime Rates',
     icon: '⚡',
     items: [
-      { highlight: '300 km Limit', text: '300 km limit per 24 hours package.' },
-      { highlight: 'Extra KM Rates', text: '₹6/km (5 Seater) • ₹7/km (7 Seater / SUV).' },
-      { highlight: 'Overtime Fees', text: '₹200/hr (Swift, Ertiga, i20, Dzire, Punch, Venue, Baleno) • ₹300/hr (Thar 4x4).' },
+      { highlight: '300 km Limit',    text: '300 km limit per 24 hours package.' },
+      { highlight: 'Extra KM Rates',  text: '₹6/km (5 Seater) • ₹7/km (7 Seater / SUV).' },
+      { highlight: 'Overtime Fees',   text: '₹200/hr (Swift, Ertiga, i20, Dzire, Punch, Venue, Baleno) • ₹300/hr (Thar 4x4).' },
     ],
   },
   {
@@ -24,233 +24,113 @@ export const CATEGORIZED_TERMS = [
     icon: '🔑',
     items: [
       { highlight: 'Security Deposit', text: "Customer's own bike is acceptable OR ₹10,000 cash deposit." },
-      { highlight: 'Advance Fee', text: 'Booking advance payment is strictly Non-Refundable.' },
-      { highlight: 'Damage Policy', text: 'Minor scratches & dents not covered by insurance. Service center downtime fee + processing fee applies.' },
+      { highlight: 'Advance Fee',       text: 'Booking advance payment is strictly Non-Refundable.' },
+      { highlight: 'Damage Policy',     text: 'Minor scratches & dents not covered by insurance. Service center downtime fee + processing fee applies.' },
     ],
   },
   {
     category: 'Rules & Fuel Policy',
     icon: '🚫',
     items: [
-      { highlight: 'Strict Policy', text: "DON'T DRINK AND DRIVE. 100% customer liability for damages if alcohol is involved." },
-      { highlight: 'Fuel & FASTag', text: 'Maintain given fuel level (extra fuel non-refundable). FASTag server issues not under our control.' },
-      { highlight: 'Pickup Payment', text: 'Full rent + deposit must be paid at the time of car pickup.' },
+      { highlight: 'Strict Policy',    text: "DON'T DRINK AND DRIVE. 100% customer liability for damages if alcohol is involved." },
+      { highlight: 'Fuel & FASTag',    text: 'Maintain given fuel level (extra fuel non-refundable). FASTag server issues not under our control.' },
+      { highlight: 'Pickup Payment',   text: 'Full rent + deposit must be paid at the time of car pickup.' },
     ],
   },
 ];
 
 export const HIGHLIGHT_CHIPS = [
-  { text: '300 KM / 24h Limit', icon: '📏' },
-  { text: 'Bike / ₹10k Deposit', icon: '🔑' },
-  { text: '5 Required Documents', icon: '📄' },
-  { text: 'No Drink & Drive', icon: '🚫' },
-  { text: 'Non-Refundable Advance', icon: '💳' },
-  { text: 'Rent at Pickup', icon: '🛻' },
+  { text: '300 KM / 24h',         icon: '📏' },
+  { text: 'Bike / ₹10k Deposit',  icon: '🔑' },
+  { text: '5 Documents',          icon: '📄' },
+  { text: 'No Drink & Drive',     icon: '🚫' },
+  { text: 'Non-Refundable Adv.',  icon: '💳' },
+  { text: 'Rent at Pickup',       icon: '🛻' },
 ];
 
 export default function TermsAndConditions({ expandable = true, defaultOpen = false, compact = false }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <div style={{
-      background: '#FFFFFF',
-      borderRadius: 16,
-      border: '1.5px solid rgba(184, 0, 0, 0.25)',
-      boxShadow: '0 4px 24px rgba(15, 23, 42, 0.06)',
-      overflow: 'hidden',
-      width: '100%',
-    }}>
-      {/* ─── Top Banner Header ─── */}
+    <div className="tnc-root">
+      {/* ── Header ── */}
       <div
+        className={`tnc-header${expandable ? ' tnc-header--clickable' : ''}`}
         onClick={() => expandable && setIsOpen(prev => !prev)}
-        style={{
-          padding: compact ? '14px 16px' : '16px 20px',
-          background: 'linear-gradient(135deg, rgba(184, 0, 0, 0.08) 0%, #FFFFFF 100%)',
-          borderBottom: (isOpen || !expandable) ? '1px solid rgba(184, 0, 0, 0.18)' : 'none',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          cursor: expandable ? 'pointer' : 'default',
-          userSelect: 'none',
-        }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{
-            width: 36, height: 36,
-            borderRadius: 10,
-            background: 'linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%)',
-            color: '#FFFFFF',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 18,
-            boxShadow: '0 3px 10px rgba(184, 0, 0, 0.35)',
-            flexShrink: 0,
-          }}>
-            <FiShield />
+        <div className="tnc-header-left">
+          <div className="tnc-shield-icon">
+            <FiShield size={18} />
           </div>
           <div>
-            <span style={{ fontSize: 10, color: '#B80000', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: 2 }}>
-              VK RENTAL CARS PUNE • OFFICIAL POLICY
-            </span>
-            <h4 style={{ fontSize: compact ? 14 : 16, fontWeight: 900, color: '#111318', margin: 0, lineHeight: 1.25 }}>
-              Rental Policy &amp; Mandatory Documents
-            </h4>
+            <span className="tnc-tag">VK RENTAL CARS PUNE • OFFICIAL POLICY</span>
+            <h4 className="tnc-title">Rental Policy & Mandatory Documents</h4>
           </div>
         </div>
 
         {expandable && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            fontSize: 12,
-            fontWeight: 800,
-            color: '#B80000',
-            background: 'rgba(184, 0, 0, 0.09)',
-            padding: '6px 12px',
-            borderRadius: 99,
-            border: '1px solid rgba(184, 0, 0, 0.25)',
-          }}>
+          <div className="tnc-toggle-btn">
             <span>{isOpen ? 'Collapse' : 'View Policy'}</span>
-            {isOpen ? <FiChevronUp size={16} /> : <FiChevronDown size={16} />}
+            {isOpen ? <FiChevronUp size={15} /> : <FiChevronDown size={15} />}
           </div>
         )}
       </div>
 
+      {/* ── Body ── */}
       {(!expandable || isOpen) && (
-        <div style={{ padding: compact ? '14px' : '18px 20px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div className="tnc-body">
 
-          {/* ─── Quick Highlight Pills Bar ─── */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            overflowX: 'auto',
-            paddingBottom: 4,
-            scrollbarWidth: 'none',
-            WebkitOverflowScrolling: 'touch',
-          }}>
+          {/* Highlight chips scroll */}
+          <div className="tnc-chips-bar">
             {HIGHLIGHT_CHIPS.map((chip, idx) => (
-              <div
-                key={idx}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 6,
-                  padding: '5px 12px',
-                  borderRadius: 99,
-                  background: 'rgba(255, 69, 0, 0.06)',
-                  border: '1px solid rgba(255, 69, 0, 0.20)',
-                  fontSize: 11.5,
-                  fontWeight: 800,
-                  color: '#FF4500',
-                  whiteSpace: 'nowrap',
-                  flexShrink: 0,
-                }}
-              >
+              <div key={idx} className="tnc-chip">
                 <span>{chip.icon}</span>
                 <span>{chip.text}</span>
               </div>
             ))}
           </div>
 
-          {/* ─── Notice Alert Box ─── */}
-          <div style={{
-            padding: '10px 14px',
-            borderRadius: 10,
-            background: '#FEF2F2',
-            border: '1px solid #FCA5A5',
-            fontSize: 12,
-            color: '#991B1B',
-            fontWeight: 800,
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            boxShadow: '0 1px 4px rgba(239, 68, 68, 0.06)',
-          }}>
-            <FiAlertTriangle size={16} style={{ flexShrink: 0, color: '#FF4500' }} />
-            <span>⭕ PLEASE READ ALL TERMS &amp; MANDATORY DOCUMENTATION REQUIREMENTS CAREFULLY BEFORE BOOKING ⭕</span>
+          {/* Alert */}
+          <div className="tnc-alert">
+            <FiAlertTriangle size={15} style={{ flexShrink: 0, color: '#FF4500' }} />
+            <span>⭕ PLEASE READ ALL TERMS & MANDATORY DOCUMENTATION CAREFULLY BEFORE BOOKING ⭕</span>
           </div>
 
-          {/* ─── 📄 MANDATORY DOCUMENTS REQUIRED CARD ─── */}
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.04) 0%, #FFFFFF 100%)',
-            border: '1.5px solid rgba(255, 69, 0, 0.20)',
-            borderRadius: 14,
-            padding: '14px 16px',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 6 }}>
+          {/* Documents */}
+          <div className="tnc-docs-card">
+            <div className="tnc-docs-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{ fontSize: 18 }}>📄</span>
-                <strong style={{ fontSize: 13.5, color: '#FF4500', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  5 Mandatory Documents Required at Pickup:
-                </strong>
+                <strong className="tnc-docs-title">5 Mandatory Documents at Pickup:</strong>
               </div>
-              <span style={{ fontSize: 11, background: 'rgba(255, 69, 0, 0.1)', color: '#FF4500', padding: '3px 8px', borderRadius: 6, fontWeight: 800 }}>
-                Original Verified
-              </span>
+              <span className="tnc-docs-badge">Original Verified</span>
             </div>
-
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-              gap: 12,
-            }}>
+            <div className="tnc-docs-grid">
               {REQUIRED_DOCUMENTS.map(doc => (
-                <div
-                  key={doc.id}
-                  style={{
-                    background: '#FFFFFF',
-                    border: '1px solid #E2E8F0',
-                    borderRadius: 12,
-                    padding: '12px 14px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)',
-                  }}
-                >
-                  <span style={{ fontSize: 22, flexShrink: 0 }}>{doc.icon}</span>
+                <div key={doc.id} className="tnc-doc-item">
+                  <span style={{ fontSize: 20, flexShrink: 0 }}>{doc.icon}</span>
                   <div>
-                    <strong style={{ display: 'block', fontSize: 13, color: '#111318', fontWeight: 800, lineHeight: 1.25 }}>
-                      {doc.id}. {doc.name}
-                    </strong>
-                    <span style={{ fontSize: 11, color: '#FF4500', fontWeight: 700 }}>{doc.req}</span>
+                    <strong className="tnc-doc-name">{doc.id}. {doc.name}</strong>
+                    <span className="tnc-doc-req">{doc.req}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ─── 3-COLUMN POLICY GRID ─── */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(290px, 1fr))',
-            gap: 16,
-          }}>
+          {/* Policy Grid */}
+          <div className="tnc-policy-grid">
             {CATEGORIZED_TERMS.map((cat, idx) => (
-              <div
-                key={idx}
-                style={{
-                  background: '#FFFFFF',
-                  borderRadius: 14,
-                  padding: '14px 16px',
-                  border: '1px solid #E2E8F0',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.03)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 10,
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingBottom: 8, borderBottom: '1.5px solid #F1F5F9' }}>
-                  <span style={{ fontSize: 18 }}>{cat.icon}</span>
-                  <strong style={{ fontSize: 13.5, color: '#111318', fontWeight: 900 }}>{cat.category}</strong>
+              <div key={idx} className="tnc-policy-card">
+                <div className="tnc-policy-cat">
+                  <span style={{ fontSize: 16 }}>{cat.icon}</span>
+                  <strong className="tnc-policy-cat-name">{cat.category}</strong>
                 </div>
-
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div className="tnc-policy-items">
                   {cat.items.map((item, itemIdx) => (
-                    <div key={itemIdx} style={{ fontSize: 12.5, lineHeight: 1.5, color: '#111318' }}>
-                      <strong style={{ color: '#FF4500', fontWeight: 800 }}>• {item.highlight}: </strong>
-                      <span style={{ fontWeight: 600, color: '#1E293B' }}>{item.text}</span>
+                    <div key={itemIdx} className="tnc-policy-item">
+                      <strong className="tnc-item-hl">• {item.highlight}: </strong>
+                      <span className="tnc-item-txt">{item.text}</span>
                     </div>
                   ))}
                 </div>
@@ -258,21 +138,8 @@ export default function TermsAndConditions({ expandable = true, defaultOpen = fa
             ))}
           </div>
 
-          {/* ─── Bottom Security Note ─── */}
-          <div style={{
-            padding: '10px 14px',
-            borderRadius: 10,
-            background: 'linear-gradient(135deg, rgba(255, 69, 0, 0.06) 0%, #FFFFFF 100%)',
-            border: '1px dashed rgba(255, 69, 0, 0.35)',
-            fontSize: 12.5,
-            color: '#111318',
-            textAlign: 'center',
-            fontWeight: 700,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 6,
-          }}>
+          {/* Footer note */}
+          <div className="tnc-footer-note">
             <span>🛻</span>
             <span>
               <strong>Full Rent + Deposit (Customer Bike OR ₹10,000 Cash)</strong> collected at car pickup.
@@ -280,6 +147,259 @@ export default function TermsAndConditions({ expandable = true, defaultOpen = fa
           </div>
         </div>
       )}
+
+      <style>{`
+        .tnc-root {
+          background: #FFFFFF;
+          border-radius: 14px;
+          border: 1.5px solid rgba(184,0,0,0.22);
+          box-shadow: 0 3px 16px rgba(15,23,42,0.05);
+          overflow: hidden;
+          width: 100%;
+          box-sizing: border-box;
+        }
+        .tnc-header {
+          padding: 14px 16px;
+          background: linear-gradient(135deg, rgba(184,0,0,0.07) 0%, #FFFFFF 100%);
+          border-bottom: 1px solid rgba(184,0,0,0.14);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          user-select: none;
+        }
+        .tnc-header--clickable { cursor: pointer; }
+        .tnc-header-left {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-width: 0;
+        }
+        .tnc-shield-icon {
+          width: 34px; height: 34px;
+          border-radius: 9px;
+          background: linear-gradient(135deg, #9E0000 0%, #D91400 50%, #7A0000 100%);
+          color: #FFF;
+          display: flex; align-items: center; justify-content: center;
+          box-shadow: 0 2px 8px rgba(184,0,0,0.35);
+          flex-shrink: 0;
+        }
+        .tnc-tag {
+          font-size: 9.5px;
+          color: #B80000;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.7px;
+          display: block;
+          margin-bottom: 2px;
+        }
+        .tnc-title {
+          font-size: 14px;
+          font-weight: 900;
+          color: #111318;
+          margin: 0;
+          line-height: 1.25;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .tnc-toggle-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 11.5px;
+          font-weight: 800;
+          color: #B80000;
+          background: rgba(184,0,0,0.08);
+          padding: 5px 11px;
+          border-radius: 99px;
+          border: 1px solid rgba(184,0,0,0.22);
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .tnc-body {
+          padding: 14px 14px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        /* Chips */
+        .tnc-chips-bar {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          overflow-x: auto;
+          padding-bottom: 4px;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+          flex-wrap: wrap;
+        }
+        .tnc-chips-bar::-webkit-scrollbar { display: none; }
+        .tnc-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 4px 10px;
+          border-radius: 99px;
+          background: rgba(255,69,0,0.06);
+          border: 1px solid rgba(255,69,0,0.18);
+          font-size: 11px;
+          font-weight: 800;
+          color: #FF4500;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+
+        /* Alert */
+        .tnc-alert {
+          padding: 9px 12px;
+          border-radius: 9px;
+          background: #FEF2F2;
+          border: 1px solid #FCA5A5;
+          font-size: 11.5px;
+          color: #991B1B;
+          font-weight: 700;
+          display: flex;
+          align-items: flex-start;
+          gap: 7px;
+          line-height: 1.5;
+        }
+
+        /* Documents */
+        .tnc-docs-card {
+          background: linear-gradient(135deg, rgba(255,69,0,0.04) 0%, #FFFFFF 100%);
+          border: 1.5px solid rgba(255,69,0,0.18);
+          border-radius: 12px;
+          padding: 12px 14px;
+        }
+        .tnc-docs-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+        .tnc-docs-title {
+          font-size: 12.5px;
+          color: #FF4500;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+        }
+        .tnc-docs-badge {
+          font-size: 10.5px;
+          background: rgba(255,69,0,0.1);
+          color: #FF4500;
+          padding: 2px 8px;
+          border-radius: 6px;
+          font-weight: 800;
+        }
+        .tnc-docs-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+        .tnc-doc-item {
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
+          border-radius: 10px;
+          padding: 10px 11px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 1px 4px rgba(15,23,42,0.03);
+        }
+        .tnc-doc-name {
+          display: block;
+          font-size: 12px;
+          color: #111318;
+          font-weight: 800;
+          line-height: 1.25;
+        }
+        .tnc-doc-req {
+          font-size: 10.5px;
+          color: #FF4500;
+          font-weight: 700;
+        }
+
+        /* Policy Grid */
+        .tnc-policy-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+        }
+        .tnc-policy-card {
+          background: #FFFFFF;
+          border-radius: 12px;
+          padding: 12px 13px;
+          border: 1px solid #E2E8F0;
+          box-shadow: 0 2px 6px rgba(15,23,42,0.03);
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        .tnc-policy-cat {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          padding-bottom: 7px;
+          border-bottom: 1.5px solid #F1F5F9;
+        }
+        .tnc-policy-cat-name {
+          font-size: 12.5px;
+          color: #111318;
+          font-weight: 900;
+        }
+        .tnc-policy-items {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .tnc-policy-item {
+          font-size: 11.5px;
+          line-height: 1.5;
+          color: #111318;
+        }
+        .tnc-item-hl { color: #FF4500; font-weight: 800; }
+        .tnc-item-txt { font-weight: 600; color: #1E293B; }
+
+        /* Footer note */
+        .tnc-footer-note {
+          padding: 9px 12px;
+          border-radius: 9px;
+          background: linear-gradient(135deg, rgba(255,69,0,0.06) 0%, #FFFFFF 100%);
+          border: 1px dashed rgba(255,69,0,0.32);
+          font-size: 12px;
+          color: #111318;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          text-align: center;
+          flex-wrap: wrap;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+          .tnc-policy-grid { grid-template-columns: 1fr; gap: 8px; }
+        }
+        @media (max-width: 560px) {
+          .tnc-body { padding: 12px 10px; gap: 10px; }
+          .tnc-title { font-size: 13px; }
+          .tnc-chip { font-size: 10.5px; padding: 3px 8px; }
+          .tnc-docs-grid { grid-template-columns: 1fr 1fr; gap: 7px; }
+          .tnc-doc-item { padding: 8px 9px; }
+          .tnc-doc-name { font-size: 11px; }
+          .tnc-policy-item { font-size: 11px; }
+        }
+        @media (max-width: 380px) {
+          .tnc-docs-grid { grid-template-columns: 1fr; }
+          .tnc-toggle-btn { padding: 4px 8px; font-size: 10.5px; }
+        }
+      `}</style>
     </div>
   );
 }
