@@ -71,8 +71,9 @@ export default function MyInquiriesPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
       <SEO
-        title="Track Rental Inquiries | VK RENTAL CARS PUNE"
-        description="Check status and updates for your car booking inquiry with VK RENTAL CARS PUNE. Track your self-drive reservation instantly."
+        title="Track Rental Inquiries | Car Booking Status | VK RENTAL CARS PUNE"
+        description="Check status and updates for your car booking inquiry with VK RENTAL CARS PUNE. Track your self drive reservation instantly."
+        keywords="track car booking, car booking status, self drive, car rentals services, car booking, VK Rental Cars inquiries, www.vkrentalcar.com"
         canonicalPath="/my-inquiries"
       />
       <Navbar />

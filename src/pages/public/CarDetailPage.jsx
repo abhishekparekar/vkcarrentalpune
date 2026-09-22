@@ -136,7 +136,7 @@ export default function CarDetailPage() {
     "@context": "https://schema.org/",
     "@type": "Product",
     "name": `${car.name} - Self Drive Rental in Pune`,
-    "image": images[0] || 'https://vkcarrentalpune.com/vklogo1.png',
+    "image": images[0] || 'https://www.vkrentalcar.com/vklogo1.png',
     "description": `Rent ${car.name} (${car.transmission || 'Manual'}, ${car.fuelType || 'Petrol'}, ${car.seats || 5} Seats) in Pune with 300 km daily limit and doorstep delivery by VK RENTAL CARS PUNE.`,
     "brand": {
       "@type": "Brand",
@@ -160,9 +160,9 @@ export default function CarDetailPage() {
       <SEO
         title={`Rent ${car.name} in Pune | Self Drive Car Rental | VK RENTAL CARS`}
         description={`Rent ${car.name} (${car.transmission || 'Manual'}, ${car.fuelType || 'Petrol'}) for ₹${car.pricePerDay || 2300}/day in Pune. 300 km daily limit included, zero deposit options, doorstep delivery across Pune & PCMC.`}
-        keywords={`${car.name} rental Pune, rent ${car.name} Pune, self drive ${car.name}, VK Rental Cars ${car.name}, car hire Pune`}
+        keywords={`${car.name} rental Pune, rent ${car.name} Pune, self drive ${car.name}, self drive, self drive cars, car rentals services, car booking, VK Rental Cars ${car.name}, car hire Pune, www.vkrentalcar.com`}
         canonicalPath={`/cars/${carId}`}
-        ogImage={images[0] || 'https://vkcarrentalpune.com/vklogo1.png'}
+        ogImage={images[0] || 'https://www.vkrentalcar.com/vklogo1.png'}
         schemaJson={carSchema}
       />
       <Navbar />

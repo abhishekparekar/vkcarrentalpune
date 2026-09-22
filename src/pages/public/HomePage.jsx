@@ -103,9 +103,9 @@ export default function HomePage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F7F7F8' }}>
       <SEO
-        title="VK RENTAL CARS PUNE | Best Self Drive Cars & Car Rental in Pune"
-        description="Book top-rated self drive cars in Pune with VK RENTAL CARS. Rent Thar 4x4, Swift, Ertiga 7-Seater, Baleno with doorstep delivery, 300 km daily limit, 0 security deposit & 24/7 roadside assist."
-        keywords="VK Rental Cars, VK Rental Cars Pune, self drive cars Pune, car rental Pune, car hire in Pune, self drive car rental Pune, Thar 4x4 rental Pune, Ertiga rental Pune, Swift rental Pune, PCMC self drive"
+        title="VK RENTAL CARS PUNE | Self Drive Cars & Car Rentals Services Pune | Best Car Booking"
+        description="Book top-rated self drive cars, car rentals services & online car booking in Pune & PCMC with VK RENTAL CARS. Rent Thar 4x4, Swift, Ertiga 7-Seater, Baleno with 300 km daily limit, 0 deposit & 30-min doorstep delivery. 24/7 support!"
+        keywords="self drive, self drive cars, car rentals services, car booking, car rental in Pune, self drive cars Pune, self drive car rental Pune, car hire in Pune, rent a car Pune, car on rent Pune, self drive Pune, best self drive cars Pune, car booking Pune, car booking in Pune, car rental Pune contact number, Thar rental Pune, Mahindra Thar 4x4 rental Pune, Ertiga rental Pune, 7 seater car rental Pune, Swift car rental Pune, Baleno rental Pune, Creta self drive Pune, cheap self drive cars Pune, 0 deposit car rental Pune, doorstep car delivery Pune, Pune airport car rental, outstation self drive car Pune, self drive Hinjewadi, car rental Hinjewadi, self drive Wakad, car rental Baner, self drive Kothrud, car rental Viman Nagar, self drive Kharadi, car rental Hadapsar, PCMC self drive car, VK Rental Cars, VK Rental Cars Pune, कार रेंटल पुणे, सेल्फ ड्राईव्ह कार पुणे, पुण्यात कार भाड्याने, कार बुकिंग पुणे, www.vkrentalcar.com, vkrentalcar.com"
         canonicalPath="/"
       />
       <Navbar />

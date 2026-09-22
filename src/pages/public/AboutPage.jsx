@@ -81,9 +81,9 @@ export default function AboutPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
       <SEO
-        title="About Us | VK RENTAL CARS PUNE — Trusted Self Drive Car Rentals"
-        description="Learn about VK RENTAL CARS PUNE: Pune's trusted self drive car rental partner. Offering doorstep delivery, 300 km daily limit, sanitized fleet and 24/7 road assistance."
-        keywords="about VK Rental Cars, car rental company Pune, trusted self drive cars Pune, VK car hire story, Pune car rental services"
+        title="About VK RENTAL CARS PUNE | #1 Self Drive Cars & Car Rentals Services in Pune"
+        description="Learn about VK RENTAL CARS PUNE: Pune's trusted self drive cars and car rentals services partner. Offering doorstep delivery, 300 km daily limit, 0 deposit and instant online car booking."
+        keywords="about VK Rental Cars, self drive, car rentals services, car booking, car rental in Pune, self drive cars Pune, trusted self drive cars Pune, Pune car rental services, www.vkrentalcar.com"
         canonicalPath="/about"
       />
       <Navbar />

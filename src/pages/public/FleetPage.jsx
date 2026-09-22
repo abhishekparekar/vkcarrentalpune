@@ -62,9 +62,9 @@ export default function FleetPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
       <SEO
-        title="Our Fleet — Self Drive Cars & Rental Cars in Pune | VK RENTAL CARS"
-        description="Browse all self-drive cars for rent in Pune by VK RENTAL CARS. Hatchbacks (Swift, i20), Sedans (Dzire CNG), SUVs (Thar 4x4, Punch), 7-Seater (Ertiga) with 300 km/day limit."
-        keywords="car fleet Pune, self drive cars Pune, Thar rental Pune, Ertiga rental Pune, Swift car hire Pune, rent SUV Pune, 7 seater car rental Pune, VK Rental Cars fleet"
+        title="Self Drive Cars & Car Rentals Services Fleet Pune | Car Booking | VK RENTAL CARS"
+        description="Browse all self drive cars for rent in Pune by VK RENTAL CARS. Book Thar 4x4, Ertiga 7-Seater, Swift, Baleno, Creta with 300 km/day limit, 0 security deposit and instant car booking across Pune."
+        keywords="self drive, self drive cars, car rentals services, car booking, car rental in Pune, self drive cars Pune, self drive car rental Pune, car fleet Pune, Thar rental Pune, Ertiga rental Pune, Swift car rental Pune, Baleno rental Pune, 7 seater car rental Pune, car hire Pune, VK Rental Cars, www.vkrentalcar.com"
         canonicalPath="/fleet"
       />
       <Navbar />

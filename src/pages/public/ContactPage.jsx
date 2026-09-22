@@ -140,9 +140,9 @@ export default function ContactPage() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#F8FAFC' }}>
       <SEO
-        title="Contact VK RENTAL CARS PUNE | 24/7 Car Rental Booking & Support"
-        description="Contact VK RENTAL CARS PUNE for instant self-drive car bookings in Pune. Call/WhatsApp +91 8381052230, email vishalkarke184@gmail.com. 24/7 doorstep delivery available."
-        keywords="contact VK Rental Cars, car rental contact Pune, book self drive car Pune, VK rental phone number, Pune car hire contact"
+        title="Contact VK RENTAL CARS PUNE | 24/7 Self Drive Car Booking & Car Rentals Services"
+        description="Contact VK RENTAL CARS PUNE for instant self drive car rentals services and online car booking in Pune & PCMC. Call/WhatsApp +91 8381052230. 24/7 doorstep car delivery across Pune."
+        keywords="contact VK Rental Cars, self drive, car rentals services, car booking, car rental in Pune, self drive cars Pune, car rental Pune contact number, book self drive car Pune, Pune car hire contact, www.vkrentalcar.com"
         canonicalPath="/contact"
       />
       <Navbar />

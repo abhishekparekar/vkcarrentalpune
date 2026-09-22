@@ -1,4 +1,4 @@
-# Robots.txt for VK RENTAL CARS PUNE (https://vkcarrentalpune.com)
+# Robots.txt for VK RENTAL CARS PUNE (https://www.vkrentalcar.com)
 User-agent: *
 Allow: /
 Allow: /fleet
@@ -14,5 +14,5 @@ Disallow: /admin/
 Disallow: /admin/*
 
 # Host & Sitemap
-Host: https://vkcarrentalpune.com
-Sitemap: https://vkcarrentalpune.com/sitemap.xml
+Host: https://www.vkrentalcar.com
+Sitemap: https://www.vkrentalcar.com/sitemap.xml
